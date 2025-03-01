@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantageBlackjack", "AdvantageBlackjack\AdvantageBlackjack.csproj", "{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2F683E-DDA9-4D7C-BA6A-1F8479E6D274}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE53FBBC-D953-4B6E-8444-830CEE639AAE}
+	EndGlobalSection
+EndGlobal
