@@ -17,7 +17,7 @@
             Style="{StaticResource SubHeadline}"
             SemanticProperties.HeadingLevel="Level2"
             SemanticProperties.Description="The heading for the strategy tables page" 
-            Margin="0,25,0,-50"/>
+            Margin="0,25,0,-20"/>
 
         <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" />
         <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" />
