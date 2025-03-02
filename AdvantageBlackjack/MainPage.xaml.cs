@@ -12,9 +12,9 @@
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private async void BasicStrategyClicked(object sender, EventArgs e)
+        private void BasicStrategyClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("StrategyTables");
+            DisplayAlert("Error", "Not Implemented", "Cancel");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void StrategyTableClicked(object sender, EventArgs e)
+        private async void StrategyTableClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Error", "Not Implemented", "Cancel");
+            await Shell.Current.GoToAsync("StrategyTables");
         }
 
         private void PairsAndSoftHandsClicked(object sender, EventArgs e)
