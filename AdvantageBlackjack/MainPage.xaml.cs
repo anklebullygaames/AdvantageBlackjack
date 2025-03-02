@@ -37,6 +37,10 @@
             DisplayAlert("Error", "Not Implemented", "Cancel");
         }
 
+        private void PairsAndSoftHandsClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Error", "Not Implemented", "Cancel");
+        }
     }
 
 }

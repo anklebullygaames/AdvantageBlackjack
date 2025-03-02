@@ -7,7 +7,7 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="20">
+            Spacing="8">
 
             <Image
                 Source="thereallogo.jpg"
@@ -31,6 +31,18 @@
                 Text="Basic Strategy" 
                 SemanticProperties.Hint="opens the basic strategy page"
                 Clicked="BasicStrategyClicked"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="20"
+                FontFamily="monospace"
+                x:Name="PairsAndSoftHandsBtn"
+                Text="Pairs and Soft Hands" 
+                SemanticProperties.Hint="opens the basic strategy page"
+                Clicked="PairsAndSoftHandsClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
                 TextColor="Black"/>
