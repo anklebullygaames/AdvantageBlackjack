@@ -1,30 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdvantageBlackjack.MainPage">
+             x:Class="AdvantageBlackjack.MainPage"
+             BackgroundImageSource="background.jpg">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
+            Spacing="20">
+
             <Image
-                Source="logo.png"
-                HeightRequest="185"
+                Source="thereallogo.jpg"
+                HeightRequest="390"
                 Aspect="AspectFit"
                 SemanticProperties.Description="The advantage blackjack logo" />
 
             <Label
-                Text="The advantage blackjack app"
+                FontAttributes="Bold"
+                Text="Advantage Blackjack"
+                FontFamily="monospace"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="The main page message diplayed under the logo" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+                FontAttributes="Bold"
+                FontSize="20"
+                FontFamily="monospace"
+                x:Name="BasicStrategyBtn"
+                Text="Basic Strategy" 
+                SemanticProperties.Hint="opens the basic strategy page"
+                Clicked="BasicStrategyClicked"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="20"
+                FontFamily="monospace"
+                x:Name="StrategyTableBtn"
+                Text="Strategy Table" 
+                SemanticProperties.Hint="opens the strategy table page"
+                Clicked="StrategyTableClicked"
+                HorizontalOptions="Fill"
+                BackgroundColor="Transparent"
+                TextColor="Black"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="20"
+                FontFamily="monospace"
+                x:Name="OptionsBtn"
+                Text="Options" 
+                SemanticProperties.Hint="opens the optioons page"
+                Clicked="OptionsClicked"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"/>
+
         </VerticalStackLayout>
     </ScrollView>
 

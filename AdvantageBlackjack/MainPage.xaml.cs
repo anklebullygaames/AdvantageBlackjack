@@ -2,24 +2,41 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        /// <summary>
+        /// BasicStrategyBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void BasicStrategyClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            DisplayAlert("Error", "Not Implemented", "Cancel");
         }
+
+        /// <summary>
+        /// BasicStrategyBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void OptionsClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Error", "Not Implemented", "Cancel");
+        }
+
+        /// <summary>
+        /// BasicStrategyBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void StrategyTableClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Error", "Not Implemented", "Cancel");
+        }
+
     }
 
 }
