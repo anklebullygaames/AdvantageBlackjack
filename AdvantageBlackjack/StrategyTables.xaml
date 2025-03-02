@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdvantageBlackjack.StrategyTables"
+             BackgroundImageSource="background.jpg">
+    
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="30">
+
+        <Label
+            FontSize="30"
+            TextColor="Black"
+            FontAttributes="Bold"
+            Text="Strategy Tables"
+            FontFamily="monospace"
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="The heading for the strategy tables page" 
+            Margin="0,25,0,-50"/>
+
+        <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" />
+        <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" />
+        <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" />
+
+        <Button
+            FontAttributes="Bold"
+            FontSize="30"
+            FontFamily="monospace"
+            x:Name="HardTotalsBtn"
+            Text="Hard Totals" 
+            SemanticProperties.Hint="opens the hard totals strategy table"
+            Clicked="HardTotalsClicked"
+            HorizontalOptions="Fill" 
+            BackgroundColor="Transparent"
+            TextColor="Black"/>
+
+        <Button
+            FontAttributes="Bold"
+            FontSize="30"
+            FontFamily="monospace"
+            x:Name="SoftTotalsBtn"
+            Text="Soft Totals" 
+            SemanticProperties.Hint="opens the soft totals strategy table"
+            Clicked="SoftHandsClicked"
+            HorizontalOptions="Fill" 
+            BackgroundColor="Transparent"
+            TextColor="Black"/>
+
+        <Button
+            FontAttributes="Bold"
+            FontSize="30"
+            FontFamily="monospace"
+            x:Name="PairsBtn"
+            Text="Pairs" 
+            SemanticProperties.Hint="opens the pairs strategy table"
+            Clicked="PairsClicked"
+            HorizontalOptions="Fill" 
+            BackgroundColor="Transparent"
+            TextColor="Black"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

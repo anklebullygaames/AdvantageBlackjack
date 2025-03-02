@@ -12,9 +12,9 @@
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void BasicStrategyClicked(object sender, EventArgs e)
+        private async void BasicStrategyClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Error", "Not Implemented", "Cancel");
+            await Shell.Current.GoToAsync("StrategyTables");
         }
 
         /// <summary>

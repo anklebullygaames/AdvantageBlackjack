@@ -5,6 +5,7 @@
              BackgroundImageSource="background.jpg">
 
     <ScrollView>
+        
         <VerticalStackLayout
             Padding="30,0"
             Spacing="8">
@@ -72,6 +73,7 @@
                 TextColor="Black"/>
 
         </VerticalStackLayout>
+        
     </ScrollView>
 
 </ContentPage>
