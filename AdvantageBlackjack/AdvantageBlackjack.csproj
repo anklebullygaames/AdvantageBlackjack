@@ -62,6 +62,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="BasicStrategy.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="StrategyTables.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

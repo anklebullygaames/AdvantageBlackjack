@@ -7,6 +7,7 @@
             InitializeComponent();
 
             Routing.RegisterRoute("StrategyTables", typeof(StrategyTables));
+            Routing.RegisterRoute("BasicStrategy", typeof(BasicStrategy));
         }
     }
 }
