@@ -2,11 +2,35 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdvantageBlackjack.BasicStrategy"
-             Title="BasicStrategy">
+             BackgroundImageSource="background.jpg">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Basic Strategy"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                FontSize="20"
+                TextColor="Black"
+                FontAttributes="Bold"
+                Text="Basic Strategy"
+                FontFamily="monospace"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="The heading for the strategy tables page"/>
+
+        </Grid>
+
     </VerticalStackLayout>
+
 </ContentPage>

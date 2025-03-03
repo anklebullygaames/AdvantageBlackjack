@@ -3,62 +3,71 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdvantageBlackjack.StrategyTables"
              BackgroundImageSource="background.jpg">
-    
-    <VerticalStackLayout
-        Padding="30,0"
-        Spacing="30">
 
-        <Label
-            FontSize="30"
-            TextColor="Black"
-            FontAttributes="Bold"
-            Text="Strategy Tables"
-            FontFamily="monospace"
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="The heading for the strategy tables page" 
-            Margin="0,25,0,-20"/>
+    <VerticalStackLayout>
 
-        <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" />
-        <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" />
-        <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" />
+        <Grid>
 
-        <Button
-            FontAttributes="Bold"
-            FontSize="30"
-            FontFamily="monospace"
-            x:Name="HardTotalsBtn"
-            Text="Hard Totals" 
-            SemanticProperties.Hint="opens the hard totals strategy table"
-            Clicked="HardTotalsClicked"
-            HorizontalOptions="Fill" 
-            BackgroundColor="Transparent"
-            TextColor="Black"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-        <Button
-            FontAttributes="Bold"
-            FontSize="30"
-            FontFamily="monospace"
-            x:Name="SoftTotalsBtn"
-            Text="Soft Totals" 
-            SemanticProperties.Hint="opens the soft totals strategy table"
-            Clicked="SoftHandsClicked"
-            HorizontalOptions="Fill" 
-            BackgroundColor="Transparent"
-            TextColor="Black"/>
+            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="100" WidthRequest="400" HorizontalOptions="Center" IsVisible="True" Grid.Row="0"/>
 
-        <Button
-            FontAttributes="Bold"
-            FontSize="30"
-            FontFamily="monospace"
-            x:Name="PairsBtn"
-            Text="Pairs" 
-            SemanticProperties.Hint="opens the pairs strategy table"
-            Clicked="PairsClicked"
-            HorizontalOptions="Fill" 
-            BackgroundColor="Transparent"
-            TextColor="Black"/>
+            <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
+            <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+            <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="225" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="40"
+                FontFamily="Tahoma"
+                x:Name="HardTotalsBtn"
+                Text="Hard Totals" 
+                SemanticProperties.Hint="opens the hard totals strategy table"
+                Clicked="HardTotalsClicked"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Grid.Row="3"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="40"
+                FontFamily="Tahoma"
+                x:Name="SoftTotalsBtn"
+                Text="Soft Totals" 
+                SemanticProperties.Hint="opens the soft totals strategy table"
+                Clicked="SoftHandsClicked"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Grid.Row="4"/>
+
+            <Button
+                FontAttributes="Bold"
+                FontSize="40"
+                FontFamily="Tahoma"
+                x:Name="PairsBtn"
+                Text="Pairs" 
+                SemanticProperties.Hint="opens the pairs strategy table"
+                Clicked="PairsClicked"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill" 
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Grid.Row="5"
+/>
+
+        </Grid>
 
     </VerticalStackLayout>
-    
+
 </ContentPage>
