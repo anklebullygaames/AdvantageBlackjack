@@ -19,9 +19,11 @@
 
             <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="100" WidthRequest="400" HorizontalOptions="Center" IsVisible="True" Grid.Row="0"/>
 
-            <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
-            <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-            <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="225" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+            <Grid Grid.Row="1">
+                <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
+                <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+                <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+            </Grid>
 
             <Button
                 FontAttributes="Bold"
@@ -53,7 +55,7 @@
 
             <Button
                 FontAttributes="Bold"
-                FontSize="40"
+                FontSize="42"
                 FontFamily="Tahoma"
                 x:Name="PairsBtn"
                 Text="Pairs" 

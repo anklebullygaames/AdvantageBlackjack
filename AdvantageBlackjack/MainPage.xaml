@@ -54,7 +54,7 @@
                 FontSize="20"
                 FontFamily="monospace"
                 x:Name="StrategyTableBtn"
-                Text="Strategy Table" 
+                Text="Strategy Tables" 
                 SemanticProperties.Hint="opens the strategy table page"
                 Clicked="StrategyTableClicked"
                 HorizontalOptions="Fill"
