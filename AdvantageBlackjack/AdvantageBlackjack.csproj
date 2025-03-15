@@ -62,10 +62,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="BasicStrategy.xaml">
+	  <MauiXaml Update="Pages\BasicStrategy.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StrategyTables.xaml">
+	  <MauiXaml Update="Pages\StrategyTables.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
