@@ -4,44 +4,57 @@
              x:Class="AdvantageBlackjack.BasicStrategy"
              BackgroundImageSource="background.jpg">
 
-    <VerticalStackLayout>
+    <Grid>
 
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.ColumnSpan="5" Grid.Column="0" Grid.Row="0" TextColor="Black" Text="100% Correct" FontFamily="monospace" FontSize="20"/>
+        <Grid x:Name="StrategyGrid" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="2" Grid.Column="5">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="20" TextColor="Black" Text="Basic Strategy" FontFamily="monospace"/>
-
         </Grid>
+        <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" Text="Hit" Clicked="HitClicked"/>
+        <Button Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="4" Text="Stand" Clicked="StandClicked"/>
+        <Button Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="4" Text="Double" Clicked="DoubleClicked"/>
+        <Button Grid.Column="7" Grid.Row="10" Grid.ColumnSpan="4" Text="Split" Clicked="SplitClicked"/>
 
-    </VerticalStackLayout>
+    </Grid>
 
 </ContentPage>

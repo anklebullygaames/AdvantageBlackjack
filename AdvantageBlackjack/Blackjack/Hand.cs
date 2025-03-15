@@ -14,5 +14,7 @@ namespace AdvantageBlackjack.Blackjack
         {
             _cards.Add(card);
         }
+
+        public IReadOnlyList<ICard> Cards => _cards.AsReadOnly();
     }
 }
