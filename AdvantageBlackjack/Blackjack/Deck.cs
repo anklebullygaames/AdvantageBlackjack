@@ -17,14 +17,11 @@ namespace AdvantageBlackjack.Blackjack
 
         public void DeckMethod()
         {
-            if (_cards.Count == 0)
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 13; j++)
                 {
-                    for (int j = 0; j < 13; j++)
-                    {
-                        _cards.Add(CardFactory.CreateBlackjackCard((CardFace)j, (CardSuit)i));
-                    }
+                    _cards.Add(CardFactory.CreateBlackjackCard((CardFace)j, (CardSuit)i));
                 }
             }
         }

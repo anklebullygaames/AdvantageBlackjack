@@ -1,11 +1,17 @@
 namespace AdvantageBlackjack;
 using AdvantageBlackjack.Blackjack;
 
-public partial class BasicStrategy : ContentPage
+public partial class BasicStrategy : ContentPage 
 {
     BlackjackHand _dealer;
+
     BlackjackHand _player;
+
     Deck _deck;
+
+    public int RoundsPlayed;
+
+    public int RoundsCorrect;
 
     public BasicStrategy()
     {
@@ -31,46 +37,60 @@ public partial class BasicStrategy : ContentPage
         DrawScreen();
     }
 
+    /// <summary>
+    /// Resets the hands and deals 2 new cards to both the player and the dealer
+    /// </summary>
+    private void DealMoreCards()
+    {
+        _player = new BlackjackHand(false); // Reset the player's hand
+        _dealer = new BlackjackHand(true);  // Reset the dealer's hand
+
+        _player.AddCard(_deck.Deal());
+        _player.AddCard(_deck.Deal());
+        _dealer.AddCard(_deck.Deal());
+        _dealer.AddCard(_deck.Deal());
+
+        DrawScreen(); // Update the UI to reflect the new cards
+    }
+
     private void DrawScreen()
     {
         StrategyGrid.Children.Clear();
+
+        double cardWidth = 140;
+        double cardHeight = 200;
+        
+        double backCardWidth = 225;
+        double backCardHeight = 315;
+
         for (int i = 0; i < _dealer.Cards.Count; i++)
         {
-            if (_dealer.Cards[i] is Card card) // Ensure it's a Card
-            {
-                string cardImageSource = GetCardImageSource(card);
-                Image cardImage = new Image
-                {
-                    Source = cardImageSource,
-                    HeightRequest = 200,
-                    WidthRequest = 140
-                };
+            string cardImageSource = (i == 1) ? "CardImages/back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
 
-                // Add the image to the grid
-                StrategyGrid.Children.Add(cardImage);
-                Grid.SetRow(cardImage, 0); // Dealer is in row 0
-                Grid.SetColumn(cardImage, i); // Spread across columns
-            }
+            Image cardImage = new Image
+            {
+                Source = cardImageSource,
+                HeightRequest = (i == 1) ? backCardHeight : cardHeight,
+                WidthRequest = (i == 1) ? backCardWidth : cardWidth
+            };
+            StrategyGrid.Children.Add(cardImage);
+            Grid.SetRow(cardImage, 0);
+            Grid.SetColumn(cardImage, i);
         }
 
-        // Display Player's Hand (Row 2)
         for (int i = 0; i < _player.Cards.Count; i++)
         {
-            if (_player.Cards[i] is Card card)
-            {
-                string cardImageSource = GetCardImageSource(card);
-                Image cardImage = new Image
-                {
-                    Source = cardImageSource,
-                    HeightRequest = 200,
-                    WidthRequest = 140
-                };
+            string cardImageSource = GetCardImageSource((Card)_player.Cards[i]);
 
-                // Add the image to the grid
-                StrategyGrid.Children.Add(cardImage);
-                Grid.SetRow(cardImage, 2); // Player is in row 2
-                Grid.SetColumn(cardImage, i);
-            }
+            Image cardImage = new Image
+            {
+                Source = cardImageSource,
+                HeightRequest = cardHeight,
+                WidthRequest = cardWidth
+            };
+            StrategyGrid.Children.Add(cardImage);
+            Grid.SetRow(cardImage, 2);
+            Grid.SetColumn(cardImage, i);
         }
     }
 
@@ -94,7 +114,7 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void HitClicked(object sender, EventArgs e)
     {
-
+        DealMoreCards();
     }
 
     /// <summary>
@@ -104,7 +124,7 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void StandClicked(object sender, EventArgs e)
     {
-
+        DealMoreCards();
     }
 
     /// <summary>
@@ -114,7 +134,7 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void DoubleClicked(object sender, EventArgs e)
     {
-
+        DealMoreCards();
     }
 
     /// <summary>
@@ -124,6 +144,6 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void SplitClicked(object sender, EventArgs e)
     {
-
+        DealMoreCards();
     }
 }

@@ -19,6 +19,16 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -34,10 +44,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="5" Grid.Column="0" Grid.Row="0" TextColor="Black" Text="100% Correct" FontFamily="monospace" FontSize="20"/>
-        <Grid x:Name="StrategyGrid" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="2" Grid.Column="5">
+        <Label Grid.ColumnSpan="20" Grid.Column="2" Grid.Row="1" TextColor="Black" Text="100%" FontFamily="monospace" FontSize="23"/>
+        <Label Grid.ColumnSpan="20" Grid.Column="17" Grid.Row="1" TextColor="Black" Text="25/28" FontFamily="monospace" FontSize="23"/>
+        <Grid x:Name="StrategyGrid" Grid.Row="2" Grid.RowSpan="12" Grid.ColumnSpan="3" Grid.Column="10">
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -50,10 +71,10 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" Text="Hit" Clicked="HitClicked"/>
-        <Button Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="4" Text="Stand" Clicked="StandClicked"/>
-        <Button Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="4" Text="Double" Clicked="DoubleClicked"/>
-        <Button Grid.Column="7" Grid.Row="10" Grid.ColumnSpan="4" Text="Split" Clicked="SplitClicked"/>
+        <Button Grid.Column="2" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Hit" Clicked="HitClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+        <Button Grid.Column="2" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Stand" Clicked="StandClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+        <Button Grid.Column="12" Grid.Row="15" Grid.ColumnSpan="8" Grid.RowSpan="2" Text="Double"  FontSize="30" Clicked="DoubleClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+        <Button Grid.Column="12" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Split" FontSize="30" Clicked="SplitClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
 
     </Grid>
 
