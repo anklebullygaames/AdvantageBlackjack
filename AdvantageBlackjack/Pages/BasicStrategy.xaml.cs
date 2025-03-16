@@ -13,6 +13,8 @@ public partial class BasicStrategy : ContentPage
 
     public int RoundsCorrect;
 
+    public float PercentCorrect => (float)(RoundsCorrect) / (float)(RoundsPlayed);
+
     public BasicStrategy()
     {
         InitializeComponent();
@@ -50,6 +52,10 @@ public partial class BasicStrategy : ContentPage
         _dealer.AddCard(_deck.Deal());
         _dealer.AddCard(_deck.Deal());
 
+        RoundsPlayed++;
+
+        UpdateScoreLabels();
+
         DrawScreen(); // Update the UI to reflect the new cards
     }
 
@@ -65,10 +71,35 @@ public partial class BasicStrategy : ContentPage
         double backCardWidth = 225;
         double backCardHeight = 315;
 
+        double screenWidth = StrategyGrid.Width; // Get the grid width for animation reference
         double screenHeight = StrategyGrid.Height; // Get the grid height for animation reference
-        double startY = -cardHeight * 2; // Start position (off-screen, above the grid)
+        double startY = -cardHeight * 2; // Start position (off-screen above the grid)
 
-        // Display Dealer's Hand (Row 0) with Animation
+        // Player Cards: Animate from left & right
+        for (int i = 0; i < _player.Cards.Count; i++)
+        {
+            string cardImageSource = GetCardImageSource((Card)_player.Cards[i]);
+
+            // First card from left (-screenWidth), second card from right (+screenWidth)
+            double startX = (i == 0) ? -screenWidth : screenWidth;
+
+            Image cardImage = new Image
+            {
+                Source = cardImageSource,
+                HeightRequest = cardHeight,
+                WidthRequest = cardWidth,
+                TranslationX = startX // Start off-screen (left or right)
+            };
+
+            StrategyGrid.Children.Add(cardImage);
+            Grid.SetRow(cardImage, 2);
+            Grid.SetColumn(cardImage, i);
+
+            // Animate the card moving into place
+            await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
+        }
+
+        // Dealer Cards: Animate from top
         for (int i = 0; i < _dealer.Cards.Count; i++)
         {
             string cardImageSource = (i == 1) ? "CardImages/back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
@@ -88,27 +119,18 @@ public partial class BasicStrategy : ContentPage
             // Animate the card moving down
             await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
         }
+    }
 
-        // Display Player's Hand (Row 2) with Animation
-        for (int i = 0; i < _player.Cards.Count; i++)
-        {
-            string cardImageSource = GetCardImageSource((Card)_player.Cards[i]);
+    /// <summary>
+    /// Updates the labels showing rounds played and percentage correct.
+    /// </summary>
+    private void UpdateScoreLabels()
+    {
+        string percentText = (RoundsPlayed > 0) ? $"{(PercentCorrect * 100):0}%" : "0%";
+        string fractionText = $"{RoundsCorrect}/{RoundsPlayed}";
 
-            Image cardImage = new Image
-            {
-                Source = cardImageSource,
-                HeightRequest = cardHeight,
-                WidthRequest = cardWidth,
-                TranslationY = startY // Start off-screen above the grid
-            };
-
-            StrategyGrid.Children.Add(cardImage);
-            Grid.SetRow(cardImage, 2);
-            Grid.SetColumn(cardImage, i);
-
-            // Animate the card moving down
-            await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
-        }
+        PercentCorrectLabel.Text = percentText;
+        FractionCorrectLabel.Text = fractionText;
     }
 
 
@@ -133,6 +155,7 @@ public partial class BasicStrategy : ContentPage
     private void HitClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        UpdateScoreLabels();
     }
 
     /// <summary>
@@ -143,6 +166,7 @@ public partial class BasicStrategy : ContentPage
     private void StandClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        UpdateScoreLabels();
     }
 
     /// <summary>
@@ -153,6 +177,8 @@ public partial class BasicStrategy : ContentPage
     private void DoubleClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        RoundsCorrect++;
+        UpdateScoreLabels();
     }
 
     /// <summary>
@@ -163,5 +189,7 @@ public partial class BasicStrategy : ContentPage
     private void SplitClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        RoundsCorrect++;
+        UpdateScoreLabels();
     }
 }
