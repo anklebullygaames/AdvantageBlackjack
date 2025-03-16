@@ -4,28 +4,40 @@
              x:Class="AdvantageBlackjack.StrategyTables"
              BackgroundImageSource="background.jpg">
 
-    <VerticalStackLayout>
+    <Grid>
 
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+        <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="100" WidthRequest="400" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
 
-            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="100" WidthRequest="400" HorizontalOptions="Center" IsVisible="True" Grid.Row="0"/>
+        <Grid Grid.Row="6">
+            <Image x:Name="HardTotalsTable" Source="h17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
+            <Image x:Name="SoftTotalsTable" Source="h17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+            <Image x:Name="PairsTable" Source="h17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+        </Grid>
 
-            <Grid Grid.Row="1">
-                <Image x:Name="HardTotalsTable" Source="hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
-                <Image x:Name="SoftTotalsTable" Source="softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="PairsTable" Source="pairstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-            </Grid>
-
-            <Button
+        <Button
                 FontAttributes="Bold"
                 FontSize="40"
                 FontFamily="Tahoma"
@@ -37,9 +49,10 @@
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="3"/>
+                Grid.Row="10"
+                Grid.RowSpan="2"/>
 
-            <Button
+        <Button
                 FontAttributes="Bold"
                 FontSize="40"
                 FontFamily="Tahoma"
@@ -51,9 +64,10 @@
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="4"/>
+                Grid.Row="12"
+                Grid.RowSpan="2"/>
 
-            <Button
+        <Button
                 FontAttributes="Bold"
                 FontSize="42"
                 FontFamily="Tahoma"
@@ -65,11 +79,11 @@
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="5"
-/>
+                Grid.Row="14"
+                Grid.RowSpan="2"/>
 
-        </Grid>
+        <Image x:Name="SettingsIcon" Source="settingicon1.png" HeightRequest="30" WidthRequest="120" HorizontalOptions="Center" IsVisible="True" Grid.Row="17"/>
 
-    </VerticalStackLayout>
+    </Grid>
 
 </ContentPage>
