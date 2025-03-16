@@ -53,16 +53,22 @@ public partial class BasicStrategy : ContentPage
         DrawScreen(); // Update the UI to reflect the new cards
     }
 
-    private void DrawScreen()
+    private async void DrawScreen()
     {
-        StrategyGrid.Children.Clear();
+        StrategyGrid.Children.Clear(); // Clear previous images
 
+        // Fixed image sizes
         double cardWidth = 140;
         double cardHeight = 200;
-        
+
+        // Custom size for the back card
         double backCardWidth = 225;
         double backCardHeight = 315;
 
+        double screenHeight = StrategyGrid.Height; // Get the grid height for animation reference
+        double startY = -cardHeight * 2; // Start position (off-screen, above the grid)
+
+        // Display Dealer's Hand (Row 0) with Animation
         for (int i = 0; i < _dealer.Cards.Count; i++)
         {
             string cardImageSource = (i == 1) ? "CardImages/back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
@@ -71,13 +77,19 @@ public partial class BasicStrategy : ContentPage
             {
                 Source = cardImageSource,
                 HeightRequest = (i == 1) ? backCardHeight : cardHeight,
-                WidthRequest = (i == 1) ? backCardWidth : cardWidth
+                WidthRequest = (i == 1) ? backCardWidth : cardWidth,
+                TranslationY = startY // Start off-screen above the grid
             };
+
             StrategyGrid.Children.Add(cardImage);
             Grid.SetRow(cardImage, 0);
             Grid.SetColumn(cardImage, i);
+
+            // Animate the card moving down
+            await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
         }
 
+        // Display Player's Hand (Row 2) with Animation
         for (int i = 0; i < _player.Cards.Count; i++)
         {
             string cardImageSource = GetCardImageSource((Card)_player.Cards[i]);
@@ -86,13 +98,19 @@ public partial class BasicStrategy : ContentPage
             {
                 Source = cardImageSource,
                 HeightRequest = cardHeight,
-                WidthRequest = cardWidth
+                WidthRequest = cardWidth,
+                TranslationY = startY // Start off-screen above the grid
             };
+
             StrategyGrid.Children.Add(cardImage);
             Grid.SetRow(cardImage, 2);
             Grid.SetColumn(cardImage, i);
+
+            // Animate the card moving down
+            await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
         }
     }
+
 
 
     /// <summary>
