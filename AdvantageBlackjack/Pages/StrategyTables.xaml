@@ -11,8 +11,122 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Tapped="GridAreaClicked"/>
             </Grid.GestureRecognizers>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="27" Grid.Row="0" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
+
+            <Label Text="Double After Split" 
+            Grid.Column="23" Grid.Row="2"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="20" Grid.RowSpan="10"/>
+
+            <Switch x:Name="DoubleAfterSplitSwitch"
+            Grid.Column="32" Grid.Row="4"
+            IsToggled="{Binding DoubleAfterSplit}"
+            Toggled="DoubleAfterSplitToggled"/>
+
+            <Label Text="S17" 
+            Grid.Column="24" Grid.Row="6"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
             
+            <Switch x:Name="H17Switch"
+            Grid.Column="32" Grid.Row="6"
+            IsToggled="{Binding H17}"
+            Toggled="H17Toggled"/>
+
+            <Label Text="H17" 
+            Grid.Column="35" Grid.Row="6"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+
+
+
         </Grid>
+        
+        
 
         <Grid x:Name="MainContentGrid">
 
@@ -50,7 +164,7 @@
             <Button
             FontAttributes="Bold"
             FontSize="40"
-            FontFamily="Tahoma"
+            FontFamily="monospace"
             x:Name="HardTotalsBtn"
             Text="Hard Totals" 
             SemanticProperties.Hint="opens the hard totals strategy table"
@@ -65,7 +179,7 @@
             <Button
             FontAttributes="Bold"
             FontSize="40"
-            FontFamily="Tahoma"
+            FontFamily="monospace"
             x:Name="SoftTotalsBtn"
             Text="Soft Totals" 
             SemanticProperties.Hint="opens the soft totals strategy table"
@@ -80,7 +194,7 @@
             <Button
             FontAttributes="Bold"
             FontSize="42"
-            FontFamily="Tahoma"
+            FontFamily="monospace"
             x:Name="PairsBtn"
             Text="Pairs" 
             SemanticProperties.Hint="opens the pairs strategy table"
@@ -92,29 +206,21 @@
             Grid.Row="14"
             Grid.RowSpan="2"/>
 
-            <Border
-                WidthRequest="120"
-                HeightRequest="60"
-                HorizontalOptions="Center"
-                Grid.Row="17">
+            <Image 
+            x:Name="SettingsIcon" 
+            Source="settingicon2.png" 
+            HeightRequest="40" 
+            WidthRequest="120" 
+            HorizontalOptions="Center" 
+            Grid.Row="17">
 
-                <Border.GestureRecognizers>
+                <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingsClicked"/>
-                </Border.GestureRecognizers>
+                </Image.GestureRecognizers>
 
-                <Image 
-                x:Name="SettingsIcon" 
-                Source="settingicon2.png" 
-                HeightRequest="40" 
-                WidthRequest="120" 
-                HorizontalOptions="Center" 
-                Grid.Row="17"/>
-
-            </Border>
-
+            </Image>
 
         </Grid>
-
     </Grid>
 
 </ContentPage>

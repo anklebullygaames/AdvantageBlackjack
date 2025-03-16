@@ -5,7 +5,14 @@ public partial class StrategyTables : ContentPage
 	public StrategyTables()
 	{
 		InitializeComponent();
-	}
+        MenuGrid.IsVisible = false;
+        H17Switch.IsToggled = H17;
+        DoubleAfterSplitSwitch.IsToggled = DoubleAfterSplit;
+    }
+
+    public bool DoubleAfterSplit { get; set; } = true;
+
+    public bool H17 { get; set; } = true;
 
     /// <summary>
     /// BasicStrategyBtn event handler
@@ -82,6 +89,7 @@ public partial class StrategyTables : ContentPage
 
     async void SettingsClicked(object sender, EventArgs e)
     {
+        MenuGrid.IsVisible = true; // Show the menu before animation starts
         _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
         await MainContentGrid.ScaleTo(0.8, 800u);
         _ = MainContentGrid.FadeTo(0.8, 800u);
@@ -92,5 +100,16 @@ public partial class StrategyTables : ContentPage
         _ = MainContentGrid.FadeTo(1, 800u);
         _ = MainContentGrid.ScaleTo(1, 800u);
         await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
+        MenuGrid.IsVisible = false;
+    }
+
+    private void H17Toggled(object sender, ToggledEventArgs e)
+    {
+        H17 = e.Value;
+    }
+
+    private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
+    {
+        DoubleAfterSplit = e.Value;
     }
 }
