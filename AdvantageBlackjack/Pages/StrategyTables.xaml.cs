@@ -79,4 +79,18 @@ public partial class StrategyTables : ContentPage
         if (SoftTotalsTable.IsVisible) return SoftTotalsTable;
         return PairsTable;
     }
+
+    async void SettingsClicked(object sender, EventArgs e)
+    {
+        _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
+        await MainContentGrid.ScaleTo(0.8, 800u);
+        _ = MainContentGrid.FadeTo(0.8, 800u);
+    }
+
+    async void GridAreaClicked(object sender, EventArgs e)
+    {
+        _ = MainContentGrid.FadeTo(1, 800u);
+        _ = MainContentGrid.ScaleTo(1, 800u);
+        await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
+    }
 }
