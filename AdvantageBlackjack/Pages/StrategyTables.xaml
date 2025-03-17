@@ -8,9 +8,7 @@
 
         <Grid x:Name="MenuGrid">
 
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="GridAreaClicked"/>
-            </Grid.GestureRecognizers>
+            
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -98,7 +96,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="27" Grid.Row="1" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
+            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="25" Grid.Row="1" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
 
             <RadioButton x:Name="H17Radio"
              Grid.Column="35" Grid.Row="9"
@@ -133,6 +131,21 @@
             Grid.Column="35" Grid.Row="7"
             TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
 
+            <Image x:Name="StrategyTableOptionsBack" 
+            Source="backicon1.png" 
+            HeightRequest="40" 
+            WidthRequest="40" 
+            HorizontalOptions="Center" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.Column="31">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GridAreaClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+
 
 
         </Grid>
@@ -162,11 +175,31 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="100" WidthRequest="400" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
+            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="4"/>
 
-            <Grid Grid.Row="6">
+            <Grid Grid.Row="14">
                 <Image x:Name="HardTotalsTable" Source="h17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
                 <Image x:Name="SoftTotalsTable" Source="h17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
                 <Image x:Name="PairsTable" Source="h17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
@@ -184,8 +217,8 @@
             HorizontalOptions="Fill" 
             BackgroundColor="Transparent"
             TextColor="Black"
-            Grid.Row="10"
-            Grid.RowSpan="2"/>
+            Grid.Row="22"
+            Grid.RowSpan="5"/>
 
             <Button
             FontAttributes="Bold"
@@ -199,8 +232,8 @@
             HorizontalOptions="Fill" 
             BackgroundColor="Transparent"
             TextColor="Black"
-            Grid.Row="12"
-            Grid.RowSpan="2"/>
+            Grid.Row="26"
+            Grid.RowSpan="5"/>
 
             <Button
             FontAttributes="Bold"
@@ -214,16 +247,16 @@
             HorizontalOptions="Fill" 
             BackgroundColor="Transparent"
             TextColor="Black"
-            Grid.Row="14"
-            Grid.RowSpan="2"/>
+            Grid.Row="30"
+            Grid.RowSpan="5"/>
 
-            <Image 
+           <Image 
             x:Name="SettingsIcon" 
             Source="settingicon2.png" 
             HeightRequest="40" 
             WidthRequest="120" 
             HorizontalOptions="Center" 
-            Grid.Row="17">
+            Grid.Row="36">
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingsClicked"/>
