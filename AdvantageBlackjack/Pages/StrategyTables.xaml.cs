@@ -24,7 +24,8 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void SoftHandsClicked(object sender, EventArgs e)
     {
-        SlideToNewImage(GetCurrentVisibleImage(), SoftTotalsTable);
+        Image newImage = H17 ? H17SoftTotalsTable : S17SoftTotalsTable;
+        SlideToNewImage(GetCurrentVisibleImage(), newImage);
     }
 
     /// <summary>
@@ -34,7 +35,14 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void PairsClicked(object sender, EventArgs e)
     {
-        SlideToNewImage(GetCurrentVisibleImage(), PairsTable);
+        Image newImage;
+
+        if (DoubleAfterSplit)
+            newImage = H17 ? H17PairsTableDas : S17PairsTableDas;
+        else
+            newImage = H17 ? H17PairsTableNoDas : S17PairsTableNoDas;
+
+        SlideToNewImage(GetCurrentVisibleImage(), newImage);
     }
 
     /// <summary>
@@ -44,7 +52,8 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void HardTotalsClicked(object sender, EventArgs e)
     {
-        SlideToNewImage(GetCurrentVisibleImage(), HardTotalsTable);
+        Image newImage = H17 ? H17HardTotalsTable : S17HardTotalsTable;
+        SlideToNewImage(GetCurrentVisibleImage(), newImage);
     }
 
     /// <summary>
@@ -57,26 +66,30 @@ public partial class StrategyTables : ContentPage
         if (oldImage == newImage || !oldImage.IsVisible)
             return;
 
-        const uint animationSpeed = 250; // Adjust animation speed as needed
+        const uint animationSpeed = 250;
 
-        double screenWidth = this.Width; // Get screen width dynamically
-
+        double screenWidth = this.Width;
         if (double.IsNaN(screenWidth) || screenWidth == 0)
         {
-            screenWidth = 400; // Fallback value if not set
+            screenWidth = 400; // Fallback value
         }
 
-        // Ensure the new image starts off-screen to the left
+        // Ensure new image starts off-screen left
         newImage.TranslationX = -screenWidth;
         newImage.IsVisible = true;
 
-        // Animate old image sliding out to the right
+        // Animate old image out
         await oldImage.TranslateTo(screenWidth, 0, animationSpeed, Easing.Linear);
-        oldImage.IsVisible = false; // Hide old image after animation
+        oldImage.IsVisible = false;
         oldImage.TranslationX = 0; // Reset position
 
-        // Animate new image sliding in from the left
+        // Animate new image in
         await newImage.TranslateTo(0, 0, animationSpeed, Easing.Linear);
+    }
+
+    private Image DetermineNewVisibleImage()
+    {
+        return H17 ? H17HardTotalsTable : S17HardTotalsTable;
     }
 
     /// <summary>
@@ -85,9 +98,16 @@ public partial class StrategyTables : ContentPage
     /// <returns>The currently visible Image</returns>
     private Image GetCurrentVisibleImage()
     {
-        if (HardTotalsTable.IsVisible) return HardTotalsTable;
-        if (SoftTotalsTable.IsVisible) return SoftTotalsTable;
-        return PairsTable;
+        if (H17HardTotalsTable.IsVisible) return H17HardTotalsTable;
+        if (S17HardTotalsTable.IsVisible) return S17HardTotalsTable;
+        if (H17SoftTotalsTable.IsVisible) return H17SoftTotalsTable;
+        if (S17SoftTotalsTable.IsVisible) return S17SoftTotalsTable;
+        if (H17PairsTableDas.IsVisible) return H17PairsTableDas;
+        if (S17PairsTableDas.IsVisible) return S17PairsTableDas;
+        if (H17PairsTableNoDas.IsVisible) return H17PairsTableNoDas;
+        if (S17PairsTableNoDas.IsVisible) return S17PairsTableNoDas;
+
+        return H17HardTotalsTable; // Default to H17 Hard Totals if no table is active
     }
 
     async void SettingsClicked(object sender, EventArgs e)
@@ -95,27 +115,45 @@ public partial class StrategyTables : ContentPage
         _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
         await MainContentGrid.ScaleTo(0.8, 800u);
         _ = MainContentGrid.FadeTo(0.8, 800u);
-        MenuGrid.IsVisible = true;
+
+        MenuGrid.TranslationY = 1000; // Start position off-screen
+        MenuGrid.IsVisible = true; // Make it visible before animation
+        await MenuGrid.TranslateTo(0, 0, 500, Easing.CubicOut); // Slide up
     }
 
     async void GridAreaClicked(object sender, EventArgs e)
     {
-        MenuGrid.IsVisible = false;
+        await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
+        MenuGrid.IsVisible = false; // Hide after animation
+
         _ = MainContentGrid.FadeTo(1, 800u);
         _ = MainContentGrid.ScaleTo(1, 800u);
         await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
     }
 
-    private void DealerRuleToggled(object sender, ToggledEventArgs e)
+    private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
     {
         if (e.Value)
         {
-            H17 = (sender == H17Radio); // H17 = true if "H17" selected, false if "S17"
+            H17 = (sender == H17Radio);
+            Image newImage = H17 ? H17HardTotalsTable : S17HardTotalsTable;
+            SlideToNewImage(GetCurrentVisibleImage(), newImage);
         }
     }
 
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
     {
         DoubleAfterSplit = e.Value;
+
+        // Check if the currently visible image is a Pairs table, and switch to the correct one
+        if (H17PairsTableDas.IsVisible || H17PairsTableNoDas.IsVisible ||
+            S17PairsTableDas.IsVisible || S17PairsTableNoDas.IsVisible)
+        {
+            Image newImage = DoubleAfterSplit
+                ? (H17 ? H17PairsTableDas : S17PairsTableDas)
+                : (H17 ? H17PairsTableNoDas : S17PairsTableNoDas);
+
+            SlideToNewImage(GetCurrentVisibleImage(), newImage);
+        }
     }
 }
