@@ -24,68 +24,57 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void SoftHandsClicked(object sender, EventArgs e)
     {
-        Image newImage = H17 ? H17SoftTotalsTable : S17SoftTotalsTable;
-        SlideToNewImage(GetCurrentVisibleImage(), newImage);
+        Border newBorder = H17 ? H17SoftTotalsBorder : S17SoftTotalsBorder;
+        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
-    /// <summary>
-    /// BasicStrategyBtn event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
     private void PairsClicked(object sender, EventArgs e)
     {
-        Image newImage;
+        Border newBorder = DoubleAfterSplit
+            ? (H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
+            : (H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
-        if (DoubleAfterSplit)
-            newImage = H17 ? H17PairsTableDas : S17PairsTableDas;
-        else
-            newImage = H17 ? H17PairsTableNoDas : S17PairsTableNoDas;
-
-        SlideToNewImage(GetCurrentVisibleImage(), newImage);
+        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
-    /// <summary>
-    /// BasicStrategyBtn event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
     private void HardTotalsClicked(object sender, EventArgs e)
     {
-        Image newImage = H17 ? H17HardTotalsTable : S17HardTotalsTable;
-        SlideToNewImage(GetCurrentVisibleImage(), newImage);
+        Border newBorder = H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
+
 
     /// <summary>
     /// Animation for 
     /// </summary>
     /// <param name="oldImage">The currently visible image</param>
     /// <param name="newImage">The new image to show</param>
-    private async void SlideToNewImage(Image oldImage, Image newImage)
+    private async void SlideToNewImage(Border oldBorder, Border newBorder)
     {
-        if (oldImage == newImage || !oldImage.IsVisible)
+        if (oldBorder == newBorder || !oldBorder.IsVisible)
             return;
 
         const uint animationSpeed = 250;
-
         double screenWidth = this.Width;
+
         if (double.IsNaN(screenWidth) || screenWidth == 0)
         {
             screenWidth = 400; // Fallback value
         }
 
-        // Ensure new image starts off-screen left
-        newImage.TranslationX = -screenWidth;
-        newImage.IsVisible = true;
+        // Ensure new border starts off-screen left
+        newBorder.TranslationX = -screenWidth;
+        newBorder.IsVisible = true;
 
-        // Animate old image out
-        await oldImage.TranslateTo(screenWidth, 0, animationSpeed, Easing.Linear);
-        oldImage.IsVisible = false;
-        oldImage.TranslationX = 0; // Reset position
+        // Animate old border out
+        await oldBorder.TranslateTo(screenWidth, 0, animationSpeed, Easing.Linear);
+        oldBorder.IsVisible = false;
+        oldBorder.TranslationX = 0; // Reset position
 
-        // Animate new image in
-        await newImage.TranslateTo(0, 0, animationSpeed, Easing.Linear);
+        // Animate new border in
+        await newBorder.TranslateTo(0, 0, animationSpeed, Easing.Linear);
     }
+
 
     private Image DetermineNewVisibleImage()
     {
@@ -96,18 +85,18 @@ public partial class StrategyTables : ContentPage
     /// Returns the currently visible image
     /// </summary>
     /// <returns>The currently visible Image</returns>
-    private Image GetCurrentVisibleImage()
+    private Border GetCurrentVisibleBorder()
     {
-        if (H17HardTotalsTable.IsVisible) return H17HardTotalsTable;
-        if (S17HardTotalsTable.IsVisible) return S17HardTotalsTable;
-        if (H17SoftTotalsTable.IsVisible) return H17SoftTotalsTable;
-        if (S17SoftTotalsTable.IsVisible) return S17SoftTotalsTable;
-        if (H17PairsTableDas.IsVisible) return H17PairsTableDas;
-        if (S17PairsTableDas.IsVisible) return S17PairsTableDas;
-        if (H17PairsTableNoDas.IsVisible) return H17PairsTableNoDas;
-        if (S17PairsTableNoDas.IsVisible) return S17PairsTableNoDas;
+        if (H17HardTotalsBorder.IsVisible) return H17HardTotalsBorder;
+        if (S17HardTotalsBorder.IsVisible) return S17HardTotalsBorder;
+        if (H17SoftTotalsBorder.IsVisible) return H17SoftTotalsBorder;
+        if (S17SoftTotalsBorder.IsVisible) return S17SoftTotalsBorder;
+        if (H17PairsTableDasBorder.IsVisible) return H17PairsTableDasBorder;
+        if (S17PairsTableDasBorder.IsVisible) return S17PairsTableDasBorder;
+        if (H17PairsTableNoDasBorder.IsVisible) return H17PairsTableNoDasBorder;
+        if (S17PairsTableNoDasBorder.IsVisible) return S17PairsTableNoDasBorder;
 
-        return H17HardTotalsTable; // Default to H17 Hard Totals if no table is active
+        return H17HardTotalsBorder; // Default to H17 Hard Totals if no table is active
     }
 
     async void SettingsClicked(object sender, EventArgs e)
@@ -135,9 +124,10 @@ public partial class StrategyTables : ContentPage
     {
         if (e.Value)
         {
-            H17 = (sender == H17Radio);
-            Image newImage = H17 ? H17HardTotalsTable : S17HardTotalsTable;
-            SlideToNewImage(GetCurrentVisibleImage(), newImage);
+            H17 = (sender == H17Radio); // Check which radio button was selected
+
+            Border newBorder = H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
         }
     }
 
@@ -145,15 +135,15 @@ public partial class StrategyTables : ContentPage
     {
         DoubleAfterSplit = e.Value;
 
-        // Check if the currently visible image is a Pairs table, and switch to the correct one
-        if (H17PairsTableDas.IsVisible || H17PairsTableNoDas.IsVisible ||
-            S17PairsTableDas.IsVisible || S17PairsTableNoDas.IsVisible)
+        // Check if the currently visible table is a Pairs table, and switch it
+        if (H17PairsTableDasBorder.IsVisible || H17PairsTableNoDasBorder.IsVisible ||
+            S17PairsTableDasBorder.IsVisible || S17PairsTableNoDasBorder.IsVisible)
         {
-            Image newImage = DoubleAfterSplit
-                ? (H17 ? H17PairsTableDas : S17PairsTableDas)
-                : (H17 ? H17PairsTableNoDas : S17PairsTableNoDas);
+            Border newBorder = DoubleAfterSplit
+                ? (H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
+                : (H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
-            SlideToNewImage(GetCurrentVisibleImage(), newImage);
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
         }
     }
 }

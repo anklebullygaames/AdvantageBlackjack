@@ -200,15 +200,49 @@
             <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="4"/>
 
             <Grid Grid.Row="14">
-                <Image x:Name="H17HardTotalsTable" Source="h17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="True" Grid.Row="1"/>
-                <Image x:Name="H17SoftTotalsTable" Source="h17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="H17PairsTableDas" Source="h17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="H17PairsTableNoDas" Source="h17pairstrategynodas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="S17HardTotalsTable" Source="s17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="S17SoftTotalsTable" Source="s17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="S17PairsTableDas" Source="s17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
-                <Image x:Name="S17PairsTableNoDas" Source="s17pairstrategynodas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center" IsVisible="False" Grid.Row="1"/>
+                
+                <!-- H17 Hard Totals -->
+                <Border x:Name="H17HardTotalsBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="True" HeightRequest="251" WidthRequest="370">
+                    <Image x:Name="H17HardTotalsTable" Source="h17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- H17 Soft Totals -->
+                <Border x:Name="H17SoftTotalsBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="215" WidthRequest="370">
+                    <Image x:Name="H17SoftTotalsTable" Source="h17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- H17 Pairs Table DAS -->
+                <Border x:Name="H17PairsTableDasBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="255" WidthRequest="370">
+                    <Image x:Name="H17PairsTableDas" Source="h17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- H17 Pairs Table No DAS -->
+                <Border x:Name="H17PairsTableNoDasBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="257" WidthRequest="370">
+                    <Image x:Name="H17PairsTableNoDas" Source="h17pairstrategynodas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- S17 Hard Totals -->
+                <Border x:Name="S17HardTotalsBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                    <Image x:Name="S17HardTotalsTable" Source="s17hardstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- S17 Soft Totals -->
+                <Border x:Name="S17SoftTotalsBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="234" WidthRequest="370">
+                    <Image x:Name="S17SoftTotalsTable" Source="s17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- S17 Pairs Table DAS -->
+                <Border x:Name="S17PairsTableDasBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="272" WidthRequest="370">
+                    <Image x:Name="S17PairsTableDas" Source="s17pairstrategydas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+
+                <!-- S17 Pairs Table No DAS -->
+                <Border x:Name="S17PairsTableNoDasBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="270" WidthRequest="370">
+                    <Image x:Name="S17PairsTableNoDas" Source="s17pairstrategynodas.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
+                </Border>
+                
             </Grid>
+
 
             <Button
             FontAttributes="Bold"
