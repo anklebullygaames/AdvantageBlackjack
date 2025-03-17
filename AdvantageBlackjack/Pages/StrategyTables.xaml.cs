@@ -15,10 +15,10 @@ public partial class StrategyTables : ContentPage
 
         MenuGrid.IsVisible = false;
 
-        H17Radio.IsChecked = H17;
-        S17Radio.IsChecked = !H17;
+        H17Radio.IsChecked = GlobalSettings.H17;
+        S17Radio.IsChecked = !GlobalSettings.H17;
 
-        DoubleAfterSplitSwitch.IsToggled = DoubleAfterSplit;
+        DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
     }
 
     /// <summary>
@@ -154,9 +154,9 @@ public partial class StrategyTables : ContentPage
     {
         if (e.Value)
         {
-            H17 = (sender == H17Radio); // Check which radio button was selected
+            GlobalSettings.H17 = (sender == H17Radio); // Check which radio button was selected
 
-            Border newBorder = H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+            Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
             SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
         }
     }
@@ -168,7 +168,7 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
     {
-        DoubleAfterSplit = e.Value;
+        GlobalSettings.DoubleAfterSplit = e.Value;
 
         // Check if the currently visible table is a Pairs table, and switch it
         if (H17PairsTableDasBorder.IsVisible || H17PairsTableNoDasBorder.IsVisible ||

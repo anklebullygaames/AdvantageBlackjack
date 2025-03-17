@@ -6,6 +6,15 @@ using AdvantageBlackjack.Blackjack;
 /// </summary>
 public partial class BasicStrategy : ContentPage 
 {
+    /// <summary>
+    /// Whether or not DAS is active
+    /// </summary>
+    public bool DoubleAfterSplit { get; set; } = true;
+
+    /// <summary>
+    /// Whether H17 is active (false means S17 is active)
+    /// </summary>
+    public bool H17 { get; set; } = true;
 
     /// <summary>
     /// The dealers blackjack hand
@@ -38,6 +47,35 @@ public partial class BasicStrategy : ContentPage
     public float PercentCorrect => (float)(RoundsCorrect) / (float)(RoundsPlayed);
 
     /// <summary>
+    /// Stores the current matchup as (Player Card 1, Player Card 2, Dealer Card)
+    /// </summary>
+    private (CardFace playerCard1, CardFace playerCard2, CardFace dealerCard) _currentMatchup;
+
+    /// <summary>
+    /// The private backing field for the CurrentAnswer
+    /// </summary>
+    private Answer _currentAnswer;
+    
+    /// <summary>
+    /// The current answer
+    /// </summary>
+    public Answer CurrentAnswer
+    {
+        get
+        {
+            if (H17)
+            {
+                return AnswerDatabase.
+            }
+        }
+        set
+        {
+
+        }
+    }
+
+
+    /// <summary>
     /// Constructor fot the BasicStrategy page which creates new player/dealer hands and a new deck then deals the initial cards
     /// </summary>
     public BasicStrategy()
@@ -63,26 +101,33 @@ public partial class BasicStrategy : ContentPage
             _player.AddCard(_deck.Deal());
             _dealer.AddCard(_deck.Deal());
         }
+
+
         DrawScreen();
     }
 
     /// <summary>
     /// Resets the hands and deals 2 new cards to both the player and the dealer, updates all
     /// </summary>
-    private void DealMoreCards()
+    /// <summary>
+/// Resets the hands, deals new cards, updates matchup, and updates UI.
+/// </summary>
+private void DealMoreCards()
     {
         _player = new BlackjackHand(false);
         _dealer = new BlackjackHand(true);
 
-        _player.AddCard(_deck.Deal());
-        _player.AddCard(_deck.Deal());
+        Card playerCard1 = (Card)_deck.Deal();
+        Card playerCard2 = (Card)_deck.Deal();
+        Card dealerCard = (Card)_deck.Deal();
+        _dealer.AddCard(dealerCard);
         _dealer.AddCard(_deck.Deal());
-        _dealer.AddCard(_deck.Deal());
+        _player.AddCard(playerCard1);
+        _player.AddCard(playerCard2);
 
+        _currentMatchup = (playerCard1.Face, playerCard2.Face, dealerCard.Face);
         RoundsPlayed++;
-
         UpdateScoreLabels();
-
         DrawScreen();
     }
 
