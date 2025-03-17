@@ -98,28 +98,39 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="27" Grid.Row="0" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
+            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="27" Grid.Row="1" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
 
-            <Label Text="Double After Split" 
-            Grid.Column="23" Grid.Row="2"
+            <RadioButton x:Name="H17Radio"
+             Grid.Column="35" Grid.Row="9"
+             Content="H17" GroupName="DealerRuleGroup"
+             CheckedChanged="DealerRuleToggled"/>
+
+            <RadioButton x:Name="S17Radio"
+             Grid.Column="24" Grid.Row="9"
+             Content="S17" GroupName="DealerRuleGroup"
+             CheckedChanged="DealerRuleToggled"/>
+            
+            <Label Text="DAS" 
+            FontAttributes="Bold"
+            Grid.Column="24" Grid.Row="4"
             TextColor="Black" FontSize="20" Grid.ColumnSpan="20" Grid.RowSpan="10"/>
 
             <Switch x:Name="DoubleAfterSplitSwitch"
-            Grid.Column="32" Grid.Row="4"
+            Grid.Column="36" Grid.Row="4"
+            Grid.ColumnSpan="3" Grid.RowSpan="1"
             IsToggled="{Binding DoubleAfterSplit}"
             Toggled="DoubleAfterSplitToggled"/>
 
             <Label Text="S17" 
-            Grid.Column="24" Grid.Row="6"
+            FontAttributes="Bold"
+            Grid.Column="24" Grid.Row="7"
             TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
             
-            <Switch x:Name="H17Switch"
-            Grid.Column="32" Grid.Row="6"
-            IsToggled="{Binding H17}"
-            Toggled="H17Toggled"/>
+            
 
             <Label Text="H17" 
-            Grid.Column="35" Grid.Row="6"
+            FontAttributes="Bold"
+            Grid.Column="35" Grid.Row="7"
             TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
 
 

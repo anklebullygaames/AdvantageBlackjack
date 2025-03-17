@@ -6,7 +6,10 @@ public partial class StrategyTables : ContentPage
 	{
 		InitializeComponent();
         MenuGrid.IsVisible = false;
-        H17Switch.IsToggled = H17;
+
+        H17Radio.IsChecked = H17;
+        S17Radio.IsChecked = !H17;
+
         DoubleAfterSplitSwitch.IsToggled = DoubleAfterSplit;
     }
 
@@ -89,23 +92,26 @@ public partial class StrategyTables : ContentPage
 
     async void SettingsClicked(object sender, EventArgs e)
     {
-        MenuGrid.IsVisible = true; // Show the menu before animation starts
         _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
         await MainContentGrid.ScaleTo(0.8, 800u);
         _ = MainContentGrid.FadeTo(0.8, 800u);
+        MenuGrid.IsVisible = true;
     }
 
     async void GridAreaClicked(object sender, EventArgs e)
     {
+        MenuGrid.IsVisible = false;
         _ = MainContentGrid.FadeTo(1, 800u);
         _ = MainContentGrid.ScaleTo(1, 800u);
         await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
-        MenuGrid.IsVisible = false;
     }
 
-    private void H17Toggled(object sender, ToggledEventArgs e)
+    private void DealerRuleToggled(object sender, ToggledEventArgs e)
     {
-        H17 = e.Value;
+        if (e.Value)
+        {
+            H17 = (sender == H17Radio); // H17 = true if "H17" selected, false if "S17"
+        }
     }
 
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
