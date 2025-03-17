@@ -6,17 +6,20 @@
              NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
-        
+
+        <!-- The MainContent -->
         <VerticalStackLayout
             Padding="30,0"
             Spacing="8">
 
+            <!-- The Logo Image -->
             <Image
                 Source="thereallogo.jpg"
                 HeightRequest="390"
                 Aspect="AspectFit"
                 SemanticProperties.Description="The advantage blackjack logo" />
 
+            <!-- Advantage Blackjack Subheader -->
             <Label
                 FontAttributes="Bold"
                 Text="Advantage Blackjack"
@@ -25,6 +28,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="The main page message diplayed under the logo" />
 
+            <!-- The Basic Strategy Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="20"
@@ -37,37 +41,40 @@
                 BackgroundColor="Transparent"
                 TextColor="Black"/>
 
+            <!-- The Pairs and Soft Hands button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="20"
                 FontFamily="monospace"
                 x:Name="PairsAndSoftHandsBtn"
                 Text="Pairs and Soft Hands" 
-                SemanticProperties.Hint="opens the basic strategy page"
+                SemanticProperties.Hint="opens the pairs and soft hands page"
                 Clicked="PairsAndSoftHandsClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
                 TextColor="Black"/>
 
+            <!-- The Strategy Tables Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="20"
                 FontFamily="monospace"
                 x:Name="StrategyTableBtn"
                 Text="Strategy Tables" 
-                SemanticProperties.Hint="opens the strategy table page"
+                SemanticProperties.Hint="opens the strategy tables page"
                 Clicked="StrategyTableClicked"
                 HorizontalOptions="Fill"
                 BackgroundColor="Transparent"
                 TextColor="Black"/>
 
+            <!-- The Options Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="20"
                 FontFamily="monospace"
                 x:Name="OptionsBtn"
-                Text="Options" 
-                SemanticProperties.Hint="opens the optioons page"
+                Text="Counting" 
+                SemanticProperties.Hint="opens the options page"
                 Clicked="OptionsClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"

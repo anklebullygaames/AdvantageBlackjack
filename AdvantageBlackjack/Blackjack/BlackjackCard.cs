@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace AdvantageBlackjack.Blackjack
 {
+    /// <summary>
+    /// A Blackjack card that implements Card
+    /// </summary>
     public class BlackjackCard : Card
     {
+        /// <summary>
+        /// The numerical value of the card (1 - 11)
+        /// </summary>
         public int Value { get; private set; }
 
+        /// <summary>
+        /// The constructor for a BlackjackCard which implements Card and assigns it a blackjack value (1 - 11)
+        /// </summary>
+        /// <param name="face">face</param>
+        /// <param name="suit">suit</param>
         public BlackjackCard(CardFace face, CardSuit suit) : base(face, suit)
         {
+
+            //Sets the Value property based on the face of the card.
             switch (face)
             {
                 default:
@@ -54,6 +67,7 @@ namespace AdvantageBlackjack.Blackjack
                     Value = 10;
                     break;
             }
+
         }
     }
 }

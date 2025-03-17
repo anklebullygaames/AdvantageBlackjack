@@ -6,15 +6,28 @@ using System.Threading.Tasks;
 
 namespace AdvantageBlackjack.Blackjack
 {
+    /// <summary>
+    /// A deck of cards
+    /// </summary>
     public class Deck
     {
+
+        /// <summary>
+        /// A list of cards that represents the deck
+        /// </summary>
         List<ICard> _cards = new List<ICard>();
 
+        /// <summary>
+        /// The constructor for a deck which calls DeckMethod and Shuffles.
+        /// </summary>
         public Deck()
         {
             DeckMethod();
         }
 
+        /// <summary>
+        /// Adds 52 cards to the deck
+        /// </summary>
         public void DeckMethod()
         {
             for (int i = 0; i < 4; i++)
@@ -26,6 +39,9 @@ namespace AdvantageBlackjack.Blackjack
             }
         }
 
+        /// <summary>
+        /// Shuffles the deck
+        /// </summary>
         public void Shuffle()
         {
             Random rng = new Random();
@@ -39,6 +55,10 @@ namespace AdvantageBlackjack.Blackjack
             }
         }
 
+        /// <summary>
+        /// Deals a card from the deck
+        /// </summary>
+        /// <returns></returns>
         public ICard Deal()
         {
             if (_cards.Count == 0)

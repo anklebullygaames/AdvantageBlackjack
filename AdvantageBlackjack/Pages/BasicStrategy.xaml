@@ -4,8 +4,10 @@
              x:Class="AdvantageBlackjack.BasicStrategy"
              BackgroundImageSource="background.jpg">
 
+    <!-- Main Content Grid -->
     <Grid>
 
+        <!-- 22 Row Definitions -->
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -31,6 +33,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!-- 22 Column Definitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -56,8 +59,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!-- Percent Correct Label -->
         <Label x:Name="PercentCorrectLabel" Grid.ColumnSpan="20" Grid.Column="2" Grid.Row="2" TextColor="Black" Text="0%" FontFamily="monospace" FontSize="23"/>
+
+        <!-- Fractions Correct Label -->
         <Label x:Name="FractionCorrectLabel" Grid.ColumnSpan="20" Grid.Column="18" Grid.Row="2" TextColor="Black" Text="0/0" FontFamily="monospace" FontSize="23"/>
+
+        <!-- Cards Grid -->
         <Grid x:Name="StrategyGrid" Grid.Row="2" Grid.RowSpan="12" Grid.ColumnSpan="3" Grid.Column="10">
 
             <Grid.RowDefinitions>
@@ -71,9 +79,17 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
+
+        <!-- Hit Button -->
         <Button Grid.Column="2" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Hit" Clicked="HitClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+        <!-- Stand Button -->
         <Button Grid.Column="2" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Stand" Clicked="StandClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+        <!-- Double Button -->
         <Button Grid.Column="12" Grid.Row="15" Grid.ColumnSpan="8" Grid.RowSpan="2" Text="Double"  FontSize="30" Clicked="DoubleClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+        <!-- Split Button -->
         <Button Grid.Column="12" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Split" FontSize="30" Clicked="SplitClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
 
     </Grid>

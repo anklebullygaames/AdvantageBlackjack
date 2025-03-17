@@ -1,10 +1,18 @@
 namespace AdvantageBlackjack;
 
+/// <summary>
+/// StrategyTables
+/// </summary>
 public partial class StrategyTables : ContentPage
 {
+
+    /// <summary>
+    /// The constructor for the StrategyTables page
+    /// </summary>
 	public StrategyTables()
 	{
 		InitializeComponent();
+
         MenuGrid.IsVisible = false;
 
         H17Radio.IsChecked = H17;
@@ -13,12 +21,18 @@ public partial class StrategyTables : ContentPage
         DoubleAfterSplitSwitch.IsToggled = DoubleAfterSplit;
     }
 
+    /// <summary>
+    /// Whether or not DAS is active
+    /// </summary>
     public bool DoubleAfterSplit { get; set; } = true;
 
+    /// <summary>
+    /// Whether H17 is active (false means S17 is active)
+    /// </summary>
     public bool H17 { get; set; } = true;
 
     /// <summary>
-    /// BasicStrategyBtn event handler
+    /// BasicStrategyBtn clicked event handler
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
@@ -28,6 +42,11 @@ public partial class StrategyTables : ContentPage
         SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
+    /// <summary>
+    /// Pairs clicked event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     private void PairsClicked(object sender, EventArgs e)
     {
         Border newBorder = DoubleAfterSplit
@@ -37,6 +56,11 @@ public partial class StrategyTables : ContentPage
         SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
+    /// <summary>
+    /// Hard totals clicked event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     private void HardTotalsClicked(object sender, EventArgs e)
     {
         Border newBorder = H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
@@ -45,10 +69,10 @@ public partial class StrategyTables : ContentPage
 
 
     /// <summary>
-    /// Animation for 
+    /// Animation for sliding a new table into the screen.
     /// </summary>
-    /// <param name="oldImage">The currently visible image</param>
-    /// <param name="newImage">The new image to show</param>
+    /// <param name="oldBorder">The currently visible border</param>
+    /// <param name="newBorder">The new border to show</param>
     private async void SlideToNewImage(Border oldBorder, Border newBorder)
     {
         if (oldBorder == newBorder || !oldBorder.IsVisible)
@@ -59,26 +83,17 @@ public partial class StrategyTables : ContentPage
 
         if (double.IsNaN(screenWidth) || screenWidth == 0)
         {
-            screenWidth = 400; // Fallback value
+            screenWidth = 400;
         }
 
-        // Ensure new border starts off-screen left
         newBorder.TranslationX = -screenWidth;
         newBorder.IsVisible = true;
 
-        // Animate old border out
         await oldBorder.TranslateTo(screenWidth, 0, animationSpeed, Easing.Linear);
         oldBorder.IsVisible = false;
-        oldBorder.TranslationX = 0; // Reset position
+        oldBorder.TranslationX = 0;
 
-        // Animate new border in
         await newBorder.TranslateTo(0, 0, animationSpeed, Easing.Linear);
-    }
-
-
-    private Image DetermineNewVisibleImage()
-    {
-        return H17 ? H17HardTotalsTable : S17HardTotalsTable;
     }
 
     /// <summary>
@@ -96,21 +111,31 @@ public partial class StrategyTables : ContentPage
         if (H17PairsTableNoDasBorder.IsVisible) return H17PairsTableNoDasBorder;
         if (S17PairsTableNoDasBorder.IsVisible) return S17PairsTableNoDasBorder;
 
-        return H17HardTotalsBorder; // Default to H17 Hard Totals if no table is active
+        return H17HardTotalsBorder;
     }
 
+    /// <summary>
+    /// Settings clicked event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     async void SettingsClicked(object sender, EventArgs e)
     {
         _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
         await MainContentGrid.ScaleTo(0.8, 800u);
         _ = MainContentGrid.FadeTo(0.8, 800u);
 
-        MenuGrid.TranslationY = 1000; // Start position off-screen
-        MenuGrid.IsVisible = true; // Make it visible before animation
-        await MenuGrid.TranslateTo(0, 0, 500, Easing.CubicOut); // Slide up
+        MenuGrid.TranslationY = 1000;
+        MenuGrid.IsVisible = true;
+        await MenuGrid.TranslateTo(0, 0, 500, Easing.CubicOut);
     }
 
-    async void GridAreaClicked(object sender, EventArgs e)
+    /// <summary>
+    /// Options back clicked event handler
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    async void OptionsBackClicked(object sender, EventArgs e)
     {
         await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
         MenuGrid.IsVisible = false; // Hide after animation
@@ -120,6 +145,11 @@ public partial class StrategyTables : ContentPage
         await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
     }
 
+    /// <summary>
+    /// Dealer rule changed event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
     {
         if (e.Value)
@@ -131,6 +161,11 @@ public partial class StrategyTables : ContentPage
         }
     }
 
+    /// <summary>
+    /// DAS switched event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
     {
         DoubleAfterSplit = e.Value;
