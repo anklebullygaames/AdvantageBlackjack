@@ -16,6 +16,8 @@ namespace AdvantageBlackjack.Blackjack
         /// </summary>
         public int Score { get; private set; }
 
+        public int AceCount { get; private set; }
+
         /// <summary>
         /// Whether the hand is the dealer or not
         /// </summary>
@@ -47,6 +49,9 @@ namespace AdvantageBlackjack.Blackjack
                 else Score += temp.Value;
 
             }
+
+            AceCount = aceCounter;
+
             for (int i = 0; i < aceCounter; i++)
             {
                 if (11 + Score <= 21)

@@ -47,9 +47,9 @@ public partial class BasicStrategy : ContentPage
     public float PercentCorrect => (float)(RoundsCorrect) / (float)(RoundsPlayed);
 
     /// <summary>
-    /// Stores the current matchup as (Player Card 1, Player Card 2, Dealer Card)
+    /// Stores the current matchup as (Player Card Hand, Player Card Hand)
     /// </summary>
-    private (CardFace playerCard1, CardFace playerCard2, CardFace dealerCard) _currentMatchup;
+    public (BlackjackHand, BlackjackHand) CurrentMatchup;
 
     /// <summary>
     /// The private backing field for the CurrentAnswer
@@ -63,14 +63,23 @@ public partial class BasicStrategy : ContentPage
     {
         get
         {
-            if (H17)
+            if (CurrentMatchup.Item1.Cards[0].Face == CurrentMatchup.Item1.Cards[1].Face)
             {
-                return AnswerDatabase.
+                return AnswerDatabase.GetPairAnswer(CurrentMatchup);
+            }
+
+            if (CurrentMatchup.Item1.AceCount == 0)
+            {
+                return AnswerDatabase.GetHardAnswer(CurrentMatchup);
+            }
+            if (CurrentMatchup.Item1.AceCount == 1 )
+            {
+                return AnswerDatabase.GetSoftAnswer(CurrentMatchup);
             }
         }
-        set
+        private set
         {
-
+            _currentAnswer = value;
         }
     }
 
@@ -86,37 +95,22 @@ public partial class BasicStrategy : ContentPage
         _player = new BlackjackHand(false);
         _deck = new Deck();
 
-        DealInitialCards();
+        DealMoreCards();
 
-    }
-
-    /// <summary>
-    /// Shuffles and deals the initial cards for the game
-    /// </summary>
-    private void DealInitialCards()
-    {
-        _deck.Shuffle();
-        for (int i = 0; i < 2; i++)
-        {
-            _player.AddCard(_deck.Deal());
-            _dealer.AddCard(_deck.Deal());
-        }
-
-
-        DrawScreen();
     }
 
     /// <summary>
     /// Resets the hands and deals 2 new cards to both the player and the dealer, updates all
     /// </summary>
     /// <summary>
-/// Resets the hands, deals new cards, updates matchup, and updates UI.
-/// </summary>
-private void DealMoreCards()
+    /// Resets the hands, deals new cards, updates matchup, and updates UI.
+    /// </summary>
+    private void DealMoreCards()
     {
         _player = new BlackjackHand(false);
         _dealer = new BlackjackHand(true);
 
+        _deck.Shuffle();
         Card playerCard1 = (Card)_deck.Deal();
         Card playerCard2 = (Card)_deck.Deal();
         Card dealerCard = (Card)_deck.Deal();
@@ -125,7 +119,8 @@ private void DealMoreCards()
         _player.AddCard(playerCard1);
         _player.AddCard(playerCard2);
 
-        _currentMatchup = (playerCard1.Face, playerCard2.Face, dealerCard.Face);
+        CurrentMatchup = (_player, _dealer);
+        CurrentAnswer = AnswerDatabase.GetAnswer(CurrentMatchup);
         RoundsPlayed++;
         UpdateScoreLabels();
         DrawScreen();
