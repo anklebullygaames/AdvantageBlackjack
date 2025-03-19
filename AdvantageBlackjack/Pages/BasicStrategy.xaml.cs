@@ -6,15 +6,6 @@ using AdvantageBlackjack.Blackjack;
 /// </summary>
 public partial class BasicStrategy : ContentPage 
 {
-    /// <summary>
-    /// Whether or not DAS is active
-    /// </summary>
-    public bool DoubleAfterSplit { get; set; } = true;
-
-    /// <summary>
-    /// Whether H17 is active (false means S17 is active)
-    /// </summary>
-    public bool H17 { get; set; } = true;
 
     /// <summary>
     /// The dealers blackjack hand
@@ -49,13 +40,18 @@ public partial class BasicStrategy : ContentPage
     /// <summary>
     /// Stores the current matchup as (Player Card Hand, Player Card Hand)
     /// </summary>
-    public (BlackjackHand, BlackjackHand) CurrentMatchup;
+    public (int PlayerScore, CardFace DealerFace) CurrentMatchup;
 
     /// <summary>
-    /// The private backing field for the CurrentAnswer
+    /// The property for the players aces
     /// </summary>
-    private Answer _currentAnswer;
-    
+    public int PlayerAces;
+
+    /// <summary>
+    /// Property to track pair
+    /// </summary>
+    public bool Pair = false;
+
     /// <summary>
     /// The current answer
     /// </summary>
@@ -63,23 +59,21 @@ public partial class BasicStrategy : ContentPage
     {
         get
         {
-            if (CurrentMatchup.Item1.Cards[0].Face == CurrentMatchup.Item1.Cards[1].Face)
-            {
-                return AnswerDatabase.GetPairAnswer(CurrentMatchup);
-            }
+            if (PlayerAces == 2)
+                return Answer.Split;
 
-            if (CurrentMatchup.Item1.AceCount == 0)
-            {
-                return AnswerDatabase.GetHardAnswer(CurrentMatchup);
-            }
-            if (CurrentMatchup.Item1.AceCount == 1 )
-            {
+            else if (PlayerAces == 1)
                 return AnswerDatabase.GetSoftAnswer(CurrentMatchup);
-            }
-        }
-        private set
-        {
-            _currentAnswer = value;
+
+            else
+                if (Pair)
+                {
+                    return AnswerDatabase.GetPairAnswer(CurrentMatchup);
+                }
+                else
+                {
+                    return AnswerDatabase.GetHardAnswer(CurrentMatchup);
+                }
         }
     }
 
@@ -94,9 +88,47 @@ public partial class BasicStrategy : ContentPage
         _dealer = new BlackjackHand(true);
         _player = new BlackjackHand(false);
         _deck = new Deck();
+        _deck.Shuffle();
 
-        DealMoreCards();
+        DealStartCards();
 
+    }
+
+    /// <summary>
+    /// Makes the hands and deals 2 cards to both the player and the dealer, updates all
+    /// </summary>
+    /// <summary>
+    /// Resets the hands, deals new cards, updates matchup, and updates UI.
+    /// </summary>
+    private void DealStartCards()
+    {
+        _player = new BlackjackHand(false);
+        _dealer = new BlackjackHand(true);
+
+        BlackjackCard playerCard1 = (BlackjackCard)_deck.Deal();
+        BlackjackCard playerCard2 = (BlackjackCard)_deck.Deal();
+        BlackjackCard dealerCard = (BlackjackCard)_deck.Deal();
+        _dealer.AddCard(dealerCard);
+        _dealer.AddCard(_deck.Deal());
+        _player.AddCard(playerCard1);
+        _player.AddCard(playerCard2);
+
+        CurrentMatchup = (playerCard1.Value + playerCard2.Value, dealerCard.Face);
+        if (playerCard1.Face == playerCard2.Face)
+        {
+            Pair = true;
+        }
+        if (playerCard1.Face == CardFace.A)
+        {
+            PlayerAces++;
+        }
+        if (playerCard2.Face == CardFace.A)
+        {
+            PlayerAces++;
+        }
+
+        UpdateScoreLabels();
+        DrawScreen();
     }
 
     /// <summary>
@@ -109,18 +141,32 @@ public partial class BasicStrategy : ContentPage
     {
         _player = new BlackjackHand(false);
         _dealer = new BlackjackHand(true);
+        Pair = false;
+        PlayerAces = 0;
 
-        _deck.Shuffle();
-        Card playerCard1 = (Card)_deck.Deal();
-        Card playerCard2 = (Card)_deck.Deal();
-        Card dealerCard = (Card)_deck.Deal();
+        BlackjackCard playerCard1 = (BlackjackCard)_deck.Deal();
+        BlackjackCard playerCard2 = (BlackjackCard)_deck.Deal();
+        BlackjackCard dealerCard = (BlackjackCard)_deck.Deal();
         _dealer.AddCard(dealerCard);
         _dealer.AddCard(_deck.Deal());
         _player.AddCard(playerCard1);
         _player.AddCard(playerCard2);
 
-        CurrentMatchup = (_player, _dealer);
-        CurrentAnswer = AnswerDatabase.GetAnswer(CurrentMatchup);
+        CurrentMatchup = (playerCard1.Value + playerCard2.Value, dealerCard.Face);
+
+        if (playerCard1.Face == playerCard2.Face)
+        {
+            Pair = true;
+        }
+        if (playerCard1.Face == CardFace.A)
+        {
+            PlayerAces++;
+        }
+        if (playerCard2.Face == CardFace.A)
+        {
+            PlayerAces++;
+        }
+
         RoundsPlayed++;
         UpdateScoreLabels();
         DrawScreen();
@@ -192,9 +238,15 @@ public partial class BasicStrategy : ContentPage
     {
         string percentText = (RoundsPlayed > 0) ? $"{(PercentCorrect * 100):0}%" : "0%";
         string fractionText = $"{RoundsCorrect}/{RoundsPlayed}";
+        string currentAnswer = $"ANS: {CurrentAnswer.ToString()}";
+        string currentAceCount = $"AC: {PlayerAces.ToString()}";
+        string currentPair = $"Pair: {Pair.ToString()}";
 
         PercentCorrectLabel.Text = percentText;
         FractionCorrectLabel.Text = fractionText;
+        AnswerLabel.Text = currentAnswer;
+        PairLabel.Text = currentPair;
+        AceLabel.Text = currentAceCount;
     }
 
 
@@ -219,6 +271,10 @@ public partial class BasicStrategy : ContentPage
     private void HitClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        if (CurrentAnswer == Answer.Hit)
+        {
+            RoundsCorrect++;
+        }
         UpdateScoreLabels();
     }
 
@@ -230,6 +286,10 @@ public partial class BasicStrategy : ContentPage
     private void StandClicked(object sender, EventArgs e)
     {
         DealMoreCards();
+        if (CurrentAnswer == Answer.Stand)
+        {
+            RoundsCorrect++;
+        }
         UpdateScoreLabels();
     }
 
@@ -241,7 +301,10 @@ public partial class BasicStrategy : ContentPage
     private void DoubleClicked(object sender, EventArgs e)
     {
         DealMoreCards();
-        RoundsCorrect++;
+        if (CurrentAnswer == Answer.Double)
+        {
+            RoundsCorrect++;
+        }
         UpdateScoreLabels();
     }
 
@@ -253,7 +316,10 @@ public partial class BasicStrategy : ContentPage
     private void SplitClicked(object sender, EventArgs e)
     {
         DealMoreCards();
-        RoundsCorrect++;
+        if (CurrentAnswer == Answer.Split)
+        {
+            RoundsCorrect++;
+        }
         UpdateScoreLabels();
     }
 }

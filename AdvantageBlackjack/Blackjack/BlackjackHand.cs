@@ -16,7 +16,7 @@ namespace AdvantageBlackjack.Blackjack
         /// </summary>
         public int Score { get; private set; }
 
-        public int AceCount { get; private set; }
+        public int AceCount { get; set; }
 
         /// <summary>
         /// Whether the hand is the dealer or not
