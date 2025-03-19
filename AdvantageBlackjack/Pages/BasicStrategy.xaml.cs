@@ -105,8 +105,17 @@ public partial class BasicStrategy : ContentPage
         _player = new BlackjackHand(false);
         _dealer = new BlackjackHand(true);
 
-        BlackjackCard playerCard1 = (BlackjackCard)_deck.Deal();
-        BlackjackCard playerCard2 = (BlackjackCard)_deck.Deal();
+        BlackjackCard playerCard1;
+        BlackjackCard playerCard2;
+
+        do
+        {
+            playerCard1 = (BlackjackCard)_deck.Deal();
+            playerCard2 = (BlackjackCard)_deck.Deal();
+        }
+        while (playerCard1.Value + playerCard2.Value == 21);
+
+
         BlackjackCard dealerCard = (BlackjackCard)_deck.Deal();
         _dealer.AddCard(dealerCard);
         _dealer.AddCard(_deck.Deal());
@@ -144,13 +153,23 @@ public partial class BasicStrategy : ContentPage
         Pair = false;
         PlayerAces = 0;
 
-        BlackjackCard playerCard1 = (BlackjackCard)_deck.Deal();
-        BlackjackCard playerCard2 = (BlackjackCard)_deck.Deal();
+        BlackjackCard playerCard1;
+        BlackjackCard playerCard2;
+
+        do
+        {
+            playerCard1 = (BlackjackCard)_deck.Deal();
+            playerCard2 = (BlackjackCard)_deck.Deal();
+        }
+        while (playerCard1.Value + playerCard2.Value == 21);
+
         BlackjackCard dealerCard = (BlackjackCard)_deck.Deal();
         _dealer.AddCard(dealerCard);
         _dealer.AddCard(_deck.Deal());
         _player.AddCard(playerCard1);
         _player.AddCard(playerCard2);
+
+
 
         CurrentMatchup = (playerCard1.Value + playerCard2.Value, dealerCard.Face);
 
@@ -270,11 +289,11 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void HitClicked(object sender, EventArgs e)
     {
-        DealMoreCards();
         if (CurrentAnswer == Answer.Hit)
         {
             RoundsCorrect++;
         }
+        DealMoreCards();
         UpdateScoreLabels();
     }
 
@@ -285,11 +304,11 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void StandClicked(object sender, EventArgs e)
     {
-        DealMoreCards();
         if (CurrentAnswer == Answer.Stand)
         {
             RoundsCorrect++;
         }
+        DealMoreCards();
         UpdateScoreLabels();
     }
 
@@ -300,11 +319,11 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void DoubleClicked(object sender, EventArgs e)
     {
-        DealMoreCards();
         if (CurrentAnswer == Answer.Double)
         {
             RoundsCorrect++;
         }
+        DealMoreCards();
         UpdateScoreLabels();
     }
 
@@ -315,11 +334,11 @@ public partial class BasicStrategy : ContentPage
     /// <param name="e">e</param>
     private void SplitClicked(object sender, EventArgs e)
     {
-        DealMoreCards();
         if (CurrentAnswer == Answer.Split)
         {
             RoundsCorrect++;
         }
+        DealMoreCards();
         UpdateScoreLabels();
     }
 }

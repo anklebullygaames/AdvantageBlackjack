@@ -307,6 +307,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((9, CardFace._7), Answer.Hit);
             _hit17Hard.Add((9, CardFace._8), Answer.Hit);
             _hit17Hard.Add((9, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((9, CardFace._10), Answer.Hit);
             _hit17Hard.Add((9, CardFace.K), Answer.Hit);
             _hit17Hard.Add((9, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((9, CardFace.J), Answer.Hit);
@@ -320,6 +321,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((10, CardFace._7), Answer.Double);
             _hit17Hard.Add((10, CardFace._8), Answer.Double);
             _hit17Hard.Add((10, CardFace._9), Answer.Double);
+            _hit17Hard.Add((10, CardFace._10), Answer.Hit);
             _hit17Hard.Add((10, CardFace.K), Answer.Hit);
             _hit17Hard.Add((10, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((10, CardFace.J), Answer.Hit);
@@ -333,6 +335,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((11, CardFace._7), Answer.Double);
             _hit17Hard.Add((11, CardFace._8), Answer.Double);
             _hit17Hard.Add((11, CardFace._9), Answer.Double);
+            _hit17Hard.Add((11, CardFace._10), Answer.Double);
             _hit17Hard.Add((11, CardFace.K), Answer.Double);
             _hit17Hard.Add((11, CardFace.Q), Answer.Double);
             _hit17Hard.Add((11, CardFace.J), Answer.Double);
@@ -346,6 +349,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((12, CardFace._7), Answer.Hit);
             _hit17Hard.Add((12, CardFace._8), Answer.Hit);
             _hit17Hard.Add((12, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((12, CardFace._10), Answer.Hit);
             _hit17Hard.Add((12, CardFace.K), Answer.Hit);
             _hit17Hard.Add((12, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((12, CardFace.J), Answer.Hit);
@@ -359,6 +363,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((13, CardFace._7), Answer.Hit);
             _hit17Hard.Add((13, CardFace._8), Answer.Hit);
             _hit17Hard.Add((13, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((13, CardFace._10), Answer.Hit);
             _hit17Hard.Add((13, CardFace.K), Answer.Hit);
             _hit17Hard.Add((13, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((13, CardFace.J), Answer.Hit);
@@ -372,6 +377,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((14, CardFace._7), Answer.Hit);
             _hit17Hard.Add((14, CardFace._8), Answer.Hit);
             _hit17Hard.Add((14, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((14, CardFace._10), Answer.Hit);
             _hit17Hard.Add((14, CardFace.K), Answer.Hit);
             _hit17Hard.Add((14, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((14, CardFace.J), Answer.Hit);
@@ -385,6 +391,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((15, CardFace._7), Answer.Hit);
             _hit17Hard.Add((15, CardFace._8), Answer.Hit);
             _hit17Hard.Add((15, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((15, CardFace._10), Answer.Hit);
             _hit17Hard.Add((15, CardFace.K), Answer.Hit);
             _hit17Hard.Add((15, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((15, CardFace.J), Answer.Hit);
@@ -398,6 +405,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((16, CardFace._7), Answer.Hit);
             _hit17Hard.Add((16, CardFace._8), Answer.Hit);
             _hit17Hard.Add((16, CardFace._9), Answer.Hit);
+            _hit17Hard.Add((16, CardFace._10), Answer.Hit);
             _hit17Hard.Add((16, CardFace.K), Answer.Hit);
             _hit17Hard.Add((16, CardFace.Q), Answer.Hit);
             _hit17Hard.Add((16, CardFace.J), Answer.Hit);
@@ -411,6 +419,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17Hard.Add((17, CardFace._7), Answer.Stand);
             _hit17Hard.Add((17, CardFace._8), Answer.Stand);
             _hit17Hard.Add((17, CardFace._9), Answer.Stand);
+            _hit17Hard.Add((17, CardFace._10), Answer.Stand);
             _hit17Hard.Add((17, CardFace.K), Answer.Stand);
             _hit17Hard.Add((17, CardFace.Q), Answer.Stand);
             _hit17Hard.Add((17, CardFace.J), Answer.Stand);
@@ -426,6 +435,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((8, CardFace._7), Answer.Hit);
             _stand17Hard.Add((8, CardFace._8), Answer.Hit);
             _stand17Hard.Add((8, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((8, CardFace._10), Answer.Hit);
             _stand17Hard.Add((8, CardFace.K), Answer.Hit);
             _stand17Hard.Add((8, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((8, CardFace.J), Answer.Hit);
@@ -439,6 +449,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((9, CardFace._7), Answer.Hit);
             _stand17Hard.Add((9, CardFace._8), Answer.Hit);
             _stand17Hard.Add((9, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((9, CardFace._10), Answer.Hit);
             _stand17Hard.Add((9, CardFace.K), Answer.Hit);
             _stand17Hard.Add((9, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((9, CardFace.J), Answer.Hit);
@@ -452,6 +463,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((10, CardFace._7), Answer.Double);
             _stand17Hard.Add((10, CardFace._8), Answer.Double);
             _stand17Hard.Add((10, CardFace._9), Answer.Double);
+            _stand17Hard.Add((10, CardFace._10), Answer.Hit);
             _stand17Hard.Add((10, CardFace.K), Answer.Hit);
             _stand17Hard.Add((10, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((10, CardFace.J), Answer.Hit);
@@ -465,6 +477,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((11, CardFace._7), Answer.Double);
             _stand17Hard.Add((11, CardFace._8), Answer.Double);
             _stand17Hard.Add((11, CardFace._9), Answer.Double);
+            _stand17Hard.Add((11, CardFace._10), Answer.Double);
             _stand17Hard.Add((11, CardFace.K), Answer.Double);
             _stand17Hard.Add((11, CardFace.Q), Answer.Double);
             _stand17Hard.Add((11, CardFace.J), Answer.Double);
@@ -478,6 +491,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((12, CardFace._7), Answer.Hit);
             _stand17Hard.Add((12, CardFace._8), Answer.Hit);
             _stand17Hard.Add((12, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((12, CardFace._10), Answer.Hit);
             _stand17Hard.Add((12, CardFace.K), Answer.Hit);
             _stand17Hard.Add((12, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((12, CardFace.J), Answer.Hit);
@@ -491,6 +505,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((13, CardFace._7), Answer.Hit);
             _stand17Hard.Add((13, CardFace._8), Answer.Hit);
             _stand17Hard.Add((13, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((13, CardFace._10), Answer.Hit);
             _stand17Hard.Add((13, CardFace.K), Answer.Hit);
             _stand17Hard.Add((13, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((13, CardFace.J), Answer.Hit);
@@ -504,6 +519,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((14, CardFace._7), Answer.Hit);
             _stand17Hard.Add((14, CardFace._8), Answer.Hit);
             _stand17Hard.Add((14, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((14, CardFace._10), Answer.Hit);
             _stand17Hard.Add((14, CardFace.K), Answer.Hit);
             _stand17Hard.Add((14, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((14, CardFace.J), Answer.Hit);
@@ -517,6 +533,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((15, CardFace._7), Answer.Hit);
             _stand17Hard.Add((15, CardFace._8), Answer.Hit);
             _stand17Hard.Add((15, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((15, CardFace._10), Answer.Hit);
             _stand17Hard.Add((15, CardFace.K), Answer.Hit);
             _stand17Hard.Add((15, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((15, CardFace.J), Answer.Hit);
@@ -530,6 +547,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((16, CardFace._7), Answer.Hit);
             _stand17Hard.Add((16, CardFace._8), Answer.Hit);
             _stand17Hard.Add((16, CardFace._9), Answer.Hit);
+            _stand17Hard.Add((16, CardFace._10), Answer.Hit);
             _stand17Hard.Add((16, CardFace.K), Answer.Hit);
             _stand17Hard.Add((16, CardFace.Q), Answer.Hit);
             _stand17Hard.Add((16, CardFace.J), Answer.Hit);
@@ -543,6 +561,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17Hard.Add((17, CardFace._7), Answer.Stand);
             _stand17Hard.Add((17, CardFace._8), Answer.Stand);
             _stand17Hard.Add((17, CardFace._9), Answer.Stand);
+            _stand17Hard.Add((17, CardFace._10), Answer.Stand);
             _stand17Hard.Add((17, CardFace.K), Answer.Stand);
             _stand17Hard.Add((17, CardFace.Q), Answer.Stand);
             _stand17Hard.Add((17, CardFace.J), Answer.Stand);
@@ -558,6 +577,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((4, CardFace._7), Answer.Split);
             _hit17PairsDAS.Add((4, CardFace._8), Answer.Hit);
             _hit17PairsDAS.Add((4, CardFace._9), Answer.Hit);
+            _hit17PairsDAS.Add((4, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((4, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((4, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((4, CardFace.J), Answer.Hit);
@@ -571,6 +591,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((6, CardFace._7), Answer.Split);
             _hit17PairsDAS.Add((6, CardFace._8), Answer.Hit);
             _hit17PairsDAS.Add((6, CardFace._9), Answer.Hit);
+            _hit17PairsDAS.Add((6, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((6, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((6, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((6, CardFace.J), Answer.Hit);
@@ -584,6 +605,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((8, CardFace._7), Answer.Hit);
             _hit17PairsDAS.Add((8, CardFace._8), Answer.Hit);
             _hit17PairsDAS.Add((8, CardFace._9), Answer.Hit);
+            _hit17PairsDAS.Add((8, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((8, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((8, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((8, CardFace.J), Answer.Hit);
@@ -597,6 +619,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((10, CardFace._7), Answer.Double);
             _hit17PairsDAS.Add((10, CardFace._8), Answer.Double);
             _hit17PairsDAS.Add((10, CardFace._9), Answer.Double);
+            _hit17PairsDAS.Add((10, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((10, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((10, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((10, CardFace.J), Answer.Hit);
@@ -610,6 +633,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((12, CardFace._7), Answer.Hit);
             _hit17PairsDAS.Add((12, CardFace._8), Answer.Hit);
             _hit17PairsDAS.Add((12, CardFace._9), Answer.Hit);
+            _hit17PairsDAS.Add((12, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((12, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((12, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((12, CardFace.J), Answer.Hit);
@@ -623,6 +647,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((14, CardFace._7), Answer.Split);
             _hit17PairsDAS.Add((14, CardFace._8), Answer.Hit);
             _hit17PairsDAS.Add((14, CardFace._9), Answer.Hit);
+            _hit17PairsDAS.Add((14, CardFace._10), Answer.Hit);
             _hit17PairsDAS.Add((14, CardFace.K), Answer.Hit);
             _hit17PairsDAS.Add((14, CardFace.Q), Answer.Hit);
             _hit17PairsDAS.Add((14, CardFace.J), Answer.Hit);
@@ -636,6 +661,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((16, CardFace._7), Answer.Split);
             _hit17PairsDAS.Add((16, CardFace._8), Answer.Split);
             _hit17PairsDAS.Add((16, CardFace._9), Answer.Split);
+            _hit17PairsDAS.Add((16, CardFace._10), Answer.Split);
             _hit17PairsDAS.Add((16, CardFace.K), Answer.Split);
             _hit17PairsDAS.Add((16, CardFace.Q), Answer.Split);
             _hit17PairsDAS.Add((16, CardFace.J), Answer.Split);
@@ -649,6 +675,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((18, CardFace._7), Answer.Stand);
             _hit17PairsDAS.Add((18, CardFace._8), Answer.Split);
             _hit17PairsDAS.Add((18, CardFace._9), Answer.Split);
+            _hit17PairsDAS.Add((18, CardFace._10), Answer.Stand);
             _hit17PairsDAS.Add((18, CardFace.K), Answer.Stand);
             _hit17PairsDAS.Add((18, CardFace.Q), Answer.Stand);
             _hit17PairsDAS.Add((18, CardFace.J), Answer.Stand);
@@ -662,6 +689,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsDAS.Add((20, CardFace._7), Answer.Stand);
             _hit17PairsDAS.Add((20, CardFace._8), Answer.Stand);
             _hit17PairsDAS.Add((20, CardFace._9), Answer.Stand);
+            _hit17PairsDAS.Add((20, CardFace._10), Answer.Stand);
             _hit17PairsDAS.Add((20, CardFace.K), Answer.Stand);
             _hit17PairsDAS.Add((20, CardFace.Q), Answer.Stand);
             _hit17PairsDAS.Add((20, CardFace.J), Answer.Stand);
@@ -677,6 +705,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((4, CardFace._7), Answer.Split);
             _hit17PairsNoDAS.Add((4, CardFace._8), Answer.Hit);
             _hit17PairsNoDAS.Add((4, CardFace._9), Answer.Hit);
+            _hit17PairsNoDAS.Add((4, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((4, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((4, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((4, CardFace.J), Answer.Hit);
@@ -690,6 +719,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((6, CardFace._7), Answer.Split);
             _hit17PairsNoDAS.Add((6, CardFace._8), Answer.Hit);
             _hit17PairsNoDAS.Add((6, CardFace._9), Answer.Hit);
+            _hit17PairsNoDAS.Add((6, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((6, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((6, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((6, CardFace.J), Answer.Hit);
@@ -703,6 +733,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((8, CardFace._7), Answer.Hit);
             _hit17PairsNoDAS.Add((8, CardFace._8), Answer.Hit);
             _hit17PairsNoDAS.Add((8, CardFace._9), Answer.Hit);
+            _hit17PairsNoDAS.Add((8, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((8, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((8, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((8, CardFace.J), Answer.Hit);
@@ -716,6 +747,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((10, CardFace._7), Answer.Double);
             _hit17PairsNoDAS.Add((10, CardFace._8), Answer.Double);
             _hit17PairsNoDAS.Add((10, CardFace._9), Answer.Double);
+            _hit17PairsNoDAS.Add((10, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((10, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((10, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((10, CardFace.J), Answer.Hit);
@@ -729,6 +761,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((12, CardFace._7), Answer.Hit);
             _hit17PairsNoDAS.Add((12, CardFace._8), Answer.Hit);
             _hit17PairsNoDAS.Add((12, CardFace._9), Answer.Hit);
+            _hit17PairsNoDAS.Add((12, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((12, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((12, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((12, CardFace.J), Answer.Hit);
@@ -742,6 +775,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((14, CardFace._7), Answer.Split);
             _hit17PairsNoDAS.Add((14, CardFace._8), Answer.Hit);
             _hit17PairsNoDAS.Add((14, CardFace._9), Answer.Hit);
+            _hit17PairsNoDAS.Add((14, CardFace._10), Answer.Hit);
             _hit17PairsNoDAS.Add((14, CardFace.K), Answer.Hit);
             _hit17PairsNoDAS.Add((14, CardFace.Q), Answer.Hit);
             _hit17PairsNoDAS.Add((14, CardFace.J), Answer.Hit);
@@ -755,6 +789,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((16, CardFace._7), Answer.Split);
             _hit17PairsNoDAS.Add((16, CardFace._8), Answer.Split);
             _hit17PairsNoDAS.Add((16, CardFace._9), Answer.Split);
+            _hit17PairsNoDAS.Add((16, CardFace._10), Answer.Split);
             _hit17PairsNoDAS.Add((16, CardFace.K), Answer.Split);
             _hit17PairsNoDAS.Add((16, CardFace.Q), Answer.Split);
             _hit17PairsNoDAS.Add((16, CardFace.J), Answer.Split);
@@ -768,6 +803,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((18, CardFace._7), Answer.Stand);
             _hit17PairsNoDAS.Add((18, CardFace._8), Answer.Split);
             _hit17PairsNoDAS.Add((18, CardFace._9), Answer.Split);
+            _hit17PairsNoDAS.Add((18, CardFace._10), Answer.Stand);
             _hit17PairsNoDAS.Add((18, CardFace.K), Answer.Stand);
             _hit17PairsNoDAS.Add((18, CardFace.Q), Answer.Stand);
             _hit17PairsNoDAS.Add((18, CardFace.J), Answer.Stand);
@@ -781,6 +817,7 @@ namespace AdvantageBlackjack.Blackjack
             _hit17PairsNoDAS.Add((20, CardFace._7), Answer.Stand);
             _hit17PairsNoDAS.Add((20, CardFace._8), Answer.Stand);
             _hit17PairsNoDAS.Add((20, CardFace._9), Answer.Stand);
+            _hit17PairsNoDAS.Add((20, CardFace._10), Answer.Stand);
             _hit17PairsNoDAS.Add((20, CardFace.K), Answer.Stand);
             _hit17PairsNoDAS.Add((20, CardFace.Q), Answer.Stand);
             _hit17PairsNoDAS.Add((20, CardFace.J), Answer.Stand);
@@ -796,6 +833,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((4, CardFace._7), Answer.Split);
             _stand17PairsDAS.Add((4, CardFace._8), Answer.Hit);
             _stand17PairsDAS.Add((4, CardFace._9), Answer.Hit);
+            _stand17PairsDAS.Add((4, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((4, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((4, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((4, CardFace.J), Answer.Hit);
@@ -809,6 +847,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((6, CardFace._7), Answer.Split);
             _stand17PairsDAS.Add((6, CardFace._8), Answer.Hit);
             _stand17PairsDAS.Add((6, CardFace._9), Answer.Hit);
+            _stand17PairsDAS.Add((6, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((6, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((6, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((6, CardFace.J), Answer.Hit);
@@ -822,6 +861,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((8, CardFace._7), Answer.Hit);
             _stand17PairsDAS.Add((8, CardFace._8), Answer.Hit);
             _stand17PairsDAS.Add((8, CardFace._9), Answer.Hit);
+            _stand17PairsDAS.Add((8, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((8, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((8, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((8, CardFace.J), Answer.Hit);
@@ -835,6 +875,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((10, CardFace._7), Answer.Double);
             _stand17PairsDAS.Add((10, CardFace._8), Answer.Double);
             _stand17PairsDAS.Add((10, CardFace._9), Answer.Double);
+            _stand17PairsDAS.Add((10, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((10, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((10, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((10, CardFace.J), Answer.Hit);
@@ -848,6 +889,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((12, CardFace._7), Answer.Hit);
             _stand17PairsDAS.Add((12, CardFace._8), Answer.Hit);
             _stand17PairsDAS.Add((12, CardFace._9), Answer.Hit);
+            _stand17PairsDAS.Add((12, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((12, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((12, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((12, CardFace.J), Answer.Hit);
@@ -861,6 +903,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((14, CardFace._7), Answer.Split);
             _stand17PairsDAS.Add((14, CardFace._8), Answer.Hit);
             _stand17PairsDAS.Add((14, CardFace._9), Answer.Hit);
+            _stand17PairsDAS.Add((14, CardFace._10), Answer.Hit);
             _stand17PairsDAS.Add((14, CardFace.K), Answer.Hit);
             _stand17PairsDAS.Add((14, CardFace.Q), Answer.Hit);
             _stand17PairsDAS.Add((14, CardFace.J), Answer.Hit);
@@ -874,6 +917,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((16, CardFace._7), Answer.Split);
             _stand17PairsDAS.Add((16, CardFace._8), Answer.Split);
             _stand17PairsDAS.Add((16, CardFace._9), Answer.Split);
+            _stand17PairsDAS.Add((16, CardFace._10), Answer.Split);
             _stand17PairsDAS.Add((16, CardFace.K), Answer.Split);
             _stand17PairsDAS.Add((16, CardFace.Q), Answer.Split);
             _stand17PairsDAS.Add((16, CardFace.J), Answer.Split);
@@ -887,6 +931,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((18, CardFace._7), Answer.Stand);
             _stand17PairsDAS.Add((18, CardFace._8), Answer.Split);
             _stand17PairsDAS.Add((18, CardFace._9), Answer.Split);
+            _stand17PairsDAS.Add((18, CardFace._10), Answer.Stand);
             _stand17PairsDAS.Add((18, CardFace.K), Answer.Stand);
             _stand17PairsDAS.Add((18, CardFace.Q), Answer.Stand);
             _stand17PairsDAS.Add((18, CardFace.J), Answer.Stand);
@@ -900,6 +945,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsDAS.Add((20, CardFace._7), Answer.Stand);
             _stand17PairsDAS.Add((20, CardFace._8), Answer.Stand);
             _stand17PairsDAS.Add((20, CardFace._9), Answer.Stand);
+            _stand17PairsDAS.Add((20, CardFace._10), Answer.Stand);
             _stand17PairsDAS.Add((20, CardFace.K), Answer.Stand);
             _stand17PairsDAS.Add((20, CardFace.Q), Answer.Stand);
             _stand17PairsDAS.Add((20, CardFace.J), Answer.Stand);
@@ -915,6 +961,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((4, CardFace._7), Answer.Split);
             _stand17PairsNoDAS.Add((4, CardFace._8), Answer.Hit);
             _stand17PairsNoDAS.Add((4, CardFace._9), Answer.Hit);
+            _stand17PairsNoDAS.Add((4, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((4, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((4, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((4, CardFace.J), Answer.Hit);
@@ -928,6 +975,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((6, CardFace._7), Answer.Split);
             _stand17PairsNoDAS.Add((6, CardFace._8), Answer.Hit);
             _stand17PairsNoDAS.Add((6, CardFace._9), Answer.Hit);
+            _stand17PairsNoDAS.Add((6, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((6, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((6, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((6, CardFace.J), Answer.Hit);
@@ -941,6 +989,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((8, CardFace._7), Answer.Hit);
             _stand17PairsNoDAS.Add((8, CardFace._8), Answer.Hit);
             _stand17PairsNoDAS.Add((8, CardFace._9), Answer.Hit);
+            _stand17PairsNoDAS.Add((8, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((8, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((8, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((8, CardFace.J), Answer.Hit);
@@ -954,6 +1003,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((10, CardFace._7), Answer.Double);
             _stand17PairsNoDAS.Add((10, CardFace._8), Answer.Double);
             _stand17PairsNoDAS.Add((10, CardFace._9), Answer.Double);
+            _stand17PairsNoDAS.Add((10, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((10, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((10, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((10, CardFace.J), Answer.Hit);
@@ -967,6 +1017,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((12, CardFace._7), Answer.Hit);
             _stand17PairsNoDAS.Add((12, CardFace._8), Answer.Hit);
             _stand17PairsNoDAS.Add((12, CardFace._9), Answer.Hit);
+            _stand17PairsNoDAS.Add((12, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((12, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((12, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((12, CardFace.J), Answer.Hit);
@@ -980,6 +1031,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((14, CardFace._7), Answer.Split);
             _stand17PairsNoDAS.Add((14, CardFace._8), Answer.Hit);
             _stand17PairsNoDAS.Add((14, CardFace._9), Answer.Hit);
+            _stand17PairsNoDAS.Add((14, CardFace._10), Answer.Hit);
             _stand17PairsNoDAS.Add((14, CardFace.K), Answer.Hit);
             _stand17PairsNoDAS.Add((14, CardFace.Q), Answer.Hit);
             _stand17PairsNoDAS.Add((14, CardFace.J), Answer.Hit);
@@ -993,6 +1045,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((16, CardFace._7), Answer.Split);
             _stand17PairsNoDAS.Add((16, CardFace._8), Answer.Split);
             _stand17PairsNoDAS.Add((16, CardFace._9), Answer.Split);
+            _stand17PairsNoDAS.Add((16, CardFace._10), Answer.Split);
             _stand17PairsNoDAS.Add((16, CardFace.K), Answer.Split);
             _stand17PairsNoDAS.Add((16, CardFace.Q), Answer.Split);
             _stand17PairsNoDAS.Add((16, CardFace.J), Answer.Split);
@@ -1006,6 +1059,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((18, CardFace._7), Answer.Stand);
             _stand17PairsNoDAS.Add((18, CardFace._8), Answer.Split);
             _stand17PairsNoDAS.Add((18, CardFace._9), Answer.Split);
+            _stand17PairsNoDAS.Add((18, CardFace._10), Answer.Stand);
             _stand17PairsNoDAS.Add((18, CardFace.K), Answer.Stand);
             _stand17PairsNoDAS.Add((18, CardFace.Q), Answer.Stand);
             _stand17PairsNoDAS.Add((18, CardFace.J), Answer.Stand);
@@ -1019,6 +1073,7 @@ namespace AdvantageBlackjack.Blackjack
             _stand17PairsNoDAS.Add((20, CardFace._7), Answer.Stand);
             _stand17PairsNoDAS.Add((20, CardFace._8), Answer.Stand);
             _stand17PairsNoDAS.Add((20, CardFace._9), Answer.Stand);
+            _stand17PairsNoDAS.Add((20, CardFace._10),Answer.Stand);
             _stand17PairsNoDAS.Add((20, CardFace.K), Answer.Stand);
             _stand17PairsNoDAS.Add((20, CardFace.Q), Answer.Stand);
             _stand17PairsNoDAS.Add((20, CardFace.J), Answer.Stand);
@@ -1081,6 +1136,14 @@ namespace AdvantageBlackjack.Blackjack
         /// <returns></returns>
         public static Answer GetHardAnswer((int playerScore, CardFace dealerFace) matchup)
         {
+            if (matchup.playerScore < 8)
+            {
+                return Answer.Hit;
+            }
+            else if (matchup.playerScore > 17)
+            {
+                return Answer.Stand;
+            }
             if (GlobalSettings.H17)
             {
                 return _hit17Hard[matchup];
