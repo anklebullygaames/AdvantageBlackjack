@@ -1,4 +1,6 @@
-﻿namespace AdvantageBlackjack
+﻿using AdvantageBlackjack.Pages;
+
+namespace AdvantageBlackjack
 {
     public partial class AppShell : Shell
     {
@@ -8,6 +10,7 @@
 
             Routing.RegisterRoute("StrategyTables", typeof(StrategyTables));
             Routing.RegisterRoute("BasicStrategy", typeof(BasicStrategy));
+            Routing.RegisterRoute("PairsAndSoftHands", typeof(PairsAndSoftHands));
         }
     }
 }

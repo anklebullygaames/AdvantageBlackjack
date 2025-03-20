@@ -37,9 +37,9 @@
             await Shell.Current.GoToAsync("StrategyTables");
         }
 
-        private void PairsAndSoftHandsClicked(object sender, EventArgs e)
+        private async void PairsAndSoftHandsClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Error", "Not Implemented", "Cancel");
+            await Shell.Current.GoToAsync("PairsAndSoftHands");
         }
     }
 

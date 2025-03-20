@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdvantageBlackjack.BasicStrategy"
+             x:Class="AdvantageBlackjack.Pages.PairsAndSoftHands"
              BackgroundImageSource="background.jpg">
 
     <!-- Main Content Grid -->
@@ -101,6 +101,6 @@
         <!-- Split Button -->
         <Button Grid.Column="12" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Split" FontSize="30" Clicked="SplitClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
 
-    </Grid> 
-
+    </Grid>
+    
 </ContentPage>

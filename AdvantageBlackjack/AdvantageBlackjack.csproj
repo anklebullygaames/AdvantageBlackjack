@@ -65,6 +65,9 @@
 	  <MauiXaml Update="Pages\BasicStrategy.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\PairsAndSoftHands.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\StrategyTables.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
