@@ -4,103 +4,303 @@
              x:Class="AdvantageBlackjack.Pages.PairsAndSoftHands"
              BackgroundImageSource="background.jpg">
 
-    <!-- Main Content Grid -->
     <Grid>
 
-        <!-- 22 Row Definitions -->
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <!-- The Menu Grid -->
+        <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
 
-        <!-- 22 Column Definitions -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
-        <!-- Current Answer Label -->
-        <Label x:Name="PairLabel" Grid.ColumnSpan="20" Grid.Column="14" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
-
-        <!-- Current Ace Count Label -->
-        <Label x:Name="AceLabel" Grid.ColumnSpan="20" Grid.Column="8" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
-
-        <!-- Current Answer Label -->
-        <Label x:Name="AnswerLabel" Grid.ColumnSpan="20" Grid.Column="8" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
-
-        <!-- Percent Correct Label -->
-        <Label x:Name="PercentCorrectLabel" Grid.ColumnSpan="20" Grid.Column="2" Grid.Row="2" TextColor="Black" Text="0%" FontFamily="monospace" FontSize="23"/>
-
-        <!-- Fractions Correct Label -->
-        <Label x:Name="FractionCorrectLabel" Grid.ColumnSpan="20" Grid.Column="18" Grid.Row="2" TextColor="Black" Text="0/0" FontFamily="monospace" FontSize="23"/>
-
-        <!-- Cards Grid -->
-        <Grid x:Name="StrategyGrid" Grid.Row="2" Grid.RowSpan="12" Grid.ColumnSpan="3" Grid.Column="10">
-
+            <!-- 40 Row Definitions -->
             <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!-- 40 Column Definitions -->
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+            <!-- Options Label -->
+            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="25" Grid.Row="1" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
+
+            <!-- DAS Label -->
+            <Label Text="DAS" 
+            FontAttributes="Bold"
+            Grid.Column="24" Grid.Row="4"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="20" Grid.RowSpan="10"/>
+
+            <!-- DAS Switch -->
+            <Switch x:Name="DoubleAfterSplitSwitch"
+            Grid.Column="36" Grid.Row="4"
+            Grid.ColumnSpan="3" Grid.RowSpan="1"
+            IsToggled="{Binding DoubleAfterSplit}"
+            Toggled="DoubleAfterSplitToggled"/>
+
+            <!-- S17 Label -->
+            <Label Text="S17" 
+            FontAttributes="Bold"
+            Grid.Column="24" Grid.Row="7"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+
+            <!-- H17 Label -->
+            <Label Text="H17" 
+            FontAttributes="Bold"
+            Grid.Column="35" Grid.Row="7"
+            TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+
+            <!-- H17 Radio Button -->
+            <RadioButton x:Name="H17Radio"
+            Grid.Column="35" Grid.Row="9"
+            Content="H17" GroupName="DealerRuleGroup"
+            CheckedChanged="DealerRuleToggled"/>
+
+            <!-- S17 Radio Button -->
+            <RadioButton x:Name="S17Radio"
+            Grid.Column="24" Grid.Row="9"
+            Content="S17" GroupName="DealerRuleGroup"
+            CheckedChanged="DealerRuleToggled"/>
+
+            <!-- Back Image -->
+            <Image x:Name="StrategyTableOptionsBack" 
+            Source="backicon1.png" 
+            HeightRequest="40" 
+            WidthRequest="40" 
+            HorizontalOptions="Center" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.Column="31">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OptionsBackClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+
+
+
         </Grid>
 
-        <!-- Hit Button -->
-        <Button Grid.Column="2" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Hit" Clicked="HitClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+        <!-- Main Content Grid -->
+        <Grid  x:Name="MainContentGrid">
 
-        <!-- Stand Button -->
-        <Button Grid.Column="2" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Stand" Clicked="StandClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+            <!-- 22 Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <!-- Double Button -->
-        <Button Grid.Column="12" Grid.Row="15" Grid.ColumnSpan="8" Grid.RowSpan="2" Text="Double"  FontSize="30" Clicked="DoubleClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+            <!-- 22 Column Definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Split Button -->
-        <Button Grid.Column="12" Grid.Row="18" Grid.RowSpan="2" Grid.ColumnSpan="8" Text="Split" FontSize="30" Clicked="SplitClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+            <!-- Basic Strategy Header -->
+            <Image x:Name="PairsHeader" Source="pairsheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="1" Grid.ColumnSpan="22"/>
+
+            <!-- Current Answer Label -->
+            <Label x:Name="PairLabel" Grid.ColumnSpan="20" Grid.Column="14" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
+
+            <!-- Current Ace Count Label -->
+            <Label x:Name="AceLabel" Grid.ColumnSpan="20" Grid.Column="8" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
+
+            <!-- Current Answer Label -->
+            <Label x:Name="AnswerLabel" Grid.ColumnSpan="20" Grid.Column="8" Grid.Row="0" TextColor="Black" Text="0" FontFamily="monospace" FontSize="23" IsVisible="False"/>
+
+            <!-- Percent Correct Label -->
+            <Label x:Name="PercentCorrectLabel" Grid.ColumnSpan="20" Grid.Column="2" Grid.Row="4" TextColor="Black" Text="0%" FontFamily="monospace" FontSize="23"/>
+
+            <!-- Fractions Correct Label -->
+            <Label x:Name="FractionCorrectLabel" Grid.ColumnSpan="20" Grid.Column="18" Grid.Row="4" TextColor="Black" Text="0/0" FontFamily="monospace" FontSize="23"/>
+
+            <!-- Cards Grid -->
+            <Grid x:Name="StrategyGrid" Grid.Row="4" Grid.RowSpan="16" Grid.ColumnSpan="3" Grid.Column="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+
+            <!-- Hit Button -->
+            <Button x:Name="HitButton" Grid.Column="1" Grid.Row="21" Grid.RowSpan="3" Grid.ColumnSpan="8" Text="Hit" Clicked="HitClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+            <!-- Stand Button -->
+            <Button x:Name="StandButton" Grid.Column="1" Grid.Row="25" Grid.RowSpan="3" Grid.ColumnSpan="8" Text="Stand" Clicked="StandClicked" FontSize="30" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+            <!-- Double Button -->
+            <Button x:Name="DoubleButton" Grid.Column="13" Grid.Row="21" Grid.ColumnSpan="8" Grid.RowSpan="3" Text="Double"  FontSize="30" Clicked="DoubleClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+            <!-- Split Button -->
+            <Button x:Name="SplitButton" Grid.Column="13" Grid.Row="25" Grid.RowSpan="3" Grid.ColumnSpan="8" Text="Split" FontSize="30" Clicked="SplitClicked" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="3" TextColor="Black"/>
+
+            <!-- The Setting Image -->
+            <Image 
+            x:Name="SettingsIcon" 
+            Source="settingicon2.png" 
+            HeightRequest="40" 
+            WidthRequest="120" 
+            HorizontalOptions="Center" 
+            Grid.Row="11"
+            Grid.Column="18"
+            Grid.ColumnSpan="3">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SettingsClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+
+            <Image 
+            x:Name="InfoIcon" 
+            Source="infoimage.png" 
+            HeightRequest="40" 
+            WidthRequest="120" 
+            HorizontalOptions="Center" 
+            Grid.Row="11"
+            Grid.Column="1"
+            Grid.ColumnSpan="3">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HintClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+
+        </Grid>
 
     </Grid>
-    
+
 </ContentPage>

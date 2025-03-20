@@ -85,6 +85,13 @@ public partial class BasicStrategy : ContentPage
     {
         InitializeComponent();
 
+        BasicStrategyHeader.SetValue(Grid.ZIndexProperty, 2);
+        StrategyGrid.SetValue(Grid.ZIndexProperty, 1);
+
+        H17Radio.IsChecked = GlobalSettings.H17;
+        S17Radio.IsChecked = !GlobalSettings.H17;
+        DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
+
         _dealer = new BlackjackHand(true);
         _player = new BlackjackHand(false);
         _deck = new Deck();
@@ -340,5 +347,87 @@ public partial class BasicStrategy : ContentPage
         }
         DealMoreCards();
         UpdateScoreLabels();
+    }
+
+    /// <summary>
+    /// Settings clicked event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    async void SettingsClicked(object sender, EventArgs e)
+    {
+        _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
+        await MainContentGrid.ScaleTo(0.8, 800u);
+        _ = MainContentGrid.FadeTo(0.8, 800u);
+
+        MenuGrid.TranslationY = 1000;
+        MenuGrid.IsVisible = true;
+        await MenuGrid.TranslateTo(0, 0, 500, Easing.CubicOut);
+    }
+
+    /// <summary>
+    /// Options back clicked event handler
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    async void OptionsBackClicked(object sender, EventArgs e)
+    {
+        await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
+        MenuGrid.IsVisible = false; // Hide after animation
+
+        _ = MainContentGrid.FadeTo(1, 800u);
+        _ = MainContentGrid.ScaleTo(1, 800u);
+        await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
+    }
+
+    /// <summary>
+    /// Dealer rule changed event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
+    {
+        if (e.Value)
+        {
+            GlobalSettings.H17 = (sender == H17Radio); // Check which radio button was selected
+        }
+    }
+
+    /// <summary>
+    /// DAS switched event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
+    {
+        GlobalSettings.DoubleAfterSplit = e.Value;
+    }
+
+    async void HintClicked(object sender, EventArgs e)
+    {
+        Button correctButton = null;
+
+        // Determine which button should animate based on the correct answer
+        switch (CurrentAnswer)
+        {
+            case Answer.Hit:
+                correctButton = HitButton;
+                break;
+            case Answer.Stand:
+                correctButton = StandButton;
+                break;
+            case Answer.Double:
+                correctButton = DoubleButton;
+                break;
+            case Answer.Split:
+                correctButton = SplitButton;
+                break;
+        }
+
+        if (correctButton != null)
+        {
+            await correctButton.ScaleTo(1.2, 300, Easing.CubicOut); // Enlarge slightly
+            await correctButton.ScaleTo(1.0, 300, Easing.CubicIn);  // Return to normal
+        }
     }
 }
