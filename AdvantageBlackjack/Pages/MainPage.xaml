@@ -7,7 +7,7 @@
 
 
         <!-- The MainContent -->
-        <Grid>
+        <Grid x:Name="MainGrid">
 
         <!-- 40 Row Definitions -->
         <Grid.RowDefinitions>
@@ -53,6 +53,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <!-- The Logo Image -->
             <Image
                 x:Name="LogoImage"
@@ -60,7 +65,8 @@
                 HeightRequest="350"
                 Aspect="AspectFit"
                 SemanticProperties.Description="The advantage blackjack logo"
-                Grid.Row="10"/>
+                Grid.Row="10"
+                Grid.ColumnSpan="2"/>
 
             <!-- Advantage Blackjack Subheader -->
             <Label
@@ -73,7 +79,8 @@
                 SemanticProperties.Description="The main page message diplayed under the logo" 
                 TextColor="DarkBlue"
                 Grid.Row="20"
-                Grid.RowSpan="2"/>
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"/>
 
             <!-- The Basic Strategy Button -->
             <Button
@@ -88,7 +95,8 @@
                 BackgroundColor="Transparent"
                 TextColor="Black"
                 Grid.Row="22"
-                Grid.RowSpan="3"/>
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"/>
 
             <!-- The Pairs and Soft Hands button -->
             <Button
@@ -103,7 +111,8 @@
                 BackgroundColor="Transparent"
                 TextColor="Black"
                  Grid.Row="25"
-                Grid.RowSpan="3"/>
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"/>
 
             <!-- The Strategy Tables Button -->
             <Button
@@ -118,7 +127,8 @@
                 BackgroundColor="Transparent"
                 TextColor="Black"
                  Grid.Row="28"
-                Grid.RowSpan="3"/>
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"/>
 
             <!-- The Counting Button -->
             <Button
@@ -133,9 +143,78 @@
                 BackgroundColor="Transparent"
                 TextColor="Black"
                 Grid.Row="31"
-                Grid.RowSpan="3"/>
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"/>
 
-        </Grid>
+        <!-- Deck Mode Button (starts offscreen left) -->
+        <Button
+            x:Name="DeckModeBtn"
+            Text="Deck Mode"
+            Clicked="DeckModeClicked"
+            Grid.Row="34"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            FontSize="20"
+            FontAttributes="Bold"
+            FontFamily="monospace"
+            BackgroundColor="Transparent"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            TranslationX="-1000"
+            IsVisible="True" />
+
+        <!-- Deal Mode Button (starts offscreen right) -->
+        <Button
+            x:Name="DealModeBtn"
+            Text="Deal Mode"
+            Clicked="DealModeClicked"
+            Grid.Row="34"
+            Grid.RowSpan="3"
+            Grid.Column="1"
+            FontSize="20"
+            FontAttributes="Bold"
+            FontFamily="monospace"
+            BackgroundColor="Transparent"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            TranslationX="1000"
+            IsVisible="True" />
+
+        <!-- Deck Image (starts offscreen left) -->
+        <Image
+            x:Name="DeckModeImage"
+            Source="deckicon.png"
+            HeightRequest="60"
+            WidthRequest="50"
+            Grid.Row="36"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            TranslationX="-1000"
+            IsVisible="True">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DeckModeClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+        <!-- Deal Image (starts offscreen right) -->
+        <Image
+            x:Name="DealModeImage"
+            Source="eyeicon.png"
+            HeightRequest="60"
+            WidthRequest="60"
+            Grid.Row="36"
+            Grid.RowSpan="3"
+            Grid.Column="1"
+            HorizontalOptions="Center"
+            TranslationX="1000"
+            IsVisible="True">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DealModeClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+    </Grid>
         
 
 </ContentPage>
