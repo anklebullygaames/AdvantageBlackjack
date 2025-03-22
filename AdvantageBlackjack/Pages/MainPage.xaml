@@ -5,28 +5,75 @@
              BackgroundImageSource="background.jpg"
              NavigationPage.HasNavigationBar="False">
 
-    <ScrollView>
 
         <!-- The MainContent -->
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="8">
+        <Grid>
 
-            <!-- The Logo Image -->
+        <!-- 40 Row Definitions -->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- The Logo Image -->
             <Image
+                x:Name="LogoImage"
                 Source="thereallogo.jpg"
-                HeightRequest="390"
+                HeightRequest="350"
                 Aspect="AspectFit"
-                SemanticProperties.Description="The advantage blackjack logo" />
+                SemanticProperties.Description="The advantage blackjack logo"
+                Grid.Row="10"/>
 
             <!-- Advantage Blackjack Subheader -->
             <Label
                 FontAttributes="Bold"
+                x:Name="Subheader"
                 Text="Advantage Blackjack"
                 FontFamily="monospace"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="The main page message diplayed under the logo" />
+                SemanticProperties.Description="The main page message diplayed under the logo" 
+                TextColor="DarkBlue"
+                Grid.Row="20"
+                Grid.RowSpan="2"/>
 
             <!-- The Basic Strategy Button -->
             <Button
@@ -39,7 +86,9 @@
                 Clicked="BasicStrategyClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
-                TextColor="Black"/>
+                TextColor="Black"
+                Grid.Row="22"
+                Grid.RowSpan="3"/>
 
             <!-- The Pairs and Soft Hands button -->
             <Button
@@ -52,7 +101,9 @@
                 Clicked="PairsAndSoftHandsClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
-                TextColor="Black"/>
+                TextColor="Black"
+                 Grid.Row="25"
+                Grid.RowSpan="3"/>
 
             <!-- The Strategy Tables Button -->
             <Button
@@ -65,23 +116,26 @@
                 Clicked="StrategyTableClicked"
                 HorizontalOptions="Fill"
                 BackgroundColor="Transparent"
-                TextColor="Black"/>
+                TextColor="Black"
+                 Grid.Row="28"
+                Grid.RowSpan="3"/>
 
-            <!-- The Options Button -->
+            <!-- The Counting Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="20"
                 FontFamily="monospace"
-                x:Name="OptionsBtn"
+                x:Name="CountingBtn"
                 Text="Counting" 
-                SemanticProperties.Hint="opens the options page"
-                Clicked="OptionsClicked"
+                SemanticProperties.Hint="reveals the counting options"
+                Clicked="CountingClicked"
                 HorizontalOptions="Fill" 
                 BackgroundColor="Transparent"
-                TextColor="Black"/>
+                TextColor="Black"
+                Grid.Row="31"
+                Grid.RowSpan="3"/>
 
-        </VerticalStackLayout>
+        </Grid>
         
-    </ScrollView>
 
 </ContentPage>
