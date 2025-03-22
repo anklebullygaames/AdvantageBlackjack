@@ -207,11 +207,37 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!-- 40 Column Definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
             <!-- Header Image -->
-            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="5"/>
+            <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="5" Grid.ColumnSpan="41"/>
 
             <!-- The Tables Grid -->
-            <Grid Grid.Row="14">
+            <Grid Grid.Row="14" Grid.ColumnSpan="41">
                 
                 <!-- H17 Hard Totals -->
                 <Border x:Name="H17HardTotalsBorder" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="True" HeightRequest="251" WidthRequest="370">
@@ -269,7 +295,8 @@
             BackgroundColor="Transparent"
             TextColor="Black"
             Grid.Row="22"
-            Grid.RowSpan="5"/>
+            Grid.RowSpan="5"
+            Grid.ColumnSpan="41"/>
 
             <!-- The Soft Totals Button -->
             <Button
@@ -285,7 +312,8 @@
             BackgroundColor="Transparent"
             TextColor="Black"
             Grid.Row="26"
-            Grid.RowSpan="5"/>
+            Grid.RowSpan="5"
+            Grid.ColumnSpan="41"/>
 
             <!-- The Pairs Button -->
             <Button
@@ -301,7 +329,8 @@
             BackgroundColor="Transparent"
             TextColor="Black"
             Grid.Row="30"
-            Grid.RowSpan="5"/>
+            Grid.RowSpan="5"
+            Grid.ColumnSpan="41"/>
 
             <!-- The Setting Image -->
             <Image 
@@ -310,7 +339,8 @@
             HeightRequest="40" 
             WidthRequest="120" 
             HorizontalOptions="Center" 
-            Grid.Row="36">
+            Grid.Row="36"
+            Grid.ColumnSpan="41">
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingsClicked"/>
@@ -320,13 +350,13 @@
 
             <!-- Back Image -->
             <Image x:Name="MainBack" 
-            Source="backicon1.png" 
-            HeightRequest="40" 
+            Source="backicon3.png" 
+            HeightRequest="25" 
             WidthRequest="40" 
             IsVisible="True" 
             Grid.Row="0"
-            Grid.RowSpan="5"
-            Grid.Column="0">
+            Grid.RowSpan="4"
+            Grid.Column="1">
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="BackClicked"/>
