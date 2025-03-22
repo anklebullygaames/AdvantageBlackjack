@@ -454,4 +454,14 @@ public partial class PairsAndSoftHands : ContentPage
             await correctButton.ScaleTo(1.0, 300, Easing.CubicIn);  // Return to normal
         }
     }
+
+    /// <summary>
+    /// back clicked event handler
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    async void BackClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }
