@@ -84,8 +84,9 @@ public partial class PairsAndSoftHands : ContentPage
     {
         InitializeComponent();
 
-        PairsHeader.SetValue(Grid.ZIndexProperty, 2);
-        StrategyGrid.SetValue(Grid.ZIndexProperty, 1);
+        PairsHeader.SetValue(Grid.ZIndexProperty, 1);
+        StrategyGrid.SetValue(Grid.ZIndexProperty, 0);
+        MainBack.SetValue(Grid.ZIndexProperty, 2);
 
         H17Radio.IsChecked = GlobalSettings.H17;
         S17Radio.IsChecked = !GlobalSettings.H17;
@@ -263,7 +264,7 @@ public partial class PairsAndSoftHands : ContentPage
         // Dealer Cards: Animate from top
         for (int i = 0; i < _dealer.Cards.Count; i++)
         {
-            string cardImageSource = (i == 1) ? "CardImages/back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
+            string cardImageSource = (i == 1) ? "back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
 
             Image cardImage = new Image
             {
@@ -310,7 +311,7 @@ public partial class PairsAndSoftHands : ContentPage
     {
         string suitString = card.Suit.ToString().ToLower();
         int valueInt = (int)card.Face + 1;
-        return $"CardImages/{suitString}_{valueInt}.png";
+        return $"{suitString}_{valueInt}.png";
     }
 
     /// <summary>

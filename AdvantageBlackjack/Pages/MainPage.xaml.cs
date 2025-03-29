@@ -59,9 +59,8 @@
 
         private async void AnimateUI()
         {
-            await Task.Delay(1000);  // Wait before animating
 
-            await LogoImage.FadeTo(1, 1500, Easing.CubicInOut);
+            await LogoImage.FadeTo(1, 1000, Easing.CubicInOut);
 
             await SlideUpFromBottom(Subheader, 0);
             await SlideUpFromBottom(BasicStrategyBtn, 0);
@@ -74,7 +73,7 @@
         {
             await Task.Delay(delay);
             element.Opacity = 1;
-            await element.TranslateTo(0, 0, 200, Easing.SinOut);
+            await element.TranslateTo(0, 0, 150, Easing.SinOut);
         }
 
         /// <summary>

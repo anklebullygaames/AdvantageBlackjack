@@ -61,9 +61,8 @@
         <!-- The Logo Image -->
             <Image
                 x:Name="LogoImage"
-                Source="thereallogo.jpg"
+                Source="thereallogo.png"
                 HeightRequest="350"
-                Aspect="AspectFit"
                 SemanticProperties.Description="The advantage blackjack logo"
                 Grid.Row="10"
                 Grid.ColumnSpan="2"/>
