@@ -73,12 +73,11 @@
                 x:Name="Subheader"
                 Text="Advantage Blackjack"
                 FontFamily="monospace"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="The main page message diplayed under the logo" 
+                FontSize="22"
+                HorizontalOptions="Center"
                 TextColor="DarkBlue"
                 Grid.Row="20"
-                Grid.RowSpan="2"
+                Grid.RowSpan="40"
                 Grid.ColumnSpan="2"/>
 
             <!-- The Basic Strategy Button -->
@@ -88,13 +87,12 @@
                 FontFamily="monospace"
                 x:Name="BasicStrategyBtn"
                 Text="Basic Strategy" 
-                SemanticProperties.Hint="opens the basic strategy page"
                 Clicked="BasicStrategyClicked"
-                HorizontalOptions="Fill" 
+                HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="22"
-                Grid.RowSpan="3"
+                Grid.Row="7"
+                Grid.RowSpan="40"
                 Grid.ColumnSpan="2"/>
 
             <!-- The Pairs and Soft Hands button -->
@@ -104,12 +102,11 @@
                 FontFamily="monospace"
                 x:Name="PairsAndSoftHandsBtn"
                 Text="Pairs and Soft Hands" 
-                SemanticProperties.Hint="opens the pairs and soft hands page"
                 Clicked="PairsAndSoftHandsClicked"
-                HorizontalOptions="Fill" 
+                HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                 Grid.Row="25"
+                Grid.Row="25"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
@@ -120,28 +117,25 @@
                 FontFamily="monospace"
                 x:Name="StrategyTableBtn"
                 Text="Strategy Tables" 
-                SemanticProperties.Hint="opens the strategy tables page"
                 Clicked="StrategyTableClicked"
-                HorizontalOptions="Fill"
+                HorizontalOptions="Center"
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                 Grid.Row="28"
+                Grid.Row="28"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
             <!-- The Counting Button -->
-            <Button
+            <Label
                 FontAttributes="Bold"
                 FontSize="20"
                 FontFamily="monospace"
                 x:Name="CountingBtn"
                 Text="Counting" 
-                SemanticProperties.Hint="reveals the counting options"
-                Clicked="CountingClicked"
-                HorizontalOptions="Fill" 
+                HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="31"
+                Grid.Row="32"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
@@ -189,7 +183,6 @@
             Grid.RowSpan="3"
             Grid.Column="0"
             HorizontalOptions="Center"
-            TranslationX="-1000"
             IsVisible="True">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DeckModeClicked"/>
@@ -206,7 +199,6 @@
             Grid.RowSpan="3"
             Grid.Column="1"
             HorizontalOptions="Center"
-            TranslationX="1000"
             IsVisible="True">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DealModeClicked"/>

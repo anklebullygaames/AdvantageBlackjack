@@ -15,7 +15,6 @@
                 await Task.Delay(50);
 
             InitializeUIState();
-            MoveCountingElementsOffScreen();
             AnimateUI();
         }
 
@@ -37,25 +36,19 @@
 
             CountingBtn.Opacity = 0;
             CountingBtn.TranslationY = 100;
+
+            DeckModeBtn.Opacity = 0;
+            DeckModeBtn.TranslationY = 100;
+
+            DeckModeImage.Opacity = 0;
+            DeckModeImage.TranslationY = 100;
+
+            DealModeBtn.Opacity = 0;
+            DealModeBtn.TranslationY = 100;
+
+            DealModeImage.Opacity = 0;
+            DealModeImage.TranslationY = 100;
         }
-
-        private void MoveCountingElementsOffScreen()
-        {
-            double screenWidth = MainGrid.Width;
-
-            DealModeBtn.TranslationX = screenWidth;
-            DealModeImage.TranslationX = screenWidth;
-
-            DeckModeBtn.TranslationX = -screenWidth;
-            DeckModeImage.TranslationX = -screenWidth;
-
-            DealModeBtn.IsVisible = false;
-            DealModeImage.IsVisible = false;
-            DeckModeBtn.IsVisible = false;
-            DeckModeImage.IsVisible = false;
-        }
-
-        private bool _countingOptionsVisible = false;
 
         private async void AnimateUI()
         {
@@ -67,6 +60,10 @@
             await SlideUpFromBottom(PairsAndSoftHandsBtn, 0);
             await SlideUpFromBottom(StrategyTableBtn, 0);
             await SlideUpFromBottom(CountingBtn, 0);
+            await SlideUpFromBottom(DeckModeBtn, 0);
+            await SlideUpFromBottom(DeckModeImage, 0);
+            await SlideUpFromBottom(DealModeBtn, 0);
+            await SlideUpFromBottom(DealModeImage, 0);
         }
 
         private async Task SlideUpFromBottom(View element, int delay)
@@ -84,45 +81,6 @@
         private async void BasicStrategyClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("BasicStrategy");
-        }
-
-        /// <summary>
-        /// BasicStrategyBtn event handler
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private async void CountingClicked(object sender, EventArgs e)
-        {
-            _countingOptionsVisible = !_countingOptionsVisible;
-
-            if (_countingOptionsVisible)
-            {
-                DealModeBtn.IsVisible = true;
-                DealModeImage.IsVisible = true;
-                DeckModeBtn.IsVisible = true;
-                DeckModeImage.IsVisible = true;
-
-                await Task.WhenAll(
-                    DealModeBtn.TranslateTo(0, 0, 400, Easing.SinOut),
-                    DealModeImage.TranslateTo(0, 0, 400, Easing.SinOut),
-                    DeckModeBtn.TranslateTo(0, 0, 400, Easing.SinOut),
-                    DeckModeImage.TranslateTo(0, 0, 400, Easing.SinOut)
-                );
-            }
-            else
-            {
-                await Task.WhenAll(
-                    DealModeBtn.TranslateTo(1000, 0, 400, Easing.SinIn),
-                    DealModeImage.TranslateTo(1000, 0, 400, Easing.SinIn),
-                    DeckModeBtn.TranslateTo(-1000, 0, 400, Easing.SinIn),
-                    DeckModeImage.TranslateTo(-1000, 0, 400, Easing.SinIn)
-                );
-
-                DealModeBtn.IsVisible = false;
-                DealModeImage.IsVisible = false;
-                DeckModeBtn.IsVisible = false;
-                DeckModeImage.IsVisible = false;
-            }
         }
 
         /// <summary>

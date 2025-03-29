@@ -22,23 +22,13 @@ public partial class StrategyTables : ContentPage
     }
 
     /// <summary>
-    /// Whether or not DAS is active
-    /// </summary>
-    public bool DoubleAfterSplit { get; set; } = true;
-
-    /// <summary>
-    /// Whether H17 is active (false means S17 is active)
-    /// </summary>
-    public bool H17 { get; set; } = true;
-
-    /// <summary>
     /// BasicStrategyBtn clicked event handler
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
     private void SoftHandsClicked(object sender, EventArgs e)
     {
-        Border newBorder = H17 ? H17SoftTotalsBorder : S17SoftTotalsBorder;
+        Border newBorder = GlobalSettings.H17 ? H17SoftTotalsBorder : S17SoftTotalsBorder;
         SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
@@ -49,9 +39,9 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void PairsClicked(object sender, EventArgs e)
     {
-        Border newBorder = DoubleAfterSplit
-            ? (H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
-            : (H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
+        Border newBorder = GlobalSettings.DoubleAfterSplit
+            ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
+            : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
         SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
@@ -63,7 +53,7 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void HardTotalsClicked(object sender, EventArgs e)
     {
-        Border newBorder = H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+        Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
         SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
     }
 
@@ -174,9 +164,9 @@ public partial class StrategyTables : ContentPage
         if (H17PairsTableDasBorder.IsVisible || H17PairsTableNoDasBorder.IsVisible ||
             S17PairsTableDasBorder.IsVisible || S17PairsTableNoDasBorder.IsVisible)
         {
-            Border newBorder = DoubleAfterSplit
-                ? (H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
-                : (H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
+            Border newBorder = GlobalSettings.DoubleAfterSplit
+                ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
+                : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
             SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
         }
