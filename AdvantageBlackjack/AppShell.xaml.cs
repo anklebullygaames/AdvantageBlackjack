@@ -11,6 +11,7 @@ namespace AdvantageBlackjack
             Routing.RegisterRoute("StrategyTables", typeof(StrategyTables));
             Routing.RegisterRoute("BasicStrategy", typeof(BasicStrategy));
             Routing.RegisterRoute("PairsAndSoftHands", typeof(PairsAndSoftHands));
+            Routing.RegisterRoute("DeckMode", typeof(DeckMode));
         }
     }
 }
