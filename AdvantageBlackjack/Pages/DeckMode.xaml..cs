@@ -307,5 +307,15 @@ namespace AdvantageBlackjack
             _ = MainContentGrid.ScaleTo(1, 800u);
             await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
         }
+
+        /// <summary>
+        /// Dealer rule changed event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
+        {
+
+        }
     }
 }
