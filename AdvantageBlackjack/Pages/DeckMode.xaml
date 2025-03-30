@@ -123,7 +123,7 @@
 
                 <Label
                     x:Name="TimeLabel"
-                    Text="0:00"
+                    Text="{Binding TimeText}"
                     FontFamily="monospace"
                     FontSize="30"
                     HorizontalOptions="Center"
@@ -136,7 +136,7 @@
 
                 <Label
                     x:Name="AccuracyLabel"
-                    Text="95%"
+                    Text="{Binding AccuracyText}"
                     FontFamily="monospace"
                     FontSize="30"
                     HorizontalOptions="Center"
@@ -146,6 +146,24 @@
                     Grid.ColumnSpan="8"
                     Grid.RowSpan="3"
                     />
+
+                <Image x:Name="CardImage"
+                    Grid.Row="10"
+                    Grid.RowSpan="20"
+                    Grid.Column="10"
+                    Grid.ColumnSpan="20"
+                    HeightRequest="360"
+                    WidthRequest="280"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Image.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Left" Swiped="OnCardSwiped"/>
+                        <SwipeGestureRecognizer Direction="Right" Swiped="OnCardSwiped"/>
+                        <SwipeGestureRecognizer Direction="Down" Swiped="OnCardSwiped"/>
+                    </Image.GestureRecognizers>
+                    
+                </Image>
 
                 <Label
                     Text="-1"

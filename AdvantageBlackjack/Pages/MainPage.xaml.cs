@@ -115,7 +115,7 @@
         /// <param name="e">e</param>
         private void DealModeClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Error", "Not Implemented", "Cancel");
+            DisplayAlert("In Development", "Thank you for your patience, if you're enjoying the app please leave a review.", "Cancel");
         }
     }
 }

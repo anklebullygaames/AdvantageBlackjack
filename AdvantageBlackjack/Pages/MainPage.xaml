@@ -73,7 +73,7 @@
                 x:Name="Subheader"
                 Text="Advantage Blackjack"
                 FontFamily="monospace"
-                FontSize="22"
+                FontSize="24"
                 HorizontalOptions="Center"
                 TextColor="DarkBlue"
                 Grid.Row="20"
@@ -83,7 +83,7 @@
             <!-- The Basic Strategy Button -->
             <Button
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="22"
                 FontFamily="monospace"
                 x:Name="BasicStrategyBtn"
                 Text="Basic Strategy" 
@@ -98,7 +98,7 @@
             <!-- The Pairs and Soft Hands button -->
             <Button
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="22"
                 FontFamily="monospace"
                 x:Name="PairsAndSoftHandsBtn"
                 Text="Pairs and Soft Hands" 
@@ -113,7 +113,7 @@
             <!-- The Strategy Tables Button -->
             <Button
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="22"
                 FontFamily="monospace"
                 x:Name="StrategyTableBtn"
                 Text="Strategy Tables" 
@@ -128,10 +128,10 @@
             <!-- The Counting Button -->
             <Label
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="22"
                 FontFamily="monospace"
                 x:Name="CountingBtn"
-                Text="Counting" 
+                Text="Counting Practice" 
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
@@ -147,8 +147,7 @@
             Grid.Row="34"
             Grid.RowSpan="3"
             Grid.Column="0"
-            FontSize="20"
-            FontAttributes="Bold"
+            FontSize="22"
             FontFamily="monospace"
             BackgroundColor="Transparent"
             TextColor="Black"
@@ -164,8 +163,7 @@
             Grid.Row="34"
             Grid.RowSpan="3"
             Grid.Column="1"
-            FontSize="20"
-            FontAttributes="Bold"
+            FontSize="22"
             FontFamily="monospace"
             BackgroundColor="Transparent"
             TextColor="Black"
@@ -177,10 +175,10 @@
         <Image
             x:Name="DeckModeImage"
             Source="deckicon.png"
-            HeightRequest="60"
-            WidthRequest="50"
-            Grid.Row="36"
-            Grid.RowSpan="3"
+            HeightRequest="70"
+            WidthRequest="90"
+            Grid.Row="38"
+            Grid.RowSpan="1"
             Grid.Column="0"
             HorizontalOptions="Center"
             IsVisible="True">
@@ -193,10 +191,10 @@
         <Image
             x:Name="DealModeImage"
             Source="eyeicon.png"
-            HeightRequest="60"
-            WidthRequest="60"
-            Grid.Row="36"
-            Grid.RowSpan="3"
+            HeightRequest="70"
+            WidthRequest="90"
+            Grid.Row="38"
+            Grid.RowSpan="1"
             Grid.Column="1"
             HorizontalOptions="Center"
             IsVisible="True">
