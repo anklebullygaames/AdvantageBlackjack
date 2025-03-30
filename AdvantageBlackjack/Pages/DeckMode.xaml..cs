@@ -275,7 +275,37 @@ namespace AdvantageBlackjack
         /// Property changed invoker
         /// </summary>
         /// <param name="name">name</param>
-        void OnPropertyChanged([CallerMemberName] string name = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        void OnPropertyChanged([CallerMemberName] string name = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        /// <summary>
+        /// Settings clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        async void SettingsClicked(object sender, EventArgs e)
+        {
+            _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
+            await MainContentGrid.ScaleTo(0.8, 800u);
+            _ = MainContentGrid.FadeTo(0.8, 800u);
+
+            MenuGrid.TranslationY = 1000;
+            MenuGrid.IsVisible = true;
+            await MenuGrid.TranslateTo(0, 0, 500, Easing.CubicOut);
         }
+
+        /// <summary>
+        /// Options back clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        async void OptionsBackClicked(object sender, EventArgs e)
+        {
+            await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
+            MenuGrid.IsVisible = false; // Hide after animation
+
+            _ = MainContentGrid.FadeTo(1, 800u);
+            _ = MainContentGrid.ScaleTo(1, 800u);
+            await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
+        }
+    }
 }

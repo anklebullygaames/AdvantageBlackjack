@@ -5,234 +5,362 @@
              BackgroundImageSource="background.jpg"
              NavigationPage.HasNavigationBar="False">
 
-             <Grid>
+            <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <!-- The Menu Grid -->
+                <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-            <!-- Back Image -->
-            <Image x:Name="MainBack" 
-                Source="backicon3.png" 
-                HeightRequest="25" 
-                WidthRequest="40" 
-                IsVisible="True" 
-                Grid.Row="0"
-                Grid.RowSpan="4"
-                Grid.Column="3">
 
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="BackClicked"/>
-                </Image.GestureRecognizers>
+                    <!-- 40 Row Definitions -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-            </Image>
+                    <!-- 40 Column Definitions -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Label
-                    Text="Deck Mode"
-                    FontFamily="monospace"
-                    FontSize="40"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="40"
-                    Grid.RowSpan="3"
-                    />
+                    <!-- Options Label -->
+                    <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="26" Grid.Row="1" TextColor="Black" Text="Options" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
 
-                <Label
-                    x:Name="TimeLabel"
-                    Text="{Binding TimeText}"
-                    FontFamily="monospace"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="6"
-                    Grid.Column="4"
-                    Grid.ColumnSpan="8"
-                    Grid.RowSpan="3"
-                    />
+                    <!-- Back Image -->
+                    <Image x:Name="StrategyTableOptionsBack" 
+                    Source="backicon1.png" 
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    HorizontalOptions="Center" 
+                    IsVisible="True" 
+                    Grid.Row="12"
+                    Grid.Column="31">
 
-                <Label
-                    x:Name="AccuracyLabel"
-                    Text="{Binding AccuracyText}"
-                    FontFamily="monospace"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="6"
-                    Grid.Column="28"
-                    Grid.ColumnSpan="8"
-                    Grid.RowSpan="3"
-                    />
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OptionsBackClicked"/>
+                        </Image.GestureRecognizers>
 
-                <Image x:Name="CardImage"
-                    Grid.Row="10"
-                    Grid.RowSpan="20"
-                    Grid.Column="10"
-                    Grid.ColumnSpan="20"
-                    HeightRequest="360"
-                    WidthRequest="280"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
+                    </Image>
 
-                    <Image.GestureRecognizers>
-                        <SwipeGestureRecognizer Direction="Left" Swiped="OnCardSwiped"/>
-                        <SwipeGestureRecognizer Direction="Right" Swiped="OnCardSwiped"/>
-                        <SwipeGestureRecognizer Direction="Down" Swiped="OnCardSwiped"/>
-                    </Image.GestureRecognizers>
+
+
+                </Grid>
+
+                <Grid x:Name="MainContentGrid">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     
-                </Image>
+                    <!-- Back Image -->
+                    <Image x:Name="MainBack" 
+                        Source="backicon3.png" 
+                        HeightRequest="25" 
+                        WidthRequest="40" 
+                        IsVisible="True" 
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.Column="3">
 
-                <Label
-                    Text="-1"
-                    FontFamily="monospace"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="31"
-                    Grid.Column="3"
-                    Grid.ColumnSpan="8"
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackClicked"/>
+                        </Image.GestureRecognizers>
+
+                    </Image>
+
+                    <!-- The Setting Image -->
+                    <Image 
+                    x:Name="SettingsIcon" 
+                    Source="settingicon2.png" 
+                    HeightRequest="35" 
+                    WidthRequest="120" 
+                    HorizontalOptions="Center" 
+                    Grid.Row="0"
                     Grid.RowSpan="3"
-                    />
+                    Grid.Column="34"
+                    Grid.ColumnSpan="3">
 
-                <Image x:Name="LeftArrow"
-                ScaleX="-1"
-                Source="arrowicon.png" 
-                HeightRequest="100" 
-                WidthRequest="100" 
-                IsVisible="True" 
-                Grid.Row="31"
-                Grid.RowSpan="10"
-                Grid.ColumnSpan="10"
-                Grid.Column="3"/>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SettingsClicked"/>
+                        </Image.GestureRecognizers>
 
-                <Label
-                    Text="0"
-                    FontFamily="monospace"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="31"
-                    Grid.Column="15"
+                    </Image>
+
+                    <!-- Deck Mode Header -->
+                    <Image x:Name="DeckModeHeader" InputTransparent="True" Source="deckmodeheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="40"/>
+
+                    <Label
+                        x:Name="TimeLabel"
+                        Text="{Binding TimeText}"
+                        FontFamily="monospace"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="7"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="8"
+                        Grid.RowSpan="3"
+                        />
+
+                    <Label
+                        x:Name="AccuracyLabel"
+                        Text="{Binding AccuracyText}"
+                        FontFamily="monospace"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="7"
+                        Grid.Column="29"
+                        Grid.ColumnSpan="8"
+                        Grid.RowSpan="3"
+                        />
+
+                    <Image x:Name="CardImage"
+                        Grid.Row="11"
+                        Grid.RowSpan="20"
+                        Grid.Column="10"
+                        Grid.ColumnSpan="20"
+                        HeightRequest="400"
+                        WidthRequest="320"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+
+                        <Image.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left" Swiped="OnCardSwiped"/>
+                            <SwipeGestureRecognizer Direction="Right" Swiped="OnCardSwiped"/>
+                            <SwipeGestureRecognizer Direction="Down" Swiped="OnCardSwiped"/>
+                        </Image.GestureRecognizers>
+                        
+                    </Image>
+
+                    <Label
+                        Text="-1"
+                        FontFamily="monospace"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="33"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="8"
+                        Grid.RowSpan="3"
+                        />
+
+                    <Image x:Name="LeftArrow"
+                    Rotation="90"
+                    Source="arrowicon.png" 
+                    HeightRequest="100" 
+                    WidthRequest="100" 
+                    IsVisible="True" 
+                    Grid.Row="36"
+                    Grid.RowSpan="10"
                     Grid.ColumnSpan="10"
-                    Grid.RowSpan="3"
-                    />
+                    Grid.Column="3"/>
 
-                <Image x:Name="DownArrow"
-                Rotation="90"
-                Source="arrowicon.png" 
-                HeightRequest="100" 
-                WidthRequest="100" 
-                IsVisible="True" 
-                Grid.Row="34"
-                Grid.RowSpan="10"
-                Grid.ColumnSpan="10"
-                Grid.Column="15"/>
+                    <Label
+                        Text="0"
+                        FontFamily="monospace"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="33"
+                        Grid.Column="15"
+                        Grid.ColumnSpan="10"
+                        Grid.RowSpan="3"
+                        />
 
-                <Label
-                    Text="+1"
-                    FontFamily="monospace"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="31"
-                    Grid.Column="28"
+                    <Image x:Name="DownArrow"
+                    Source="arrowicon.png" 
+                    HeightRequest="100" 
+                    WidthRequest="100" 
+                    IsVisible="True" 
+                    Grid.Row="36"
+                    Grid.RowSpan="10"
                     Grid.ColumnSpan="10"
-                    Grid.RowSpan="3"
-                    />
+                    Grid.Column="15"/>
 
-                <Image x:Name="RightArrow" 
-                Source="arrowicon.png" 
-                HeightRequest="100" 
-                WidthRequest="100" 
-                IsVisible="True" 
-                Grid.Row="31"
-                Grid.RowSpan="10"
-                Grid.ColumnSpan="10"
-                Grid.Column="28"/>
+                    <Label
+                        Text="+1"
+                        FontFamily="monospace"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="33"
+                        Grid.Column="28"
+                        Grid.ColumnSpan="10"
+                        Grid.RowSpan="3"
+                        />
+
+                    <Image x:Name="RightArrow" 
+                    Rotation="270"
+                    Source="arrowicon.png" 
+                    HeightRequest="100" 
+                    WidthRequest="100" 
+                    IsVisible="True" 
+                    Grid.Row="36"
+                    Grid.RowSpan="10"
+                    Grid.ColumnSpan="10"
+                    Grid.Column="28"/>
                 
-             </Grid>
+                </Grid>
+
+            </Grid>
 
 </ContentPage>
