@@ -91,8 +91,8 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="7"
-                Grid.RowSpan="40"
+                Grid.Row="22"
+                Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
             <!-- The Pairs and Soft Hands button -->
