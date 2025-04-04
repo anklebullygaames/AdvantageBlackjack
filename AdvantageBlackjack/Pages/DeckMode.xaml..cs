@@ -172,7 +172,7 @@ namespace AdvantageBlackjack
 
                 if (!_isRaceMode)
                 {
-                    await DisplayAlert("Deck Complete!", $"{AccuracyText}", "Retry");
+                    await DisplayAlert("Deck Complete!", $"You answered {AccuracyText} running count questions correctly", "Retry");
                 }
                 else
                 {
@@ -185,7 +185,15 @@ namespace AdvantageBlackjack
                 _cardsSwiped = 0;
                 _correct = 0;
                 _incorrect = 0;
-                AccuracyText = "0%";
+                if (_isRaceMode)
+                {
+                    AccuracyText = "0/0";
+                }
+                else
+                {
+                    AccuracyText = "0%";
+                }
+
                 TimeText = "0:00";
                 AccuracyLabel.TextColor = Colors.Black;
 
@@ -243,7 +251,7 @@ namespace AdvantageBlackjack
 
             if (!_isRaceMode)
             {
-                AccuracyText = $"{(int)((float)_runningCountCorrect / (_runningCountCorrect + _runningCountIncorrect) * 100)}%";
+                AccuracyText = $"{_runningCountCorrect}/{_runningCountCorrect + _runningCountIncorrect}";
             }
             else
             {
@@ -392,14 +400,20 @@ namespace AdvantageBlackjack
 
         private async Task PromptRunningCount()
         {
-            string result = await DisplayPromptAsync("Running Count Check", "What is the current running count?", "Submit", "Cancel", keyboard: Keyboard.Numeric);
+            string result = await DisplayPromptAsync("Running Count Check", "What is the current running count?", accept: "Submit", cancel: "Skip", keyboard: Keyboard.Numeric);
 
-            if (int.TryParse(result, out int userGuess))
+            if (result == null)
+            {
+                _runningCountIncorrect++;
+                await DisplayAlert("Skipped", $"The correct running count was {_runningCount}.", "OK");
+            }
+
+            else if (int.TryParse(result, out int userGuess))
             {
                 if (userGuess == _runningCount)
                 {
                     _runningCountCorrect++;
-                    await DisplayAlert("Correct!", "You nailed the running count.", "OK");
+                    await DisplayAlert("Correct!", "Keep it going.", "OK");
                 }
                 else
                 {
