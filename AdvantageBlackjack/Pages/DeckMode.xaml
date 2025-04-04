@@ -117,7 +117,7 @@
                     <!-- Race Radio Button -->
                     <RadioButton x:Name="RaceRadio"
                     Grid.Column="34" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3"
-                    Content="Race" GroupName="ModeGroup"
+                    Content="Race" GroupName="ModeGroup" IsChecked="True"
                     CheckedChanged="DealerRuleToggled"/>
 
                     <!-- Running Count Radio Button -->
@@ -336,7 +336,13 @@
                     Grid.Row="36"
                     Grid.RowSpan="10"
                     Grid.ColumnSpan="10"
-                    Grid.Column="3"/>
+                    Grid.Column="3">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LeftArrowTapped"/>
+                        </Image.GestureRecognizers>
+
+                    </Image>
 
                     <Label
                         Text="0"
@@ -358,7 +364,13 @@
                     Grid.Row="36"
                     Grid.RowSpan="10"
                     Grid.ColumnSpan="10"
-                    Grid.Column="15"/>
+                    Grid.Column="15">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DownArrowTapped"/>
+                        </Image.GestureRecognizers>
+
+                    </Image>
 
                     <Label
                         Text="+1"
@@ -381,8 +393,14 @@
                     Grid.Row="36"
                     Grid.RowSpan="10"
                     Grid.ColumnSpan="10"
-                    Grid.Column="28"/>
-                
+                    Grid.Column="28">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RightArrowTapped"/>
+                        </Image.GestureRecognizers>
+
+                    </Image>
+            
                 </Grid>
 
             </Grid>

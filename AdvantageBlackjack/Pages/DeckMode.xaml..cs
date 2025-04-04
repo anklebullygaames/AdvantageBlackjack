@@ -7,6 +7,7 @@ namespace AdvantageBlackjack
 {
     public partial class DeckMode : ContentPage, INotifyPropertyChanged
     {
+
         /// <summary>
         /// The current card
         /// </summary>
@@ -47,6 +48,14 @@ namespace AdvantageBlackjack
         /// </summary>
         private string _timeText = "0:00";
 
+        private int _runningCount = 0;
+        private int _nextPromptThreshold = 0;
+
+        private int _runningCountCorrect = 0;
+        private int _runningCountIncorrect = 0;
+
+        private Random _rand = new();
+
         /// <summary>
         /// The time text
         /// </summary>
@@ -74,6 +83,13 @@ namespace AdvantageBlackjack
         /// The current answer private backing field
         /// </summary>
         private int _currentAnswer;
+
+        /// <summary>
+        /// Dealer rule changed event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private bool _isRaceMode = true;
 
         /// <summary>
         /// The current answer based on the card showing
@@ -130,6 +146,7 @@ namespace AdvantageBlackjack
             _deck = new Deck();
             _deck.Shuffle();
             _stopwatch.Start();
+            _nextPromptThreshold = _rand.Next(7, 13);
 
             StartTimer();
             LoadNextCard();
@@ -153,38 +170,34 @@ namespace AdvantageBlackjack
             {
                 _stopwatch.Stop();
 
-                bool retry = await DisplayAlert(
-                    "Deck Complete",
-                    $"You finished the deck in {TimeText}\nwith an accuracy of {AccuracyText}",
-                    "Retry",
-                    "Back"
-                );
-
-                if (retry)
+                if (!_isRaceMode)
                 {
-                    // Reset stats
-                    _cardsSwiped = 0;
-                    _correct = 0;
-                    _incorrect = 0;
-                    AccuracyText = "0%";
-                    TimeText = "0:00";
-                    AccuracyLabel.TextColor = Colors.Black;
-
-                    // Reset deck and timer
-                    _deck = new Deck();
-                    _deck.Shuffle();
-                    _stopwatch.Reset();
-                    _stopwatch.Start();
-
-                    LoadNextCard(); // Load the first card
+                    await DisplayAlert("Deck Complete!", $"{AccuracyText}", "Retry");
                 }
                 else
                 {
-                    await Shell.Current.GoToAsync("..");
+                    await DisplayAlert("Deck Complete!", $"You finished the deck in {TimeText}\nwith an accuracy of {AccuracyText}", "Retry");
                 }
 
-                return;
+                // Reset stats
+                _runningCount = 0;
+                _nextPromptThreshold = _rand.Next(7, 13);
+                _cardsSwiped = 0;
+                _correct = 0;
+                _incorrect = 0;
+                AccuracyText = "0%";
+                TimeText = "0:00";
+                AccuracyLabel.TextColor = Colors.Black;
+
+                    // Reset deck and timer
+                _deck = new Deck();
+                _deck.Shuffle();
+                _stopwatch.Reset();
+                _stopwatch.Start();
+
+                LoadNextCard(); // Load the first card
             }
+        
 
             _currentCard = (BlackjackCard)_deck.Deal();
 
@@ -197,19 +210,20 @@ namespace AdvantageBlackjack
                 >= 7 and <= 9 => 0,
                 _ => -1
             };
+
         }
 
-        private async void OnCardSwiped(object sender, SwipedEventArgs e)
+        private async void HandleSwipe(SwipeDirection direction)
         {
             // Store direction text for debugging
-            LastSwipeDelta = $"Swipe: {e.Direction}";
+            LastSwipeDelta = $"Tapped: {direction}";
 
-            int userDirection = e.Direction switch
+            int userDirection = direction switch
             {
                 SwipeDirection.Left => -1,
                 SwipeDirection.Right => 1,
                 SwipeDirection.Down => 0,
-                _ => -2 // For Up or unknown
+                _ => -2
             };
 
             LastUserAnswer = userDirection;
@@ -227,31 +241,46 @@ namespace AdvantageBlackjack
 
             _cardsSwiped++;
 
-            AccuracyText = $"{(int)((float)_correct / (_correct + _incorrect) * 100)}%";
+            if (!_isRaceMode)
+            {
+                AccuracyText = $"{(int)((float)_runningCountCorrect / (_runningCountCorrect + _runningCountIncorrect) * 100)}%";
+            }
+            else
+            {
+                AccuracyText = $"{(int)((float)_correct / (_correct + _incorrect) * 100)}%";
+            }
 
             uint duration = 200;
             double screenWidth = Width;
             double screenHeight = Height;
 
-            double targetX = e.Direction switch
+            double targetX = direction switch
             {
                 SwipeDirection.Left => -screenWidth,
                 SwipeDirection.Right => screenWidth,
                 _ => 0
             };
 
-            double targetY = e.Direction switch
-            {
-                SwipeDirection.Down => screenHeight,
-                _ => 0
-            };
+            double targetY = direction == SwipeDirection.Down ? screenHeight : 0;
 
             await CardImage.TranslateTo(targetX, targetY, duration, Easing.SinIn);
 
-            // Reset position and color
             CardImage.TranslationX = 0;
             CardImage.TranslationY = 0;
             AccuracyLabel.TextColor = Colors.Black;
+
+            int cardValue = _currentCard.Value;
+            if (cardValue >= 2 && cardValue <= 6)
+                _runningCount++;
+            else if (cardValue >= 10 || _currentCard.Face == CardFace.A)
+                _runningCount--;
+
+            // Prompt the user if it's time
+            if (!_isRaceMode && _cardsSwiped == _nextPromptThreshold)
+            {
+                _nextPromptThreshold += _rand.Next(7, 13); // Set next threshold
+                await PromptRunningCount();
+}
 
             LoadNextCard();
         }
@@ -264,6 +293,11 @@ namespace AdvantageBlackjack
         private async void BackClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        private void OnCardSwiped(object sender, SwipedEventArgs e)
+        {
+            HandleSwipe(e.Direction);
         }
 
         /// <summary>
@@ -308,14 +342,81 @@ namespace AdvantageBlackjack
             await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
         }
 
-        /// <summary>
-        /// Dealer rule changed event handler
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
         private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
         {
+            if (RaceRadio.IsChecked)
+            {
+                _isRaceMode = true;
+                TimeLabel.IsVisible = true;
 
+                // Restore accuracy label to right side layout
+                Grid.SetColumn(AccuracyLabel, 29);
+                Grid.SetColumnSpan(AccuracyLabel, 8);
+            }
+            else if (RunningCountRadio.IsChecked)
+            {
+                _isRaceMode = false;
+                TimeLabel.IsVisible = false;
+
+                // Center the accuracy label
+                Grid.SetColumn(AccuracyLabel, 0);
+                Grid.SetColumnSpan(AccuracyLabel, 40);
+            }
+
+            // Reset everything
+            _deck = new Deck();
+            _deck.Shuffle();
+
+            _stopwatch.Reset();
+            _stopwatch.Start();
+
+            _cardsSwiped = 0;
+            _correct = 0;
+            _incorrect = 0;
+            _runningCount = 0;
+            _runningCountCorrect = 0;
+            _runningCountIncorrect = 0;
+            _nextPromptThreshold = _rand.Next(7, 13);
+
+            TimeText = "0:00";
+            AccuracyText = _isRaceMode ? "0%" : "0/0";
+            AccuracyLabel.TextColor = Colors.Black;
+
+            LoadNextCard();
+        }
+
+
+        private void LeftArrowTapped(object sender, EventArgs e) => HandleSwipe(SwipeDirection.Left);
+        private void DownArrowTapped(object sender, EventArgs e) => HandleSwipe(SwipeDirection.Down);
+        private void RightArrowTapped(object sender, EventArgs e) => HandleSwipe(SwipeDirection.Right);
+
+        private async Task PromptRunningCount()
+        {
+            string result = await DisplayPromptAsync("Running Count Check", "What is the current running count?", "Submit", "Cancel", keyboard: Keyboard.Numeric);
+
+            if (int.TryParse(result, out int userGuess))
+            {
+                if (userGuess == _runningCount)
+                {
+                    _runningCountCorrect++;
+                    await DisplayAlert("Correct!", "You nailed the running count.", "OK");
+                }
+                else
+                {
+                    _runningCountIncorrect++;
+                    await DisplayAlert("Incorrect", $"The correct running count is {_runningCount}.", "OK");
+                }
+
+                int totalGuesses = _runningCountCorrect + _runningCountIncorrect;
+                if (totalGuesses > 0)
+                {
+                    AccuracyText = $"{_runningCountCorrect}/{totalGuesses}";
+                }
+                else
+                {
+                    AccuracyText = "0/0 (0%)";
+                }
+            }
         }
     }
 }
