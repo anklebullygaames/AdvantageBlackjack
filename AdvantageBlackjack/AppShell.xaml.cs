@@ -13,6 +13,7 @@ namespace AdvantageBlackjack
             Routing.RegisterRoute("PairsAndSoftHands", typeof(PairsAndSoftHands));
             Routing.RegisterRoute("DeckMode", typeof(DeckMode));
             Routing.RegisterRoute("DealMode", typeof(DealMode));
+            Routing.RegisterRoute("RunningCountPrompt", typeof(RunningCountPrompt));
         }
     }
 }

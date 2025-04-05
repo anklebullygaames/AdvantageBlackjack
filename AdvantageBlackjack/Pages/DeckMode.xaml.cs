@@ -400,37 +400,30 @@ namespace AdvantageBlackjack
 
         private async Task PromptRunningCount()
         {
-            string result = await DisplayPromptAsync("Running Count Check", "What is the current running count?", accept: "Submit", cancel: "Skip", keyboard: Keyboard.Numeric);
+            var taskCompletionSource = new TaskCompletionSource<int>(); // To await the result from RunningCountPrompt
 
-            if (result == null)
+            // Navigate to the RunningCountPrompt page and pass the TaskCompletionSource
+            var runningCountPrompt = new RunningCountPrompt(taskCompletionSource);
+            await Navigation.PushAsync(runningCountPrompt);
+
+            // Wait for the result to come back (the user input)
+            int userGuess = await taskCompletionSource.Task;
+
+            // Now check if the answer was correct or incorrect and show the alert
+            if (userGuess == _runningCount)
+            {
+                _runningCountCorrect++;
+                await DisplayAlert("Correct!", "Keep it going.", "OK");
+            }
+            else
             {
                 _runningCountIncorrect++;
-                await DisplayAlert("Skipped", $"The correct running count was {_runningCount}.", "OK");
+                await DisplayAlert("Incorrect", $"The correct running count was {_runningCount}.", "OK");
             }
 
-            else if (int.TryParse(result, out int userGuess))
-            {
-                if (userGuess == _runningCount)
-                {
-                    _runningCountCorrect++;
-                    await DisplayAlert("Correct!", "Keep it going.", "OK");
-                }
-                else
-                {
-                    _runningCountIncorrect++;
-                    await DisplayAlert("Incorrect", $"The correct running count is {_runningCount}.", "OK");
-                }
-
-                int totalGuesses = _runningCountCorrect + _runningCountIncorrect;
-                if (totalGuesses > 0)
-                {
-                    AccuracyText = $"{_runningCountCorrect}/{totalGuesses}";
-                }
-                else
-                {
-                    AccuracyText = "0/0 (0%)";
-                }
-            }
+            // Update the accuracy label after checking
+            int totalGuesses = _runningCountCorrect + _runningCountIncorrect;
+            AccuracyText = $"{_runningCountCorrect}/{totalGuesses}";
         }
     }
 }

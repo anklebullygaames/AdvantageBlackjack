@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdvantageBlackjack.RunningCountPrompt"
+             BackgroundImageSource="background.jpg"
+             NavigationPage.HasNavigationBar="False">
+
+            <Grid>
+                
+                <!-- 40 Row Definitions -->
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- 40 Column Definitions -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    TextColor="Black"
+                    FontSize="30"
+                    FontFamily="monospace"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    Grid.Row="7"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="40"
+                    Text="Enter the Running Count"/>
+
+                <Entry x:Name="RunningCountEntry"
+                    Placeholder="0"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontSize="60"
+                    FontFamily="monospace"
+                    Keyboard="Numeric" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" 
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    Grid.Row="14"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="40"/>
+
+                <Button Text="Submit"
+                    FontAttributes="Bold"
+                    FontFamily="monospace"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="OnSubmitClicked"
+                    Grid.Row="20"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="40"
+                    HeightRequest="30"
+                    WidthRequest="150"/>
+
+            </Grid>
+
+</ContentPage>
