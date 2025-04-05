@@ -113,9 +113,9 @@
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void DealModeClicked(object sender, EventArgs e)
+        private async void DealModeClicked(object sender, EventArgs e)
         {
-            DisplayAlert("In Development", "Thank you for your patience, if you're enjoying the app please leave a review.", "Cancel");
+            await Shell.Current.GoToAsync("DealMode");
         }
     }
 }
