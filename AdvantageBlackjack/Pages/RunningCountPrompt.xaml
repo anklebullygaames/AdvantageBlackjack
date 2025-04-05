@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AdvantageBlackjack.Pages"
              x:Class="AdvantageBlackjack.RunningCountPrompt"
              BackgroundImageSource="background.jpg"
              NavigationPage.HasNavigationBar="False">
@@ -107,7 +108,8 @@
                     Grid.ColumnSpan="40"
                     Text="Enter the Running Count"/>
 
-                <Entry x:Name="RunningCountEntry"
+                <local:BorderlessEntry 
+                    x:Name="RunningCountEntry"
                     Placeholder="0"
                     PlaceholderColor="Black"
                     TextColor="Black"
@@ -139,5 +141,4 @@
                     WidthRequest="150"/>
 
             </Grid>
-
 </ContentPage>

@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using AdvantageBlackjack.Blackjack;
+using AdvantageBlackjack;
 
 namespace AdvantageBlackjack
 {
