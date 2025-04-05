@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AdvantageBlackjack.Pages"
              x:Class="AdvantageBlackjack.RunningCountPrompt"
-             BackgroundImageSource="background.jpg"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#707060">
 
             <Grid>
                 

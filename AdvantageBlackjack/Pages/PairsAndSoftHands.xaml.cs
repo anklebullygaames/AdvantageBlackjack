@@ -86,7 +86,6 @@ public partial class PairsAndSoftHands : ContentPage
 
         PairsHeader.SetValue(Grid.ZIndexProperty, 1);
         StrategyGrid.SetValue(Grid.ZIndexProperty, 0);
-        MainBack.SetValue(Grid.ZIndexProperty, 2);
 
         H17Radio.IsChecked = GlobalSettings.H17;
         S17Radio.IsChecked = !GlobalSettings.H17;

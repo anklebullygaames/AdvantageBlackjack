@@ -2,9 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdvantageBlackjack.Pages.PairsAndSoftHands"
-             BackgroundImageSource="background.jpg">
+             BackgroundColor="#707060">
 
     <Grid>
+
+        <Grid.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Right" Swiped="BackClicked"/>
+        </Grid.GestureRecognizers>
 
         <!-- The Menu Grid -->
         <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
@@ -295,23 +299,6 @@
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="HintClicked"/>
-                </Image.GestureRecognizers>
-
-            </Image>
-
-            <!-- Back Image -->
-            <Image x:Name="MainBack" 
-            Source="backicon3.png" 
-            HeightRequest="25" 
-            WidthRequest="40" 
-            HorizontalOptions="Center"
-            IsVisible="True" 
-            Grid.Row="0"
-            Grid.RowSpan="3"
-            Grid.Column="1">
-
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="BackClicked"/>
                 </Image.GestureRecognizers>
 
             </Image>
