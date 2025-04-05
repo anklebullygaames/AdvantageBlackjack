@@ -64,14 +64,14 @@
                 Source="thereallogo.png"
                 HeightRequest="350"
                 SemanticProperties.Description="The advantage blackjack logo"
-                Grid.Row="10"
+                Grid.Row="9"
                 Grid.ColumnSpan="2"/>
 
             <!-- Advantage Blackjack Subheader -->
             <Label
                 FontAttributes="Bold"
                 x:Name="Subheader"
-                Text="Advantage Blackjack"
+                Text="Basic Strategy"
                 FontFamily="monospace"
                 FontSize="24"
                 HorizontalOptions="Center"
@@ -86,7 +86,7 @@
                 FontSize="22"
                 FontFamily="monospace"
                 x:Name="BasicStrategyBtn"
-                Text="Basic Strategy" 
+                Text="All Hands" 
                 Clicked="BasicStrategyClicked"
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
@@ -106,7 +106,7 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="25"
+                Grid.Row="28"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
@@ -121,20 +121,20 @@
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="28"
+                Grid.Row="25"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
-            <!-- The Counting Button -->
+            <!-- The Counting Label -->
             <Label
                 FontAttributes="Bold"
-                FontSize="22"
+                FontSize="24"
                 FontFamily="monospace"
-                x:Name="CountingBtn"
-                Text="Counting Practice" 
+                x:Name="CountingLabel"
+                Text=" Card Counting Practice" 
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
-                TextColor="Black"
+                TextColor="DarkBlue"
                 Grid.Row="32"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
@@ -182,6 +182,7 @@
             Grid.Column="0"
             HorizontalOptions="Center"
             IsVisible="True">
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DeckModeClicked"/>
                     </Image.GestureRecognizers>
@@ -206,6 +207,5 @@
         </Image>
 
     </Grid>
-        
 
 </ContentPage>

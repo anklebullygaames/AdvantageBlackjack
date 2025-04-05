@@ -2,22 +2,70 @@
 {
     public partial class MainPage : ContentPage
     {
+
+        /// <summary>
+        /// The main page constructor
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
             this.Loaded += OnPageLoaded;
+            StartAnimations();
         }
 
+        /// <summary>
+        /// Starts the resting page animations
+        /// </summary>
+        private async void StartAnimations()
+        {
+            StartStrategyTables();
+            StartBasicStrategy();
+            StartPairs();
+        }
+
+        /// <summary>
+        /// Starts basic strategy button animation
+        /// </summary>
+        private async void StartBasicStrategy()
+        {
+            await AnimateBasicStrategy();
+        }
+
+        /// <summary>
+        /// Starts strategy tables button animation
+        /// </summary>
+        private async void StartStrategyTables()
+        {
+            await AnimateStrategyTables();
+        }
+
+        /// <summary>
+        /// Starts the pairs button animation
+        /// </summary>
+        private async void StartPairs()
+        {
+            await AnimatePairs();
+        }
+
+        /// <summary>
+        /// Waits for the page to load then does initial animations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnPageLoaded(object sender, EventArgs e)
         {
-            // Wait for layout to be ready
             while (MainGrid.Width == 0)
+            {
                 await Task.Delay(50);
+            }
 
             InitializeUIState();
             AnimateUI();
         }
 
+        /// <summary>
+        /// Sets the correct state and opcity before beginning animation
+        /// </summary>
         private void InitializeUIState()
         {
             LogoImage.Opacity = 0;
@@ -34,8 +82,8 @@
             StrategyTableBtn.Opacity = 0;
             StrategyTableBtn.TranslationY = 100;
 
-            CountingBtn.Opacity = 0;
-            CountingBtn.TranslationY = 100;
+            CountingLabel.Opacity = 0;
+            CountingLabel.TranslationY = 100;
 
             DeckModeBtn.Opacity = 0;
             DeckModeBtn.TranslationY = 100;
@@ -50,27 +98,110 @@
             DealModeImage.TranslationY = 100;
         }
 
+        /// <summary>
+        /// Does the initial load in animation
+        /// </summary>
         private async void AnimateUI()
         {
 
-            await LogoImage.FadeTo(1, 1000, Easing.CubicInOut);
+            await LogoImage.FadeTo(1, 1000, Easing.CubicIn);
 
-            await SlideUpFromBottom(Subheader, 0);
-            await SlideUpFromBottom(BasicStrategyBtn, 0);
-            await SlideUpFromBottom(PairsAndSoftHandsBtn, 0);
-            await SlideUpFromBottom(StrategyTableBtn, 0);
-            await SlideUpFromBottom(CountingBtn, 0);
-            await SlideUpFromBottom(DeckModeBtn, 0);
-            await SlideUpFromBottom(DeckModeImage, 0);
-            await SlideUpFromBottom(DealModeBtn, 0);
-            await SlideUpFromBottom(DealModeImage, 0);
+            await SlideInButtons();
         }
 
-        private async Task SlideUpFromBottom(View element, int delay)
+        /// <summary>
+        /// Animates the basic strategy button
+        /// </summary>
+        /// <returns></returns>
+        private async Task AnimateBasicStrategy()
         {
-            await Task.Delay(delay);
+            while (true)
+            {
+                await BasicStrategyBtn.ScaleTo(1.02, 1000, Easing.CubicInOut);
+                await BasicStrategyBtn.ScaleTo(.98, 1000, Easing.CubicInOut);
+            }
+        }
+
+        /// <summary>
+        /// Animates the strategy tables
+        /// </summary>
+        /// <returns></returns>
+        private async Task AnimateStrategyTables()
+        {
+            while (true)
+            {
+                await StrategyTableBtn.ScaleTo(1.02, 1000, Easing.CubicInOut);
+                await StrategyTableBtn.ScaleTo(.98, 1000, Easing.CubicInOut);
+            }
+        }
+
+        /// <summary>
+        /// Animates the pairs
+        /// </summary>
+        /// <returns></returns>
+        private async Task AnimatePairs()
+        {
+            while (true)
+            {
+                await PairsAndSoftHandsBtn.ScaleTo(1.02, 1000, Easing.CubicInOut);
+                await PairsAndSoftHandsBtn.ScaleTo(.98, 1000, Easing.CubicInOut);
+            }
+        }
+
+        /// <summary>
+        /// Slides a button up from button
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private async Task SlideUpFromBottom(View element)
+        {
             element.Opacity = 1;
-            await element.TranslateTo(0, 0, 150, Easing.SinOut);
+            await element.TranslateTo(0, 0, 150, Easing.CubicOut);
+        }
+
+        /// <summary>
+        /// Slides a button down to bottom
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private async Task SlideDownToBottom(View element)
+        {
+            await element.TranslateTo(0, 1000, 75, Easing.CubicIn);  // Slide down
+            element.Opacity = 0;  // Optional: fade out as it moves
+        }
+
+        /// <summary>
+        /// Slides all the buttons down to bttom
+        /// </summary>
+        /// <returns></returns>
+        private async Task SlideOutButtons()
+        {
+            await SlideDownToBottom(DealModeImage);
+            await SlideDownToBottom(DealModeBtn);
+            await SlideDownToBottom(DeckModeImage);
+            await SlideDownToBottom(DeckModeBtn);
+            await SlideDownToBottom(CountingLabel);
+            await SlideDownToBottom(StrategyTableBtn);
+            await SlideDownToBottom(PairsAndSoftHandsBtn);
+            await SlideDownToBottom(BasicStrategyBtn);
+            await SlideDownToBottom(Subheader);
+        }
+
+        /// <summary>
+        /// Slides all the buttons up
+        /// </summary>
+        /// <returns></returns>
+        private async Task SlideInButtons()
+        {
+            await SlideUpFromBottom(Subheader);
+            await SlideUpFromBottom(BasicStrategyBtn);
+            await SlideUpFromBottom(PairsAndSoftHandsBtn);
+            await SlideUpFromBottom(StrategyTableBtn);
+            await SlideUpFromBottom(CountingLabel);
+            await SlideUpFromBottom(DeckModeBtn);
+            await SlideUpFromBottom(DeckModeImage);
+            await SlideUpFromBottom(DealModeBtn);
+            await SlideUpFromBottom(DealModeImage);
         }
 
         /// <summary>
@@ -80,6 +211,7 @@
         /// <param name="e">e</param>
         private async void BasicStrategyClicked(object sender, EventArgs e)
         {
+            await SlideOutButtons();
             await Shell.Current.GoToAsync("BasicStrategy");
         }
 
@@ -90,11 +222,13 @@
         /// <param name="e">e</param>
         private async void StrategyTableClicked(object sender, EventArgs e)
         {
+            await SlideOutButtons();
             await Shell.Current.GoToAsync("StrategyTables");
         }
 
         private async void PairsAndSoftHandsClicked(object sender, EventArgs e)
         {
+            await SlideOutButtons();
             await Shell.Current.GoToAsync("PairsAndSoftHands");
         }
 
@@ -105,6 +239,7 @@
         /// <param name="e">e</param>
         private async void DeckModeClicked(object sender, EventArgs e)
         {
+            await SlideOutButtons();
             await Shell.Current.GoToAsync("DeckMode");
         }
 
@@ -115,6 +250,7 @@
         /// <param name="e">e</param>
         private async void DealModeClicked(object sender, EventArgs e)
         {
+            await SlideOutButtons();
             await Shell.Current.GoToAsync("DealMode");
         }
     }
