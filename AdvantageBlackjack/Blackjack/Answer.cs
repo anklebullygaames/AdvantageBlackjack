@@ -11,6 +11,6 @@ namespace AdvantageBlackjack.Blackjack
     /// </summary>
     public enum Answer
     {
-        Stand, Hit, Double, Split
+        Stand, Hit, Double, Split, Surrender
     }
 }

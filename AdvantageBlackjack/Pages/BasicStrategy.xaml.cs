@@ -100,6 +100,8 @@ public partial class BasicStrategy : ContentPage
         _deck = new Deck();
         _deck.Shuffle();
 
+        _ = AnimateSurrenderButton(GlobalSettings.Surrender);
+
         DealStartCards();
 
     }
@@ -276,7 +278,50 @@ public partial class BasicStrategy : ContentPage
         AceLabel.Text = currentAceCount;
     }
 
+    // <summary>
+    /// Animates the surrender button in or out from the left
+    /// </summary>
+    /// <param name="isVisible">Whether the button should slide in or out</param>
+    private async Task AnimateSurrenderButton(bool isVisible)
+    {
+        if (isVisible)
+        {
+            SurrenderButton.IsVisible = true;
+            SurrenderButton.TranslationX = -this.Width;
+            await Task.WhenAll(
+                SurrenderButton.TranslateTo(0, 0, 100, Easing.CubicOut),
+                AdjustActionButtons(true)
+            );
+        }
+        else
+        {
+            SurrenderButton.IsVisible = false;
+            await Task.WhenAll(
+                SurrenderButton.TranslateTo(-this.Width, 0, 100, Easing.CubicIn),
+                AdjustActionButtons(false)
+            );
+        }
+    }
 
+
+    /// <summary>
+    /// Adjusts the vertical position of the action buttons when Surrender is shown or hidden
+    /// </summary>
+    /// <param name="moveDown">True to move buttons down, false to reset them</param>
+    private async Task AdjustActionButtons(bool moveDown)
+    {
+        double offset = moveDown ? 35 : 0;
+
+        var tasks = new[]
+        {
+            HitButton.TranslateTo(0, offset, 250, Easing.CubicOut),
+            StandButton.TranslateTo(0, offset, 250, Easing.CubicOut),
+            DoubleButton.TranslateTo(0, offset, 250, Easing.CubicOut),
+            SplitButton.TranslateTo(0, offset, 250, Easing.CubicOut)
+        };
+
+        await Task.WhenAll(tasks);
+    }
 
     /// <summary>
     /// Returns a cards image source
@@ -351,6 +396,21 @@ public partial class BasicStrategy : ContentPage
     }
 
     /// <summary>
+    /// Surrender click event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void SurrenderClicked(object sender, EventArgs e)
+    {
+        if (CurrentAnswer == Answer.Surrender)
+        {
+            RoundsCorrect++;
+        }
+        DealMoreCards();
+        UpdateScoreLabels();
+    }
+
+    /// <summary>
     /// Settings clicked event handler
     /// </summary>
     /// <param name="sender">sender</param>
@@ -415,6 +475,7 @@ public partial class BasicStrategy : ContentPage
     private void SurrenderToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.Surrender = e.Value;
+        _ = AnimateSurrenderButton(e.Value);
     }
 
     /// <summary>
