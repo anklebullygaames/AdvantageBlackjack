@@ -90,7 +90,10 @@ public partial class PairsAndSoftHands : ContentPage
 
         H17Radio.IsChecked = GlobalSettings.H17;
         S17Radio.IsChecked = !GlobalSettings.H17;
+        DoubleDeckRadio.IsChecked = GlobalSettings.DoubleDeck;
+        FourDeckRadio.IsChecked = !GlobalSettings.DoubleDeck;
         DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
+        SurrenderSwitch.IsToggled = GlobalSettings.Surrender;
 
         _dealer = new BlackjackHand(true);
         _player = new BlackjackHand(false);
@@ -466,5 +469,28 @@ public partial class PairsAndSoftHands : ContentPage
     async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("..");
+    }
+
+    /// <summary>
+    /// Dealer rule changed event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void DeckRuleToggled(object sender, CheckedChangedEventArgs e)
+    {
+        if (e.Value)
+        {
+            GlobalSettings.DoubleDeck = (sender == DoubleDeckRadio);
+        }
+    }
+
+    /// <summary>
+    /// Surrender switched event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void SurrenderToggled(object sender, ToggledEventArgs e)
+    {
+        GlobalSettings.Surrender = e.Value;
     }
 }

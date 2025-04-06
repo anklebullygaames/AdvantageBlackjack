@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdvantageBlackjack
 {
+    /// <summary>
+    /// GlobalSettings
+    /// </summary>
     public static class GlobalSettings
     {
         /// <summary>
@@ -17,5 +20,15 @@ namespace AdvantageBlackjack
         /// Determines if double after split is allowed (true) or not (false)
         /// </summary>
         public static bool DoubleAfterSplit { get; set; } = true;
+
+        /// <summary>
+        /// Determines if surrender is allowed (true) or not (false)
+        /// </summary>
+        public static bool Surrender { get; set; } = false;
+
+        /// <summary>
+        /// Determines if double deck is (true) or not (false)
+        /// </summary>
+        public static bool DoubleDeck { get; set; } = false;
     }
 }
