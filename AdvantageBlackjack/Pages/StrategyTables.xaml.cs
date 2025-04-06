@@ -26,6 +26,11 @@ public partial class StrategyTables : ContentPage
     }
 
     /// <summary>
+    /// Whether the user is in the options menu
+    /// </summary>
+    private bool _isInSettingsMenu = false;
+
+    /// <summary>
     /// BasicStrategyBtn clicked event handler
     /// </summary>
     /// <param name="sender">sender</param>
@@ -33,7 +38,14 @@ public partial class StrategyTables : ContentPage
     private void SoftHandsClicked(object sender, EventArgs e)
     {
         Border newBorder = GlobalSettings.H17 ? H17SoftTotalsBorder : S17SoftTotalsBorder;
-        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        if (_isInSettingsMenu)
+        {
+            FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
+        else
+        {
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
     }
 
     /// <summary>
@@ -47,7 +59,14 @@ public partial class StrategyTables : ContentPage
             ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
             : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
-        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        if (_isInSettingsMenu)
+        {
+            FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
+        else
+        {
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
     }
 
     /// <summary>
@@ -58,7 +77,14 @@ public partial class StrategyTables : ContentPage
     private void HardTotalsClicked(object sender, EventArgs e)
     {
         Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
-        SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        if (_isInSettingsMenu)
+        {
+            FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
+        else
+        {
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+        }
     }
 
 
@@ -91,6 +117,29 @@ public partial class StrategyTables : ContentPage
     }
 
     /// <summary>
+    /// Fades to a new table
+    /// </summary>
+    /// <param name="oldBorder">oldBorder</param>
+    /// <param name="newBorder">newBorder</param>
+    private async void FadeToNewImage(Border oldBorder, Border newBorder)
+    {
+        if (oldBorder == newBorder || !oldBorder.IsVisible)
+            return;
+
+        const uint animationSpeed = 250;
+
+        newBorder.Opacity = 0;
+        newBorder.IsVisible = true;
+
+        await oldBorder.FadeTo(0, animationSpeed);
+
+        oldBorder.IsVisible = false;
+        oldBorder.Opacity = 1;
+
+        await newBorder.FadeTo(1, animationSpeed);
+    }
+
+    /// <summary>
     /// Returns the currently visible border
     /// </summary>
     /// <returns>Border</returns>
@@ -115,6 +164,7 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     async void SettingsClicked(object sender, EventArgs e)
     {
+        _isInSettingsMenu = true;
         _ = MainContentGrid.TranslateTo(-this.Width * 0.5, this.Height * 0.1, 800u, Easing.CubicIn);
         await MainContentGrid.ScaleTo(0.8, 800u);
         _ = MainContentGrid.FadeTo(0.8, 800u);
@@ -131,6 +181,8 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     async void OptionsBackClicked(object sender, EventArgs e)
     {
+        _isInSettingsMenu = false;
+
         await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
         MenuGrid.IsVisible = false; // Hide after animation
 
@@ -151,7 +203,15 @@ public partial class StrategyTables : ContentPage
             GlobalSettings.H17 = (sender == H17Radio); // Check which radio button was selected
 
             Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
-            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+
+            if (_isInSettingsMenu)
+            {
+                FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+            }
+            else
+            {
+                SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+            }
         }
     }
 
@@ -172,7 +232,14 @@ public partial class StrategyTables : ContentPage
                 ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
                 : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
 
-            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+            if (_isInSettingsMenu)
+            {
+                FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+            }
+            else
+            {
+                SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+            }
         }
     }
 
