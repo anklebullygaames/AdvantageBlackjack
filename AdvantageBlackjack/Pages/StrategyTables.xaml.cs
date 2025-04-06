@@ -87,9 +87,9 @@ public partial class StrategyTables : ContentPage
     }
 
     /// <summary>
-    /// Returns the currently visible image
+    /// Returns the currently visible border
     /// </summary>
-    /// <returns>The currently visible Image</returns>
+    /// <returns>Border</returns>
     private Border GetCurrentVisibleBorder()
     {
         if (H17HardTotalsBorder.IsVisible) return H17HardTotalsBorder;
@@ -123,8 +123,8 @@ public partial class StrategyTables : ContentPage
     /// <summary>
     /// Options back clicked event handler
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     async void OptionsBackClicked(object sender, EventArgs e)
     {
         await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
@@ -175,8 +175,8 @@ public partial class StrategyTables : ContentPage
     /// <summary>
     /// back clicked event handler
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("..");

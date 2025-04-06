@@ -13,7 +13,7 @@ public partial class BasicStrategy : ContentPage
     BlackjackHand _dealer;
 
     /// <summary>
-    /// the blayers blackjack hand
+    /// The players blackjack hand
     /// </summary>
     BlackjackHand _player;
 
@@ -43,12 +43,12 @@ public partial class BasicStrategy : ContentPage
     public (int PlayerScore, CardFace DealerFace) CurrentMatchup;
 
     /// <summary>
-    /// The property for the players aces
+    /// The number of aces in the player hand
     /// </summary>
     public int PlayerAces;
 
     /// <summary>
-    /// Property to track pair
+    /// Whether the play hand is currently a pair
     /// </summary>
     public bool Pair = false;
 
@@ -79,7 +79,7 @@ public partial class BasicStrategy : ContentPage
 
 
     /// <summary>
-    /// Constructor fot the BasicStrategy page which creates new player/dealer hands and a new deck then deals the initial cards
+    /// Constructor for the BasicStrategy page
     /// </summary>
     public BasicStrategy()
     {
@@ -102,7 +102,7 @@ public partial class BasicStrategy : ContentPage
     }
 
     /// <summary>
-    /// Makes the hands and deals 2 cards to both the player and the dealer, updates all
+    /// Deals the initial cards to the player and deal
     /// </summary>
     /// <summary>
     /// Resets the hands, deals new cards, updates matchup, and updates UI.
@@ -148,7 +148,7 @@ public partial class BasicStrategy : ContentPage
     }
 
     /// <summary>
-    /// Resets the hands and deals 2 new cards to both the player and the dealer, updates all
+    /// Deals more cards to the player and dealer
     /// </summary>
     /// <summary>
     /// Resets the hands, deals new cards, updates matchup, and updates UI.
@@ -199,7 +199,7 @@ public partial class BasicStrategy : ContentPage
     }
 
     /// <summary>
-    /// Draws the screen to reflect the training
+    /// Draws the screen
     /// </summary>
     private async void DrawScreen()
     {
@@ -215,7 +215,6 @@ public partial class BasicStrategy : ContentPage
         double screenHeight = StrategyGrid.Height;
         double startY = -cardHeight * 2;
 
-        // Player Cards: Animate from left & right
         for (int i = 0; i < _player.Cards.Count; i++)
         {
             string cardImageSource = GetCardImageSource((Card)_player.Cards[i]);
@@ -226,7 +225,7 @@ public partial class BasicStrategy : ContentPage
                 Source = cardImageSource,
                 HeightRequest = cardHeight,
                 WidthRequest = cardWidth,
-                TranslationX = startX // S
+                TranslationX = startX
             };
 
             StrategyGrid.Children.Add(cardImage);
@@ -236,7 +235,6 @@ public partial class BasicStrategy : ContentPage
             await cardImage.TranslateTo(0, 0, 400, Easing.CubicOut);
         }
 
-        // Dealer Cards: Animate from top
         for (int i = 0; i < _dealer.Cards.Count; i++)
         {
             string cardImageSource = (i == 1) ? "back.png" : GetCardImageSource((Card)_dealer.Cards[i]);
@@ -258,7 +256,7 @@ public partial class BasicStrategy : ContentPage
     }
 
     /// <summary>
-    /// Updates the labels showing rounds played and percentage correct.
+    /// Updates the rounds played and percentage correct labels
     /// </summary>
     private void UpdateScoreLabels()
     {
@@ -278,7 +276,7 @@ public partial class BasicStrategy : ContentPage
 
 
     /// <summary>
-    /// Returns the correct card image source
+    /// Returns a cards image source
     /// </summary>
     /// <param name="card">card</param>
     /// <returns>The cards image source</returns>
@@ -368,12 +366,12 @@ public partial class BasicStrategy : ContentPage
     /// <summary>
     /// Options back clicked event handler
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">snder</param>
+    /// <param name="e">e</param>
     async void OptionsBackClicked(object sender, EventArgs e)
     {
-        await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn); // Slide back down
-        MenuGrid.IsVisible = false; // Hide after animation
+        await MenuGrid.TranslateTo(0, 1000, 500, Easing.CubicIn);
+        MenuGrid.IsVisible = false;
 
         _ = MainContentGrid.FadeTo(1, 800u);
         _ = MainContentGrid.ScaleTo(1, 800u);
@@ -389,7 +387,7 @@ public partial class BasicStrategy : ContentPage
     {
         if (e.Value)
         {
-            GlobalSettings.H17 = (sender == H17Radio); // Check which radio button was selected
+            GlobalSettings.H17 = (sender == H17Radio);
         }
     }
 
@@ -403,11 +401,15 @@ public partial class BasicStrategy : ContentPage
         GlobalSettings.DoubleAfterSplit = e.Value;
     }
 
+    /// <summary>
+    /// Hint clicked event handler
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     async void HintClicked(object sender, EventArgs e)
     {
         Button correctButton = null;
 
-        // Determine which button should animate based on the correct answer
         switch (CurrentAnswer)
         {
             case Answer.Hit:
@@ -426,16 +428,16 @@ public partial class BasicStrategy : ContentPage
 
         if (correctButton != null)
         {
-            await correctButton.ScaleTo(1.2, 300, Easing.CubicOut); // Enlarge slightly
-            await correctButton.ScaleTo(1.0, 300, Easing.CubicIn);  // Return to normal
+            await correctButton.ScaleTo(1.2, 300, Easing.CubicOut);
+            await correctButton.ScaleTo(1.0, 300, Easing.CubicIn);
         }
     }
 
     /// <summary>
-    /// back clicked event handler
+    /// Back clicked event handler
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("..");

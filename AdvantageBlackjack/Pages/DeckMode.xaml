@@ -102,8 +102,8 @@
                     <!-- ModeLabel -->
                     <Label x:Name="ModeLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="23" Grid.Row="1" TextColor="Black" Text="Mode" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
 
-                    <!-- Race Label -->
-                    <Label Text="Race" 
+                    <!-- Race the Clock Label -->
+                    <Label Text="Race the Clock" 
                     FontAttributes="Bold"
                     Grid.Column="18" Grid.Row="4"
                     TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
@@ -114,7 +114,7 @@
                     Grid.Column="18" Grid.Row="7" Grid.RowSpan="2"
                     TextColor="Black" FontSize="20" Grid.ColumnSpan="14"/>
 
-                    <!-- Race Radio Button -->
+                    <!-- Race the Clock Radio Button -->
                     <RadioButton x:Name="RaceRadio"
                     Grid.Column="34" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3"
                     Content="Race" GroupName="ModeGroup" IsChecked="True"
@@ -126,7 +126,7 @@
                     Content="RunningCount" GroupName="ModeGroup"
                     CheckedChanged="DealerRuleToggled"/>
 
-                    <!-- Back Image -->
+                    <!-- Options Back Image -->
                     <Image x:Name="ModeBackImage" 
                     Source="backicon1.png" 
                     HeightRequest="40" 
@@ -271,6 +271,7 @@
                     <!-- Deck Mode Header -->
                     <Image x:Name="DeckModeHeader" InputTransparent="True" Source="deckmodeheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="40"/>
 
+                    <!-- Time Label -->
                     <Label
                         x:Name="TimeLabel"
                         Text="{Binding TimeText}"
@@ -284,6 +285,7 @@
                         Grid.RowSpan="3"
                         />
 
+                    <!-- Accuracy Label -->
                     <Label
                         x:Name="AccuracyLabel"
                         Text="{Binding AccuracyText}"
@@ -297,6 +299,7 @@
                         Grid.RowSpan="3"
                         />
 
+                    <!-- Card Image -->
                     <Image x:Name="CardImage"
                         Grid.Row="11"
                         Grid.RowSpan="20"
@@ -315,6 +318,7 @@
                         
                     </Image>
 
+                    <!-- -1 Label -->
                     <Label
                         Text="-1"
                         FontFamily="monospace"
@@ -326,17 +330,18 @@
                         Grid.ColumnSpan="8"
                         Grid.RowSpan="3"
                         />
-
+                    
+                    <!-- Left Arrow Image -->
                     <Image x:Name="LeftArrow"
-                    Rotation="90"
-                    Source="arrowicon.png" 
-                    HeightRequest="100" 
-                    WidthRequest="100" 
-                    IsVisible="True" 
-                    Grid.Row="36"
-                    Grid.RowSpan="10"
-                    Grid.ColumnSpan="10"
-                    Grid.Column="3">
+                        Rotation="90"
+                        Source="arrowicon.png" 
+                        HeightRequest="100" 
+                        WidthRequest="100" 
+                        IsVisible="True" 
+                        Grid.Row="36"
+                        Grid.RowSpan="10"
+                        Grid.ColumnSpan="10"
+                        Grid.Column="3">
 
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="LeftArrowTapped"/>
@@ -344,6 +349,7 @@
 
                     </Image>
 
+                    <!-- 0 Label -->
                     <Label
                         Text="0"
                         FontFamily="monospace"
@@ -356,15 +362,16 @@
                         Grid.RowSpan="3"
                         />
 
+                    <!-- Down Arrow Image -->
                     <Image x:Name="DownArrow"
-                    Source="arrowicon.png" 
-                    HeightRequest="100" 
-                    WidthRequest="100" 
-                    IsVisible="True" 
-                    Grid.Row="36"
-                    Grid.RowSpan="10"
-                    Grid.ColumnSpan="10"
-                    Grid.Column="15">
+                        Source="arrowicon.png" 
+                        HeightRequest="100" 
+                        WidthRequest="100" 
+                        IsVisible="True" 
+                        Grid.Row="36"
+                        Grid.RowSpan="10"
+                        Grid.ColumnSpan="10"
+                        Grid.Column="15">
 
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="DownArrowTapped"/>
@@ -372,6 +379,7 @@
 
                     </Image>
 
+                    <!-- +1 Label -->
                     <Label
                         Text="+1"
                         FontFamily="monospace"
@@ -384,16 +392,17 @@
                         Grid.RowSpan="3"
                         />
 
+                    <!-- Right Arrow Image -->
                     <Image x:Name="RightArrow" 
-                    Rotation="270"
-                    Source="arrowicon.png" 
-                    HeightRequest="100" 
-                    WidthRequest="100" 
-                    IsVisible="True" 
-                    Grid.Row="36"
-                    Grid.RowSpan="10"
-                    Grid.ColumnSpan="10"
-                    Grid.Column="28">
+                        Rotation="270"
+                        Source="arrowicon.png" 
+                        HeightRequest="100" 
+                        WidthRequest="100" 
+                        IsVisible="True" 
+                        Grid.Row="36"
+                        Grid.RowSpan="10"
+                        Grid.ColumnSpan="10"
+                        Grid.Column="28">
 
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="RightArrowTapped"/>

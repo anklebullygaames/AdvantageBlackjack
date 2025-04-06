@@ -6,6 +6,7 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#707060">
 
+            <!-- Main Content -->
             <Grid>
                 
                 <!-- 40 Row Definitions -->
@@ -96,6 +97,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <!-- Prompt Label -->
                 <Label
                     TextColor="Black"
                     FontSize="30"
@@ -108,6 +110,7 @@
                     Grid.ColumnSpan="40"
                     Text="Enter the Running Count"/>
 
+                <!-- Prompt Entry -->
                 <local:BorderlessEntry 
                     x:Name="RunningCountEntry"
                     Placeholder="0"
@@ -125,6 +128,7 @@
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="40"/>
 
+                <!-- Submit Button -->
                 <Button Text="Submit"
                     FontAttributes="Bold"
                     FontFamily="monospace"

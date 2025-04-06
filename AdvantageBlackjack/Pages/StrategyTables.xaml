@@ -211,7 +211,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <!-- 40 Column Definitions -->
+            <!-- 22 Column Definitions -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

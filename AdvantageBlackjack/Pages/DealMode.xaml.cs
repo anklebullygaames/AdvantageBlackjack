@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 /// <summary>
-/// Basic Strategy
+/// Deal Mode
 /// </summary>
 public partial class DealMode : ContentPage 
 {
@@ -12,8 +12,8 @@ public partial class DealMode : ContentPage
     /// <summary>
     /// back clicked event handler
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
     async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("..");

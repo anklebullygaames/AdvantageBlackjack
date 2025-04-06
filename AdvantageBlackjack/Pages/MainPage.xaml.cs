@@ -1,5 +1,8 @@
 ﻿namespace AdvantageBlackjack
 {
+    /// <summary>
+    /// MainPage
+    /// </summary>
     public partial class MainPage : ContentPage
     {
 
@@ -50,8 +53,8 @@
         /// <summary>
         /// Waits for the page to load then does initial animations
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
         private async void OnPageLoaded(object sender, EventArgs e)
         {
             while (MainGrid.Width == 0)
@@ -112,7 +115,7 @@
         /// <summary>
         /// Animates the basic strategy button
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task AnimateBasicStrategy()
         {
             while (true)
@@ -125,7 +128,7 @@
         /// <summary>
         /// Animates the strategy tables
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task AnimateStrategyTables()
         {
             while (true)
@@ -138,7 +141,7 @@
         /// <summary>
         /// Animates the pairs
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task AnimatePairs()
         {
             while (true)
@@ -152,7 +155,7 @@
         /// Slides a button up from button
         /// </summary>
         /// <param name="element"></param>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task SlideUpFromBottom(View element)
         {
             element.Opacity = 1;
@@ -163,7 +166,7 @@
         /// Slides a button down to bottom
         /// </summary>
         /// <param name="element"></param>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task SlideDownToBottom(View element)
         {
             await element.TranslateTo(0, 1000, 75, Easing.CubicIn);  // Slide down
@@ -173,7 +176,7 @@
         /// <summary>
         /// Slides all the buttons down to bttom
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task SlideOutButtons()
         {
             await SlideDownToBottom(DealModeImage);
@@ -190,7 +193,7 @@
         /// <summary>
         /// Slides all the buttons up
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task</returns>
         private async Task SlideInButtons()
         {
             await SlideUpFromBottom(Subheader);
@@ -226,6 +229,11 @@
             await Shell.Current.GoToAsync("StrategyTables");
         }
 
+        /// <summary>
+        /// Pairs and soft hands event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
         private async void PairsAndSoftHandsClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
@@ -233,7 +241,7 @@
         }
 
         /// <summary>
-        /// deck mode event handler
+        /// Deck mode event handler
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>

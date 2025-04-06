@@ -8,15 +8,15 @@
         <!-- The MainContent -->
         <Grid x:Name="MainGrid">
         
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
-                 <GradientStop Color="#707060" Offset="0" />
-                 <GradientStop Color="Black" Offset="1" />
-            </LinearGradientBrush>
-        </Grid.Background>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                    <GradientStop Color="#707060" Offset="0" />
+                    <GradientStop Color="Black" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
 
             
-        <!-- 40 Row Definitions -->
+            <!-- 40 Row Definitions -->
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -60,21 +60,21 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!-- 40 Column Definitions -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-        <!-- The Logo Image -->
+            <!-- The Logo Image -->
             <Image
                 x:Name="LogoImage"
                 Source="thereallogo.png"
                 HeightRequest="350"
-                SemanticProperties.Description="The advantage blackjack logo"
                 Grid.Row="9"
                 Grid.ColumnSpan="2"/>
 
-            <!-- Advantage Blackjack Subheader -->
+            <!-- Basic Strategy Subheader -->
             <Label
                 FontAttributes="Bold"
                 x:Name="Subheader"
@@ -87,7 +87,7 @@
                 Grid.RowSpan="40"
                 Grid.ColumnSpan="2"/>
 
-            <!-- The Basic Strategy Button -->
+            <!-- All Hands Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="22"
@@ -146,72 +146,72 @@
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2"/>
 
-        <!-- Deck Mode Button (starts offscreen left) -->
-        <Button
-            x:Name="DeckModeBtn"
-            Text="Deck Mode"
-            Clicked="DeckModeClicked"
-            Grid.Row="34"
-            Grid.RowSpan="3"
-            Grid.Column="0"
-            FontSize="22"
-            FontFamily="monospace"
-            BackgroundColor="Transparent"
-            TextColor="Black"
-            HorizontalOptions="Center"
-            TranslationX="-1000"
-            IsVisible="True" />
+            <!-- Deck Mode Button -->
+            <Button
+                x:Name="DeckModeBtn"
+                Text="Deck Mode"
+                Clicked="DeckModeClicked"
+                Grid.Row="34"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                FontSize="22"
+                FontFamily="monospace"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                TranslationX="-1000"
+                IsVisible="True" />
 
-        <!-- Deal Mode Button (starts offscreen right) -->
-        <Button
-            x:Name="DealModeBtn"
-            Text="Deal Mode"
-            Clicked="DealModeClicked"
-            Grid.Row="34"
-            Grid.RowSpan="3"
-            Grid.Column="1"
-            FontSize="22"
-            FontFamily="monospace"
-            BackgroundColor="Transparent"
-            TextColor="Black"
-            HorizontalOptions="Center"
-            TranslationX="1000"
-            IsVisible="True" />
+                <!-- Deal Mode Button -->
+                <Button
+                    x:Name="DealModeBtn"
+                    Text="Deal Mode"
+                    Clicked="DealModeClicked"
+                    Grid.Row="34"
+                    Grid.RowSpan="3"
+                    Grid.Column="1"
+                    FontSize="22"
+                    FontFamily="monospace"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    TranslationX="1000"
+                    IsVisible="True" />
 
-        <!-- Deck Image (starts offscreen left) -->
-        <Image
-            x:Name="DeckModeImage"
-            Source="deckicon.png"
-            HeightRequest="50"
-            WidthRequest="90"
-            Grid.Row="37"
-            Grid.RowSpan="1"
-            Grid.Column="0"
-            HorizontalOptions="Center"
-            IsVisible="True">
+                <!-- Deck Image -->
+                <Image
+                    x:Name="DeckModeImage"
+                    Source="deckicon.png"
+                    HeightRequest="50"
+                    WidthRequest="90"
+                    Grid.Row="37"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    IsVisible="True">
 
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DeckModeClicked"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-        <!-- Deal Image (starts offscreen right) -->
-        <Image
-            x:Name="DealModeImage"
-            Source="eyeicon.png"
-            HeightRequest="70"
-            WidthRequest="90"
-            Grid.Row="37"
-            Grid.RowSpan="1"
-            Grid.Column="1"
-            HorizontalOptions="Center"
-            IsVisible="True">
+                <!-- Deal Image -->
+                <Image
+                    x:Name="DealModeImage"
+                    Source="eyeicon.png"
+                    HeightRequest="70"
+                    WidthRequest="90"
+                    Grid.Row="37"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    IsVisible="True">
 
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DealModeClicked"/>
                     </Image.GestureRecognizers>
 
-        </Image>
+                </Image>
 
     </Grid>
 

@@ -6,38 +6,48 @@ using AdvantageBlackjack;
 
 namespace AdvantageBlackjack
 {
+    /// <summary>
+    /// RunningCountPrompt
+    /// </summary>
     public partial class RunningCountPrompt : ContentPage, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The running count prompt answers
+        /// </summary>
         private TaskCompletionSource<int> _taskCompletionSource;
 
+        /// <summary>
+        /// The running count prompt constructor
+        /// </summary>
+        /// <param name="taskCompletionSource"></param>
         public RunningCountPrompt(TaskCompletionSource<int> taskCompletionSource)
         {
             InitializeComponent();
             _taskCompletionSource = taskCompletionSource;
         }
 
+        /// <summary>
+        /// Submit clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
-            // Get the input and trim any extra spaces
             string input = RunningCountEntry.Text?.Trim();
 
-            // If the input is empty, treat it as "0"
             if (string.IsNullOrEmpty(input))
             {
-                input = "0"; // Default to 0 if no input is provided
+                input = "0";
             }
 
             if (int.TryParse(input, out int userGuess))
             {
-                // Return the user guess back to the DeckMode page
                 _taskCompletionSource.SetResult(userGuess);
 
-                // Navigate back after submission
                 await Navigation.PopAsync();
             }
             else
             {
-                // Show an error if the input is not a valid number
                 await DisplayAlert("Invalid Input", "Please enter a valid number.", "OK");
             }
         }

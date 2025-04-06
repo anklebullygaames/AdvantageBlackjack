@@ -9,7 +9,7 @@ using Microsoft.Maui.Controls;
 namespace AdvantageBlackjack.Pages
 {
     /// <summary>
-    /// A hand of cards
+    /// BorderlessEntry
     /// </summary>
     public class BorderlessEntry : Entry
     {

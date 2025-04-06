@@ -158,8 +158,6 @@
 
             </Image>
 
-
-
         </Grid>
 
         <!-- Main Content Grid -->
@@ -287,6 +285,7 @@
 
             </Image>
 
+            <!-- The Info Image -->
             <Image 
             x:Name="InfoIcon" 
             Source="infoimage.png" 
