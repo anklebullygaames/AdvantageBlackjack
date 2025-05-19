@@ -14,6 +14,7 @@ public partial class StrategyTables : ContentPage
 		InitializeComponent();
 
         MenuGrid.IsVisible = false;
+        MainBack.SetValue(Grid.ZIndexProperty, 1);
 
         H17Radio.IsChecked = GlobalSettings.H17;
         S17Radio.IsChecked = !GlobalSettings.H17;

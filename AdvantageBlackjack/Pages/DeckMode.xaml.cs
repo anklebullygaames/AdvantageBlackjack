@@ -224,9 +224,9 @@ namespace AdvantageBlackjack
                 _stopwatch.Reset();
                 _stopwatch.Start();
 
-                LoadNextCard(); 
+                LoadNextCard();
             }
-        
+
 
             _currentCard = (BlackjackCard)_deck.Deal();
 
@@ -263,12 +263,12 @@ namespace AdvantageBlackjack
             if (userDirection == CurrentAnswer)
             {
                 _correct++;
-                AccuracyLabel.TextColor = Colors.Green;
+                if (_isRaceMode) AccuracyLabel.TextColor = Colors.ForestGreen;
             }
             else
             {
                 _incorrect++;
-                AccuracyLabel.TextColor = Colors.Red;
+                if (_isRaceMode) AccuracyLabel.TextColor = Colors.DarkRed;
             }
 
             _cardsSwiped++;
@@ -299,7 +299,6 @@ namespace AdvantageBlackjack
 
             CardImage.TranslationX = 0;
             CardImage.TranslationY = 0;
-            AccuracyLabel.TextColor = Colors.Black;
 
             int cardValue = _currentCard.Value;
             if (cardValue >= 2 && cardValue <= 6)
@@ -470,5 +469,34 @@ namespace AdvantageBlackjack
             int totalGuesses = _runningCountCorrect + _runningCountIncorrect;
             AccuracyText = $"{_runningCountCorrect}/{totalGuesses}";
         }
+
+        /// <summary>
+        /// Restarts the current mode (Race or Running Count)
+        /// </summary>
+        private void RestartClicked(object sender, EventArgs e)
+        {
+            _deck = new Deck();
+            _deck.Shuffle();
+
+            _stopwatch.Reset();
+            _stopwatch.Start();
+
+            _cardsSwiped = 0;
+            _correct = 0;
+            _incorrect = 0;
+            _runningCount = 0;
+            _runningCountCorrect = 0;
+            _runningCountIncorrect = 0;
+            _nextPromptThreshold = _rand.Next(7, 13);
+
+            TimeText = "0:00";
+            AccuracyText = _isRaceMode ? "0%" : "0/0";
+            AccuracyLabel.TextColor = Colors.Black;
+
+            LoadNextCard();
+            
+            OptionsBackClicked(sender, e);
+        }
+
     }
 }

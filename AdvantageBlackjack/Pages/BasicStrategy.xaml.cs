@@ -84,7 +84,7 @@ public partial class BasicStrategy : ContentPage
     public BasicStrategy()
     {
         InitializeComponent();
-
+        MainBack.SetValue(Grid.ZIndexProperty, 2);
         BasicStrategyHeader.SetValue(Grid.ZIndexProperty, 1);
         StrategyGrid.SetValue(Grid.ZIndexProperty, 0);
 

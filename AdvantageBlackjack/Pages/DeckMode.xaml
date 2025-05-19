@@ -133,7 +133,7 @@
                     WidthRequest="40" 
                     HorizontalOptions="Center" 
                     IsVisible="True" 
-                    Grid.Row="11"
+                    Grid.Row="14"
                     Grid.Column="27">
 
                         <Image.GestureRecognizers>
@@ -141,6 +141,20 @@
                         </Image.GestureRecognizers>
 
                     </Image>
+
+                    <!-- Restart Button -->
+                    <Button Text="Restart"
+                            FontSize="20"
+                            Grid.Row="10"
+                            Grid.Column="18"
+                            Grid.ColumnSpan="20"
+                            Grid.RowSpan="2"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderWidth="2"
+                            TextColor="Black"
+                            Clicked="RestartClicked"/>
+
 
 
 

@@ -7,10 +7,6 @@
     <!-- Base Grid -->
     <Grid>
 
-        <Grid.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Right" Swiped="BackClicked"/>
-        </Grid.GestureRecognizers>
-
         <!-- The Menu Grid -->
         <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
 
@@ -279,6 +275,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+
+            <!-- Back Image -->
+            <Image x:Name="MainBack" 
+                Source="backicon3.png" 
+                HeightRequest="30" 
+                WidthRequest="40" 
+                IsVisible="True" 
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
 
             <!-- Header Image -->
             <Image x:Name="StrategyTableHeader" Source="stheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="5" Grid.ColumnSpan="41"/>
