@@ -10,7 +10,6 @@
                 <!-- The Menu Grid -->
                 <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
 
-
                     <!-- 40 Row Definitions -->
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -103,7 +102,7 @@
                     <Label x:Name="ModeLabel" Grid.ColumnSpan="15" Grid.RowSpan="2" Grid.Column="23" Grid.Row="1" TextColor="Black" Text="Mode" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
 
                     <!-- Race the Clock Label -->
-                    <Label Text="Race the Clock" 
+                    <Label Text="Race the Clock"
                     FontAttributes="Bold"
                     Grid.Column="18" Grid.Row="4"
                     TextColor="Black" FontSize="20" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
@@ -117,13 +116,13 @@
                     <!-- Race the Clock Radio Button -->
                     <RadioButton x:Name="RaceRadio"
                     Grid.Column="34" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3"
-                    Content="Race" GroupName="ModeGroup" IsChecked="True"
+                    GroupName="ModeGroup" IsChecked="True"
                     CheckedChanged="DealerRuleToggled"/>
 
                     <!-- Running Count Radio Button -->
                     <RadioButton x:Name="RunningCountRadio"
                     Grid.Column="34" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="3"
-                    Content="RunningCount" GroupName="ModeGroup"
+                    GroupName="ModeGroup"
                     CheckedChanged="DealerRuleToggled"/>
 
                     <!-- Options Back Image -->
@@ -154,9 +153,6 @@
                             BorderWidth="2"
                             TextColor="Black"
                             Clicked="RestartClicked"/>
-
-
-
 
                 </Grid>
 
@@ -296,8 +292,7 @@
                         Grid.Row="7"
                         Grid.Column="4"
                         Grid.ColumnSpan="8"
-                        Grid.RowSpan="3"
-                        />
+                        Grid.RowSpan="3"/>
 
                     <!-- Accuracy Label -->
                     <Label
@@ -310,8 +305,7 @@
                         Grid.Row="7"
                         Grid.Column="29"
                         Grid.ColumnSpan="8"
-                        Grid.RowSpan="3"
-                        />
+                        Grid.RowSpan="3"/>
 
                     <!-- Card Image -->
                     <Image x:Name="CardImage"
@@ -342,8 +336,7 @@
                         Grid.Row="33"
                         Grid.Column="3"
                         Grid.ColumnSpan="8"
-                        Grid.RowSpan="3"
-                        />
+                        Grid.RowSpan="3"/>
                     
                     <!-- Left Arrow Image -->
                     <Image x:Name="LeftArrow"
@@ -373,8 +366,7 @@
                         Grid.Row="33"
                         Grid.Column="15"
                         Grid.ColumnSpan="10"
-                        Grid.RowSpan="3"
-                        />
+                        Grid.RowSpan="3"/>
 
                     <!-- Down Arrow Image -->
                     <Image x:Name="DownArrow"
@@ -403,8 +395,7 @@
                         Grid.Row="33"
                         Grid.Column="28"
                         Grid.ColumnSpan="10"
-                        Grid.RowSpan="3"
-                        />
+                        Grid.RowSpan="3"/>
 
                     <!-- Right Arrow Image -->
                     <Image x:Name="RightArrow" 
