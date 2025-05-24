@@ -66,6 +66,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+            <!-- The User Image -->
+            <Image
+                x:Name="UserImage"
+                Source="blankusericon.png"
+                HeightRequest="55"
+                Grid.Row="3"
+                Grid.ColumnSpan="1"/>
+
             <!-- The Logo Image -->
             <Image
                 x:Name="LogoImage"
