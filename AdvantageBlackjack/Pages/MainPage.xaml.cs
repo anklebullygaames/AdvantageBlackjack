@@ -17,6 +17,11 @@
         }
 
         /// <summary>
+        /// Whether the user is in the options menu
+        /// </summary>
+        private bool _isInSettingsMenu = false;
+
+        /// <summary>
         /// Starts the resting page animations
         /// </summary>
         private async void StartAnimations()
@@ -57,7 +62,7 @@
         /// <param name="e">e</param>
         private async void OnPageLoaded(object sender, EventArgs e)
         {
-            while (MainGrid.Width == 0)
+            while (MainContentGrid.Width == 0)
             {
                 await Task.Delay(50);
             }
@@ -261,5 +266,44 @@
             await SlideOutButtons();
             await Shell.Current.GoToAsync("DealMode");
         }
+
+        /// <summary>
+        /// Settings clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        async void MenuClicked(object sender, EventArgs e)
+        {
+            if (!_isInSettingsMenu)
+            {
+                double targetX = this.Width / 2;
+
+                await MainContentGrid.TranslateTo(targetX, 0, 250, Easing.CubicOut);
+
+                MenuGrid.TranslationY = 500; // or adjust if needed
+                MenuGrid.IsVisible = true;
+                await MenuGrid.TranslateTo(0, 0, 250, Easing.CubicOut);
+            }
+        }
+
+
+        /// <summary>
+        /// Options back clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        async void OptionsBackClicked(object sender, EventArgs e)
+        {
+            _isInSettingsMenu = false;
+
+            // Slide MenuGrid back down
+            await MenuGrid.TranslateTo(0, 500, 250, Easing.CubicIn);
+            MenuGrid.IsVisible = false;
+
+            // Slide MainContentGrid back to original position
+            await MainContentGrid.TranslateTo(0, 0, 250, Easing.CubicIn);
+        }
+
+    
     }
 }

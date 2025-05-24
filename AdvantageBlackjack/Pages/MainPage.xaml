@@ -4,17 +4,130 @@
              x:Class="AdvantageBlackjack.MainPage"
              NavigationPage.HasNavigationBar="False">
 
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="#707060" Offset="0" />
+            <GradientStop Color="Black" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid>
+        <!-- The Menu Grid -->
+        <Grid x:Name="MenuGrid" TranslationY="1000" IsVisible="False">
+
+            <!-- 40 Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- 40 Column Definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Options Label -->
+            <Label x:Name="OptionsLabel" Grid.ColumnSpan="15" Grid.RowSpan="1" Grid.Column="4" Grid.Row="2" TextColor="Black" Text="Username" FontFamily="monospace" FontSize="30" FontAttributes="Bold"/>
+
+            <!-- Back Image -->
+            <Image x:Name="OptionsBack" 
+            Source="backicon1.png" 
+            HeightRequest="40" 
+            WidthRequest="40" 
+            HorizontalOptions="Center" 
+            IsVisible="True" 
+            Grid.Row="23"
+            Grid.Column="12">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OptionsBackClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+
+
+
+        </Grid>
 
         <!-- The MainContent -->
-        <Grid x:Name="MainGrid">
-        
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
-                    <GradientStop Color="#707060" Offset="0" />
-                    <GradientStop Color="Black" Offset="1" />
-                </LinearGradientBrush>
-            </Grid.Background>
-
+        <Grid x:Name="MainContentGrid">
             
             <!-- 40 Row Definitions -->
             <Grid.RowDefinitions>
@@ -64,36 +177,60 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <!-- The User Image -->
             <Image
                 x:Name="UserImage"
                 Source="blankusericon.png"
-                HeightRequest="55"
-                Grid.Row="3"
-                Grid.ColumnSpan="1"/>
+                HeightRequest="50"
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MenuClicked"/>
+                </Image.GestureRecognizers>
+
+            </Image>
 
             <!-- The Logo Image -->
             <Image
                 x:Name="LogoImage"
                 Source="thereallogo.png"
                 HeightRequest="350"
-                Grid.Row="9"
-                Grid.ColumnSpan="2"/>
+                Grid.Row="11"
+                Grid.ColumnSpan="18"/>
 
-            <!-- Basic Strategy Subheader -->
+            <!-- Basic Strategy Strategy Subheader -->
             <Label
                 FontAttributes="Bold"
                 x:Name="Subheader"
-                Text="Basic Strategy"
+                Text="Learn Basic Strategy"
                 FontFamily="monospace"
                 FontSize="24"
                 HorizontalOptions="Center"
                 TextColor="Black"
-                Grid.Row="20"
+                Grid.Row="21"
+                Grid.Column="2"
                 Grid.RowSpan="40"
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="14"/>
 
             <!-- All Hands Button -->
             <Button
@@ -106,9 +243,10 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="22"
+                Grid.Row="23"
                 Grid.RowSpan="3"
-                Grid.ColumnSpan="2"/>
+                Grid.Column="6"
+                Grid.ColumnSpan="6"/>
 
             <!-- The Pairs and Soft Hands button -->
             <Button
@@ -121,9 +259,10 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="28"
+                Grid.Row="26"
                 Grid.RowSpan="3"
-                Grid.ColumnSpan="2"/>
+                Grid.Column="3"
+                Grid.ColumnSpan="12"/>
 
             <!-- The Strategy Tables Button -->
             <Button
@@ -136,9 +275,10 @@
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="25"
+                Grid.Row="29"
                 Grid.RowSpan="3"
-                Grid.ColumnSpan="2"/>
+                Grid.Column="4"
+                Grid.ColumnSpan="10"/>
 
             <!-- The Counting Label -->
             <Label
@@ -146,22 +286,24 @@
                 FontSize="24"
                 FontFamily="monospace"
                 x:Name="CountingLabel"
-                Text=" Card Counting Practice" 
+                Text="Master Card Counting" 
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="32"
+                Grid.Row="33"
                 Grid.RowSpan="3"
-                Grid.ColumnSpan="2"/>
+                Grid.Column="3"
+                Grid.ColumnSpan="12"/>
 
             <!-- Deck Mode Button -->
             <Button
                 x:Name="DeckModeBtn"
                 Text="Deck Mode"
                 Clicked="DeckModeClicked"
-                Grid.Row="34"
+                Grid.Row="35"
                 Grid.RowSpan="3"
                 Grid.Column="0"
+                Grid.ColumnSpan="8"
                 FontSize="22"
                 FontFamily="monospace"
                 BackgroundColor="Transparent"
@@ -175,10 +317,11 @@
                     x:Name="DealModeBtn"
                     Text="Deal Mode"
                     Clicked="DealModeClicked"
-                    Grid.Row="34"
+                    Grid.Row="35"
                     Grid.RowSpan="3"
-                    Grid.Column="1"
-                    FontSize="22"
+                    Grid.Column="11"
+                    Grid.ColumnSpan="6"
+                    FontSize="22" 
                     FontFamily="monospace"
                     BackgroundColor="Transparent"
                     TextColor="Black"
@@ -192,9 +335,10 @@
                     Source="deckicon.png"
                     HeightRequest="50"
                     WidthRequest="90"
-                    Grid.Row="37"
+                    Grid.Row="38"
                     Grid.RowSpan="1"
-                    Grid.Column="0"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
                     HorizontalOptions="Center"
                     IsVisible="True">
 
@@ -209,9 +353,10 @@
                     Source="eyeicon.png"
                     HeightRequest="70"
                     WidthRequest="90"
-                    Grid.Row="37"
+                    Grid.Row="38"
                     Grid.RowSpan="1"
-                    Grid.Column="1"
+                    Grid.Column="13"
+                    Grid.ColumnSpan="2"
                     HorizontalOptions="Center"
                     IsVisible="True">
 
@@ -220,6 +365,8 @@
                     </Image.GestureRecognizers>
 
                 </Image>
+
+        </Grid>
 
     </Grid>
 
