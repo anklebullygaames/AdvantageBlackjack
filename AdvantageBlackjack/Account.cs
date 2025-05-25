@@ -1,6 +1,7 @@
 ﻿using System;
-using Postgrest.Attributes;
-using Postgrest.Models;
+using Supabase.Postgrest;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace AdvantageBlackjack
 {
     [Table("accounts")]
-    public static class Account : BaseModel
+    public class Account : BaseModel
     {
         [PrimaryKey("id", false)]
         public long Id { get; set; }
