@@ -280,9 +280,10 @@
 
                 await MainContentGrid.TranslateTo(targetX, 0, 250, Easing.CubicOut);
 
-                MenuGrid.TranslationY = 500; // or adjust if needed
+                MenuGrid.TranslationY = 500;
+                await UserImage.TranslateTo(-200, 0, 400, Easing.CubicOut);
                 MenuGrid.IsVisible = true;
-                await MenuGrid.TranslateTo(0, 0, 250, Easing.CubicOut);
+                await MenuGrid.TranslateTo(0, 0, 400, Easing.CubicOut);
             }
         }
 
@@ -296,14 +297,68 @@
         {
             _isInSettingsMenu = false;
 
-            // Slide MenuGrid back down
-            await MenuGrid.TranslateTo(0, 500, 250, Easing.CubicIn);
+            await UserImage.TranslateTo(0, 0, 400, Easing.CubicIn);
+
+            await MenuGrid.TranslateTo(0, 500, 400, Easing.CubicIn);
             MenuGrid.IsVisible = false;
 
-            // Slide MainContentGrid back to original position
             await MainContentGrid.TranslateTo(0, 0, 250, Easing.CubicIn);
         }
 
-    
+        /// <summary>
+        /// RecordsBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void RecordsClicked(object sender, EventArgs e)
+        {
+            await SlideOutButtons();
+            await Shell.Current.GoToAsync("BasicStrategy");
+        }
+
+        /// <summary>
+        /// StatsBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void StatsClicked(object sender, EventArgs e)
+        {
+            await SlideOutButtons();
+            await Shell.Current.GoToAsync("BasicStrategy");
+        }
+
+        /// <summary>
+        /// AboutBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void AboutClicked(object sender, EventArgs e)
+        {
+            await SlideOutButtons();
+            await Shell.Current.GoToAsync("BasicStrategy");
+        }
+
+        /// <summary>
+        /// AIBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void AIClicked(object sender, EventArgs e)
+        {
+            await SlideOutButtons();
+            await Shell.Current.GoToAsync("BasicStrategy");
+        }
+
+        /// <summary>
+        /// MissedBtn event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void MissedClicked(object sender, EventArgs e)
+        {
+            await SlideOutButtons();
+            await Shell.Current.GoToAsync("BasicStrategy");
+        }
+
     }
 }
