@@ -13,6 +13,7 @@
         {
             InitializeComponent();
             this.Loaded += OnPageLoaded;
+            InitializeSupabase();
             StartAnimations();
         }
 
@@ -279,14 +280,44 @@
                 double targetX = this.Width / 2;
 
                 await MainContentGrid.TranslateTo(targetX, 0, 250, Easing.CubicOut);
-
                 MenuGrid.TranslationY = 500;
                 await UserImage.TranslateTo(-200, 0, 400, Easing.CubicOut);
                 MenuGrid.IsVisible = true;
                 await MenuGrid.TranslateTo(0, 0, 400, Easing.CubicOut);
+                _isInSettingsMenu = true;
             }
         }
 
+        /// <summary>
+        /// Deck mode event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void SignInClicked(object sender, EventArgs e)
+        {   
+            await Navigation.PushAsync(new SignInPage());
+            return;
+        }
+
+        /// <summary>
+        /// Initialize Supabase
+        /// </summary>
+        private async void InitializeSupabase()
+        {
+            if (!SupabaseClient.IsInitialized)
+            {
+                await SupabaseClient.Initialize();
+            }
+
+            if (GlobalSettings.CurrentSession == null || GlobalSettings.CurrentSession.User == null)
+            {
+                SignInBtn.IsVisible = true;
+            }
+            else
+            {
+                SignInBtn.IsVisible = false;
+            }
+        }
 
         /// <summary>
         /// Options back clicked event handler

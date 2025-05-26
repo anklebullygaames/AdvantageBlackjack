@@ -8,8 +8,8 @@
     Title="AdvantageBlackjack"
     Shell.NavBarIsVisible="False">
 
-    <ShellContent
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+
 
 </Shell>
+

@@ -13,7 +13,7 @@ namespace AdvantageBlackjack
     public class Account : BaseModel
     {
         [PrimaryKey("id", false)]
-        public long Id { get; set; }
+        public string Id { get; set; }  // change from long to string
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; }
