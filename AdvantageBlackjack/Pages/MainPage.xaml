@@ -118,54 +118,21 @@
             <!-- Diamonds Label -->
             <Label x:Name="DiamondsLabel" Grid.ColumnSpan="12" Grid.RowSpan="1" Grid.Column="6" Grid.Row="6" TextColor="#707060" Text="0" FontFamily="monospace" FontSize="20" FontAttributes="Bold"/>
 
-            <!-- Records Button -->
-            <Button
-                FontAttributes="Bold"
-                FontSize="22"
-                FontFamily="monospace"
-                x:Name="RecordsBtn"
-                Text="Records"
-                Clicked="RecordsClicked"
-                HorizontalOptions="Center" 
-                BackgroundColor="Transparent"
-                TextColor="Black"
-                Grid.Row="8"
-                Grid.RowSpan="1"
-                Grid.Column="2"
-                Grid.ColumnSpan="12"/>
-
             <!-- Stats Button -->
             <Button
                 FontAttributes="Bold"
                 FontSize="22"
                 FontFamily="monospace"
                 x:Name="StatsBtn"
-                Text="Statistics"
+                Text="Pro Stats"
                 Clicked="StatsClicked"
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="10"
+                Grid.Row="23"
                 Grid.RowSpan="1"
                 Grid.Column="2"
-                Grid.ColumnSpan="13"/>
-
-
-            <!-- Last 10 Missed Button -->
-            <Button
-                FontAttributes="Bold"
-                FontSize="22"
-                FontFamily="monospace"
-                x:Name="MissedBtn"
-                Text="Last 10 Missed"
-                Clicked="MissedClicked"
-                HorizontalOptions="Center" 
-                BackgroundColor="Transparent"
-                TextColor="Black"
-                Grid.Row="12"
-                Grid.RowSpan="1"
-                Grid.Column="2"
-                Grid.ColumnSpan="18"/>
+                Grid.ColumnSpan="12"/>
 
             <!-- AI Button -->
             <Button
@@ -178,7 +145,7 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="14"
+                Grid.Row="25"
                 Grid.RowSpan="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="12"/>
@@ -194,7 +161,7 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="16"
+                Grid.Row="27"
                 Grid.RowSpan="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="9"/>
@@ -210,7 +177,7 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
-                Grid.Row="18"
+                Grid.Row="29"
                 Grid.RowSpan="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="10"/>
@@ -222,7 +189,7 @@
             WidthRequest="40" 
             HorizontalOptions="Center" 
             IsVisible="True" 
-            Grid.Row="20"
+            Grid.Row="32"
             Grid.Column="5">
 
                 <Image.GestureRecognizers>

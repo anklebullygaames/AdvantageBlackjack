@@ -13,7 +13,6 @@
         {
             InitializeComponent();
             this.Loaded += OnPageLoaded;
-            InitializeSupabase();
             StartAnimations();
         }
 
@@ -295,28 +294,7 @@
         /// <param name="e">e</param>
         private async void SignInClicked(object sender, EventArgs e)
         {   
-            await Navigation.PushAsync(new SignInPage());
-            return;
-        }
-
-        /// <summary>
-        /// Initialize Supabase
-        /// </summary>
-        private async void InitializeSupabase()
-        {
-            if (!SupabaseClient.IsInitialized)
-            {
-                await SupabaseClient.Initialize();
-            }
-
-            if (GlobalSettings.CurrentSession == null || GlobalSettings.CurrentSession.User == null)
-            {
-                SignInBtn.IsVisible = true;
-            }
-            else
-            {
-                SignInBtn.IsVisible = false;
-            }
+            await Shell.Current.GoToAsync("SignInPage");
         }
 
         /// <summary>
@@ -337,17 +315,6 @@
         }
 
         /// <summary>
-        /// RecordsBtn event handler
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private async void RecordsClicked(object sender, EventArgs e)
-        {
-            await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
-        }
-
-        /// <summary>
         /// StatsBtn event handler
         /// </summary>
         /// <param name="sender">sender</param>
@@ -355,7 +322,7 @@
         private async void StatsClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
+            await Shell.Current.GoToAsync("Stats");
         }
 
         /// <summary>
@@ -366,7 +333,7 @@
         private async void AboutClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
+            await Shell.Current.GoToAsync("About");
         }
 
         /// <summary>
@@ -377,19 +344,7 @@
         private async void AIClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
+            await Shell.Current.GoToAsync("AI");
         }
-
-        /// <summary>
-        /// MissedBtn event handler
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private async void MissedClicked(object sender, EventArgs e)
-        {
-            await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
-        }
-
     }
 }

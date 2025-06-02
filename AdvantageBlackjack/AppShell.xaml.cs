@@ -16,6 +16,9 @@ namespace AdvantageBlackjack
             Routing.RegisterRoute("RunningCountPrompt", typeof(RunningCountPrompt));
             Routing.RegisterRoute("SignInPage", typeof(SignInPage));
             Routing.RegisterRoute("SignUpPage", typeof(SignUpPage));
+            Routing.RegisterRoute("About", typeof(About));
+            Routing.RegisterRoute("Stats", typeof(Stats));
+            Routing.RegisterRoute("AI", typeof(AI));
         }
     }
 }

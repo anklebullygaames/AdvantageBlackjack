@@ -22,7 +22,6 @@ public partial class StrategyTables : ContentPage
         FourDeckRadio.IsChecked = !GlobalSettings.DoubleDeck;
         DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
         SurrenderSwitch.IsToggled = GlobalSettings.Surrender;
-
         DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
     }
 

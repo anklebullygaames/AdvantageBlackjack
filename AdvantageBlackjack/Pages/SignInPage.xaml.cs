@@ -6,7 +6,7 @@ using AdvantageBlackjack;
 
 namespace AdvantageBlackjack
 {
-    public partial class SignInPage : ContentPage, INotifyPropertyChanged
+    public partial class SignInPage : ContentPage
     {
         public SignInPage()
         {
@@ -15,41 +15,7 @@ namespace AdvantageBlackjack
 
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
-            string email = "anklebullygames@gmail.com";
-            string password = PasswordEntry.Text;
-
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-            {
-                await DisplayAlert("Missing Information", "Please enter both an email and password.", "OK");
-                return;
-            }
-
-            try
-            {
-                var session = await SupabaseClient.Client.Auth.SignIn(email: email, password: password);
-
-                if (session.User != null)
-                {
-                    // Optionally fetch the user's account info if needed
-                    var response = await SupabaseClient.Client
-                        .From<Account>()
-                        .Where(a => a.Email == email)
-                        .Get();
-
-                    var userAccount = response.Models.FirstOrDefault();
-
-                    if (userAccount != null)
-                    {
-                        Preferences.Set("email", email);
-                        Preferences.Set("password", password);
-                        await Shell.Current.GoToAsync("//MainPage");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Login Failed", $"Error: {ex.Message}", "OK");
-            }
+            throw new NotImplementedException();
         }
 
         private void OnBackgroundTapped(object sender, EventArgs e)
@@ -57,11 +23,6 @@ namespace AdvantageBlackjack
             EmailEntry.Unfocus();
             PasswordEntry.Unfocus();
         }
-
-
-        public new event PropertyChangedEventHandler? PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string name = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         /// <summary>
         /// back clicked event handler
