@@ -8,6 +8,7 @@ namespace AdvantageBlackjack
         {
             InitializeComponent();
 
+            Routing.RegisterRoute("MainPage", typeof(MainPage));
             Routing.RegisterRoute("StrategyTables", typeof(StrategyTables));
             Routing.RegisterRoute("BasicStrategy", typeof(BasicStrategy));
             Routing.RegisterRoute("PairsAndSoftHands", typeof(PairsAndSoftHands));

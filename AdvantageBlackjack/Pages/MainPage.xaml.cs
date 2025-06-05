@@ -1,19 +1,43 @@
-﻿namespace AdvantageBlackjack
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Firebase.Auth;
+
+namespace AdvantageBlackjack.Pages
 {
     /// <summary>
     /// MainPage
     /// </summary>
     public partial class MainPage : ContentPage
     {
+        private readonly FirebaseAuthClient _authClient;
+
+        public string Username => _authClient.User?.Info?.DisplayName ?? "Guest";
 
         /// <summary>
         /// The main page constructor
         /// </summary>
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel, FirebaseAuthClient authClient)
         {
             InitializeComponent();
+            _authClient = authClient;
+            BindingContext = viewModel;
             this.Loaded += OnPageLoaded;
             StartAnimations();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            bool isSignedIn = _authClient.User != null;
+
+            if (BindingContext is MainPageViewModel vm)
+            {
+                vm.Username = isSignedIn ? _authClient.User?.Info?.DisplayName ?? "Guest" : "Guest";
+            }
+
+            SignInBtn.IsVisible = !isSignedIn;
+            SignOutBtn.IsVisible = isSignedIn;
         }
 
         /// <summary>
@@ -104,6 +128,11 @@
 
             DealModeImage.Opacity = 0;
             DealModeImage.TranslationY = 100;
+
+            bool isSignedIn = _authClient.User != null;
+
+            SignInBtn.IsVisible = !isSignedIn;
+            SignOutBtn.IsVisible = isSignedIn;
         }
 
         /// <summary>
@@ -293,7 +322,7 @@
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
         private async void SignInClicked(object sender, EventArgs e)
-        {   
+        {
             await Shell.Current.GoToAsync("SignInPage");
         }
 
@@ -345,6 +374,24 @@
         {
             await SlideOutButtons();
             await Shell.Current.GoToAsync("AI");
+        }
+
+        private async void SignOutClicked(object sender, EventArgs e)
+        {
+            bool confirm = await DisplayAlert("Sign Out", "Do you want to sign out?", "Yes", "Cancel");
+
+            if (!confirm)
+                return;
+
+            _authClient.SignOut();
+
+            SignInBtn.IsVisible = true;
+            SignOutBtn.IsVisible = false;
+
+            if (BindingContext is MainPageViewModel vm)
+            {
+                vm.Username = "Guest";
+            }
         }
     }
 }

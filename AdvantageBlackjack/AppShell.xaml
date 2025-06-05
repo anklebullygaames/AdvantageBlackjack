@@ -3,13 +3,16 @@
     x:Class="AdvantageBlackjack.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AdvantageBlackjack"
+    xmlns:local="clr-namespace:AdvantageBlackjack.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="AdvantageBlackjack"
     Shell.NavBarIsVisible="False">
 
     <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
 
+    <ShellContent Route="SignInPage" ContentTemplate="{DataTemplate local:SignInPage}" />
+
+    <ShellContent Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}" />
 
 </Shell>
 
