@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
+using System.Collections.ObjectModel;
 
 namespace AdvantageBlackjack.Pages
 {
@@ -10,6 +13,8 @@ namespace AdvantageBlackjack.Pages
     public partial class MainPage : ContentPage
     {
         private readonly FirebaseAuthClient _authClient;
+
+        public Account CurrentAccount { get; set; } = new Account();
 
         public string Username => _authClient.User?.Info?.DisplayName ?? "Guest";
 
@@ -38,6 +43,7 @@ namespace AdvantageBlackjack.Pages
 
             SignInBtn.IsVisible = !isSignedIn;
             SignOutBtn.IsVisible = isSignedIn;
+            StatsBtn.IsVisible = isSignedIn;
         }
 
         /// <summary>
@@ -92,6 +98,63 @@ namespace AdvantageBlackjack.Pages
             }
 
             InitializeUIState();
+
+            try
+            {
+                var user = _authClient.User;
+
+                if (user != null)
+                {
+                    string uid = user.Uid;
+                    string token = await user.GetIdTokenAsync();
+
+                    // FirebaseClient that sends the auth token
+                    var firebaseClient = new FirebaseClient(
+                        "https://ap-blackjack-default-rtdb.firebaseio.com/",
+                        new FirebaseOptions
+                        {
+                            AuthTokenAsyncFactory = () => Task.FromResult(token)
+                        });
+
+                    // Try to load existing account
+                    var account = await firebaseClient
+                        .Child("Accounts")
+                        .Child(uid)
+                        .OnceSingleAsync<Account>();
+
+                    if (account != null)
+                    {
+                        CurrentAccount = account;
+                        if (BindingContext is MainPageViewModel vm)
+                        {
+                            vm.Account = account;
+                        }
+                        Console.WriteLine("Account loaded successfully!");
+                    }
+                    else
+                    {
+                        // Create a default account for new users
+                        CurrentAccount = new Account
+                        {
+                            Username = user.Info?.DisplayName ?? "Guest",
+                        };
+                        await firebaseClient
+                            .Child("Accounts")
+                            .Child(uid)
+                            .PutAsync(CurrentAccount);
+                        Console.WriteLine("No account found. New account created.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("User not signed in.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading account: {ex.Message}");
+            }
+
             AnimateUI();
         }
 
@@ -249,7 +312,10 @@ namespace AdvantageBlackjack.Pages
         private async void BasicStrategyClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("BasicStrategy");
+            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            {
+                await Shell.Current.Navigation.PushAsync(new BasicStrategy(vm.Account, _authClient));
+            }
         }
 
         /// <summary>
@@ -271,7 +337,10 @@ namespace AdvantageBlackjack.Pages
         private async void PairsAndSoftHandsClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("PairsAndSoftHands");
+            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            {
+                await Shell.Current.Navigation.PushAsync(new PairsAndSoftHands(vm.Account, _authClient));
+            }
         }
 
         /// <summary>
@@ -282,7 +351,10 @@ namespace AdvantageBlackjack.Pages
         private async void DeckModeClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("DeckMode");
+            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            {
+                await Shell.Current.Navigation.PushAsync(new DeckMode(vm.Account, _authClient));
+            }
         }
 
         /// <summary>
@@ -351,7 +423,11 @@ namespace AdvantageBlackjack.Pages
         private async void StatsClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("Stats");
+
+            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            {
+                await Shell.Current.Navigation.PushAsync(new Stats(vm.Account));
+            }
         }
 
         /// <summary>

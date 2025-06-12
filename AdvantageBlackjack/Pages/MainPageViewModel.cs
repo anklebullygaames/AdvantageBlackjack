@@ -15,7 +15,17 @@ namespace AdvantageBlackjack
         private readonly FirebaseAuthClient _authClient;
 
         [ObservableProperty]
-        private string username = "Guest";
+        private string _username = "Guest";
+
+        [ObservableProperty]
+        private Account _account;
+
+        public int Diamonds => Account?.Diamonds ?? 0;
+
+        partial void OnAccountChanged(Account value)
+        {
+            OnPropertyChanged(nameof(Diamonds));
+        }
 
         public MainPageViewModel(FirebaseAuthClient authClient)
         {

@@ -2,6 +2,10 @@
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using AdvantageBlackjack.Blackjack;
+using AdvantageBlackjack.Pages;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace AdvantageBlackjack
 {
@@ -10,6 +14,9 @@ namespace AdvantageBlackjack
     /// </summary>
     public partial class DeckMode : ContentPage, INotifyPropertyChanged
     {
+        private readonly Account _account;
+
+        private readonly FirebaseAuthClient _authClient;
 
         /// <summary>
         /// The current card
@@ -159,9 +166,12 @@ namespace AdvantageBlackjack
         /// <summary>
         /// The deck mode page constructor
         /// </summary>
-        public DeckMode()
+        public DeckMode(Account account, FirebaseAuthClient authClient)
         {
             InitializeComponent();
+            _account = account;
+            _authClient = authClient;
+
             BindingContext = this;
             _deck = new Deck();
             _deck.Shuffle();
@@ -192,6 +202,12 @@ namespace AdvantageBlackjack
             if (_cardsSwiped >= MaxCards)
             {
                 _stopwatch.Stop();
+
+                int elapsedSeconds = (int)_stopwatch.Elapsed.TotalSeconds;
+                if (_isRaceMode && (_account.BestTime == 0 || elapsedSeconds < _account.BestTime))
+                {
+                    _account.BestTime = elapsedSeconds;
+                }
 
                 if (!_isRaceMode)
                 {
@@ -264,13 +280,16 @@ namespace AdvantageBlackjack
             {
                 _correct++;
                 if (_isRaceMode) AccuracyLabel.TextColor = Colors.ForestGreen;
+                _account.CorrectSwipes++;
             }
             else
             {
                 _incorrect++;
                 if (_isRaceMode) AccuracyLabel.TextColor = Colors.DarkRed;
+                _account.IncorrectSwipes++;
             }
-
+            
+            _account.Diamonds += 1;
             _cardsSwiped++;
 
             if (!_isRaceMode)
@@ -321,6 +340,32 @@ namespace AdvantageBlackjack
         /// <param name="e">e</param>
         private async void BackClicked(object sender, EventArgs e)
         {
+            if (_account != null && _authClient.User != null)
+            {
+                try
+                {
+                    string token = await _authClient.User.GetIdTokenAsync();
+
+                    var firebaseClient = new FirebaseClient(
+                        "https://ap-blackjack-default-rtdb.firebaseio.com/",
+                        new FirebaseOptions
+                        {
+                            AuthTokenAsyncFactory = () => Task.FromResult(token)
+                        });
+
+                    await firebaseClient
+                        .Child("Accounts")
+                        .Child(_authClient.User.Uid)
+                        .PutAsync(_account);
+
+                    Console.WriteLine("Account saved before returning to MainPage.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error saving account: {ex.Message}");
+                }
+            }
+
             await Shell.Current.GoToAsync("..");
         }
 
@@ -454,15 +499,18 @@ namespace AdvantageBlackjack
             await Navigation.PushAsync(runningCountPrompt);
 
             int userGuess = await taskCompletionSource.Task;
+            _account.Diamonds += 1;
 
             if (userGuess == _runningCount)
             {
                 _runningCountCorrect++;
+                _account.CorrectPrompts++;
                 await DisplayAlert("Correct!", "Keep it going.", "OK");
             }
             else
             {
                 _runningCountIncorrect++;
+                _account.IncorrectPrompts++;
                 await DisplayAlert("Incorrect", $"The correct running count was {_runningCount}.", "OK");
             }
 

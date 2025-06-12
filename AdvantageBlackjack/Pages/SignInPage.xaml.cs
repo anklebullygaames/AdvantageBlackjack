@@ -22,5 +22,15 @@ namespace AdvantageBlackjack.Pages
             EmailEntry.Unfocus();
             PasswordEntry.Unfocus();
         }
+
+        /// <summary>
+        /// back clicked event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        async void BackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

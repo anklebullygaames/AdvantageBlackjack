@@ -1,11 +1,18 @@
 using AdvantageBlackjack.Blackjack;
 namespace AdvantageBlackjack.Pages;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 /// <summary>
 /// PairsAndSoftHands
 /// </summary>
 public partial class PairsAndSoftHands : ContentPage
 {
+    private readonly Account _account;
+
+    private readonly FirebaseAuthClient _authClient;
+
     /// <summary>
     /// The dealers blackjack hand
     /// </summary>
@@ -81,10 +88,11 @@ public partial class PairsAndSoftHands : ContentPage
     /// <summary>
     /// Constructor for the PairsAndSoftHands page
     /// </summary>
-    public PairsAndSoftHands()
+    public PairsAndSoftHands(Account account, FirebaseAuthClient authClient)
     {
         InitializeComponent();
-
+        _account = account;
+        _authClient = authClient;
         MainBack.SetValue(Grid.ZIndexProperty, 2);
         PairsHeader.SetValue(Grid.ZIndexProperty, 1);
         StrategyGrid.SetValue(Grid.ZIndexProperty, 0);
@@ -369,10 +377,12 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     private void HitClicked(object sender, EventArgs e)
     {
-        if (CurrentAnswer == Answer.Hit)
-        {
-            RoundsCorrect++;
-        }
+        _account.Diamonds += 1;
+        _account.CorrectPlays += (CurrentAnswer == Answer.Hit) ? 1 : 0;
+        _account.IncorrectPlays += (CurrentAnswer != Answer.Hit) ? 1 : 0;
+
+        RoundsCorrect += (CurrentAnswer == Answer.Hit) ? 1 : 0;
+
         DealMoreCards();
         UpdateScoreLabels();
     }
@@ -384,10 +394,11 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     private void StandClicked(object sender, EventArgs e)
     {
-        if (CurrentAnswer == Answer.Stand)
-        {
-            RoundsCorrect++;
-        }
+        _account.Diamonds += 1;
+        _account.CorrectPlays += (CurrentAnswer == Answer.Stand) ? 1 : 0;
+        _account.IncorrectPlays += (CurrentAnswer != Answer.Stand) ? 1 : 0;
+
+        RoundsCorrect += (CurrentAnswer == Answer.Stand) ? 1 : 0;
         DealMoreCards();
         UpdateScoreLabels();
     }
@@ -399,10 +410,11 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     private void DoubleClicked(object sender, EventArgs e)
     {
-        if (CurrentAnswer == Answer.Double)
-        {
-            RoundsCorrect++;
-        }
+        _account.Diamonds += 1;
+        _account.CorrectPlays += (CurrentAnswer == Answer.Double) ? 1 : 0;
+        _account.IncorrectPlays += (CurrentAnswer != Answer.Double) ? 1 : 0;
+
+        RoundsCorrect += (CurrentAnswer == Answer.Double) ? 1 : 0;
         DealMoreCards();
         UpdateScoreLabels();
     }
@@ -414,10 +426,11 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     private void SplitClicked(object sender, EventArgs e)
     {
-        if (CurrentAnswer == Answer.Split)
-        {
-            RoundsCorrect++;
-        }
+        _account.Diamonds += 1;
+        _account.CorrectPlays += (CurrentAnswer == Answer.Split) ? 1 : 0;
+        _account.IncorrectPlays += (CurrentAnswer != Answer.Split) ? 1 : 0;
+
+        RoundsCorrect += (CurrentAnswer == Answer.Split) ? 1 : 0;
         DealMoreCards();
         UpdateScoreLabels();
     }
@@ -429,10 +442,11 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     private void SurrenderClicked(object sender, EventArgs e)
     {
-        if (CurrentAnswer == Answer.Surrender)
-        {
-            RoundsCorrect++;
-        }
+        _account.Diamonds += 1;
+        _account.CorrectPlays += (CurrentAnswer == Answer.Surrender) ? 1 : 0;
+        _account.IncorrectPlays += (CurrentAnswer != Answer.Surrender) ? 1 : 0;
+
+        RoundsCorrect += (CurrentAnswer == Answer.Surrender) ? 1 : 0;
         DealMoreCards();
         UpdateScoreLabels();
     }
@@ -530,6 +544,32 @@ public partial class PairsAndSoftHands : ContentPage
     /// <param name="e">e</param>
     async void BackClicked(object sender, EventArgs e)
     {
+        if (_account != null && _authClient.User != null)
+        {
+            try
+            {
+                string token = await _authClient.User.GetIdTokenAsync();
+
+                var firebaseClient = new FirebaseClient(
+                    "https://ap-blackjack-default-rtdb.firebaseio.com/",
+                    new FirebaseOptions
+                    {
+                        AuthTokenAsyncFactory = () => Task.FromResult(token)
+                    });
+
+                await firebaseClient
+                    .Child("Accounts")
+                    .Child(_authClient.User.Uid)
+                    .PutAsync(_account);
+
+                Console.WriteLine("Account saved before returning to MainPage.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving account: {ex.Message}");
+            }
+        }
+
         await Shell.Current.GoToAsync("..");
     }
 

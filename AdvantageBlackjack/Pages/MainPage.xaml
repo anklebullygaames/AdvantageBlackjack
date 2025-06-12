@@ -116,7 +116,7 @@
                 Grid.ColumnSpan="3"/>
 
             <!-- Diamonds Label -->
-            <Label x:Name="DiamondsLabel" Grid.ColumnSpan="12" Grid.RowSpan="1" Grid.Column="6" Grid.Row="6" TextColor="#707060" Text="0" FontFamily="monospace" FontSize="20" FontAttributes="Bold"/>
+            <Label x:Name="DiamondsLabel" Grid.ColumnSpan="12" Grid.RowSpan="1" Grid.Column="6" Grid.Row="6" TextColor="#707060" Text="{Binding Diamonds}" FontFamily="monospace" FontSize="20" FontAttributes="Bold"/>
 
             <!-- Stats Button -->
             <Button
