@@ -44,7 +44,7 @@ namespace AdvantageBlackjack
             {
                 _taskCompletionSource.SetResult(userGuess);
 
-                await Navigation.PopAsync();
+                await Shell.Current.GoToAsync("..");
             }
             else
             {

@@ -537,14 +537,9 @@ public partial class PairsAndSoftHands : ContentPage
         }
     }
 
-    /// <summary>
-    /// Back clicked event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
-    async void BackClicked(object sender, EventArgs e)
+    private async void BackClicked(object sender, EventArgs e)
     {
-        if (_account != null && _authClient.User != null)
+        if (_authClient.User != null)
         {
             try
             {

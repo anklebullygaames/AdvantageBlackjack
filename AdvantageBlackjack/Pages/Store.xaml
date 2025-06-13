@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AdvantageBlackjack.Pages"
+             x:Class="AdvantageBlackjack.Store"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#707060">
+
+    <Grid>
+
+        <!-- 10 Rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- 5 Columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Back Image -->
+        <Image x:Name="MainBack" 
+            Source="backicon3.png" 
+            HeightRequest="30" 
+            WidthRequest="40" 
+            IsVisible="True" 
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Blank Icon Image -->
+        <Image x:Name="BlankIcon" 
+            Source="blankusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="True" 
+            Grid.Row="7"
+            Grid.RowSpan="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BlankUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Club Icon Image -->
+        <Image x:Name="ClubIcon" 
+            Source="clubusericon.png" 
+            HeightRequest="65" 
+            WidthRequest="65" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.RowSpan="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ClubUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Heart Icon Image -->
+        <Image x:Name="HeartIcon" 
+            Source="heartusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.RowSpan="1"
+            Grid.Column="7"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="HeartUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Diamond Icon Image -->
+        <Image x:Name="DiamondIcon" 
+            Source="diamondusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="True" 
+            Grid.Row="7"
+            Grid.RowSpan="1"
+            Grid.Column="7"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="DiamondUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Spade Icon Image -->
+        <Image x:Name="SpadeIcon" 
+            Source="spadeusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.RowSpan="1"
+            Grid.Column="12"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SpadeUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Alien Icon Image -->
+        <Image x:Name="AlienIcon" 
+            Source="alienusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="True" 
+            Grid.Row="7"
+            Grid.RowSpan="1"
+            Grid.Column="12"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AlienUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Golden Dice Icon Image -->
+        <Image x:Name="GoldenDiceIcon" 
+            Source="goldendiceusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="True" 
+            Grid.Row="12"
+            Grid.RowSpan="1"
+            Grid.Column="16"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GoldenDiceUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Dice Icon Image -->
+        <Image x:Name="DiceIcon" 
+            Source="diceusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="True" 
+            Grid.Row="7"
+            Grid.RowSpan="1"
+            Grid.Column="16"
+            Grid.ColumnSpan="1">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="DiceUserIconClicked"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+
+    </Grid>
+</ContentPage>

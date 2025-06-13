@@ -93,11 +93,8 @@
 
         </Image>
 
-        <!-- About Label -->
-        <Label x:Name="AboutLabel" Grid.ColumnSpan="4" Grid.RowSpan="1" Grid.Column="8" Grid.Row="2" TextColor="Black" Text="About" FontFamily="monospace" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-
-        <!-- About Text -->
-        <Label x:Name="MainLabel" Grid.ColumnSpan="14" Grid.RowSpan="34" Grid.Column="3" Grid.Row="5" TextColor="Black" Text="" FontFamily="monospace" FontSize="20" FontAttributes="Bold"/>
+        <!-- AI Label -->
+        <Label x:Name="AboutLabel" Grid.ColumnSpan="4" Grid.RowSpan="1" Grid.Column="8" Grid.Row="2" TextColor="Black" Text="AI Coach" FontFamily="monospace" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
     </Grid>
 </ContentPage>

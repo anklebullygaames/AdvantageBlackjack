@@ -9,9 +9,7 @@
     Shell.NavBarIsVisible="False">
 
     <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
-
     <ShellContent Route="SignInPage" ContentTemplate="{DataTemplate local:SignInPage}" />
-
     <ShellContent Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}" />
 
 </Shell>

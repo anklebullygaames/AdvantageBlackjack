@@ -39,11 +39,13 @@ namespace AdvantageBlackjack.Pages
             if (BindingContext is MainPageViewModel vm)
             {
                 vm.Username = isSignedIn ? _authClient.User?.Info?.DisplayName ?? "Guest" : "Guest";
+                UpdateUserImage();
             }
 
             SignInBtn.IsVisible = !isSignedIn;
             SignOutBtn.IsVisible = isSignedIn;
             StatsBtn.IsVisible = isSignedIn;
+            StoreBtn.IsVisible = isSignedIn;
         }
 
         /// <summary>
@@ -155,7 +157,35 @@ namespace AdvantageBlackjack.Pages
                 Console.WriteLine($"Error loading account: {ex.Message}");
             }
 
+            UpdateUserImage();
             AnimateUI();
+        }
+
+        private void UpdateUserImage()
+        {
+            string[] iconSources = {
+                "blankusericon.png",     // 0
+                "clubusericon.png",      // 1
+                "heartusericon.png",     // 2
+                "diamondusericon.png",   // 3
+                "spadeusericon.png",     // 4
+                "alienusericon.png",     // 5
+                "diceusericon.png",      // 6
+                "goldendiceusericon.png" // 7
+            };
+
+            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            {
+                int iconIndex = vm.Account.ProfilePic;
+                if (iconIndex >= 0 && iconIndex < iconSources.Length)
+                {
+                    UserImage.Source = iconSources[iconIndex];
+                }
+                else
+                {
+                    UserImage.Source = iconSources[0];
+                }
+            }
         }
 
         /// <summary>
@@ -312,9 +342,10 @@ namespace AdvantageBlackjack.Pages
         private async void BasicStrategyClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            if (BindingContext is MainPageViewModel vm)
             {
-                await Shell.Current.Navigation.PushAsync(new BasicStrategy(vm.Account, _authClient));
+                var accountToUse = _authClient.User != null ? vm.Account : new Account();
+                await Shell.Current.Navigation.PushAsync(new BasicStrategy(accountToUse, _authClient));
             }
         }
 
@@ -337,9 +368,10 @@ namespace AdvantageBlackjack.Pages
         private async void PairsAndSoftHandsClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+            if (BindingContext is MainPageViewModel vm)
             {
-                await Shell.Current.Navigation.PushAsync(new PairsAndSoftHands(vm.Account, _authClient));
+                var accountToUse = _authClient.User != null ? vm.Account : new Account();
+                await Shell.Current.Navigation.PushAsync(new PairsAndSoftHands(accountToUse, _authClient));
             }
         }
 
@@ -351,9 +383,13 @@ namespace AdvantageBlackjack.Pages
         private async void DeckModeClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            if (BindingContext is MainPageViewModel vm && vm.Account != null)
+
+            var guestAccount = new Account();
+
+            if (BindingContext is MainPageViewModel vm)
             {
-                await Shell.Current.Navigation.PushAsync(new DeckMode(vm.Account, _authClient));
+                var accountToUse = _authClient.User != null ? vm.Account : guestAccount;
+                await Shell.Current.Navigation.PushAsync(new DeckMode(accountToUse, _authClient));
             }
         }
 
@@ -389,13 +425,30 @@ namespace AdvantageBlackjack.Pages
         }
 
         /// <summary>
+        /// store event handler
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private async void StoreClicked(object sender, EventArgs e)
+        {
+            bool isSignedIn = _authClient.User != null;
+            if (isSignedIn)
+            {
+                if (BindingContext is MainPageViewModel vm && vm.Account != null)
+                {
+                    await Shell.Current.Navigation.PushAsync(new Store(vm.Account, _authClient));
+                }
+            }
+        }
+
+        /// <summary>
         /// Deck mode event handler
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
         private async void SignInClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("SignInPage");
+            await Shell.Current.GoToAsync("///SignInPage");
         }
 
         /// <summary>
@@ -448,8 +501,18 @@ namespace AdvantageBlackjack.Pages
         /// <param name="e">e</param>
         private async void AIClicked(object sender, EventArgs e)
         {
-            await SlideOutButtons();
-            await Shell.Current.GoToAsync("AI");
+            bool isSignedIn = _authClient.User != null;
+            if (isSignedIn)
+            {
+                if (BindingContext is MainPageViewModel vm && vm.Account != null)
+                {
+                    await Shell.Current.Navigation.PushAsync(new AI(vm.Account, _authClient));
+                }
+            }
+            else
+            {
+                await DisplayAlert("Sign In", "Sign in for AI assistance.", "Done");
+            }
         }
 
         private async void SignOutClicked(object sender, EventArgs e)
@@ -463,10 +526,13 @@ namespace AdvantageBlackjack.Pages
 
             SignInBtn.IsVisible = true;
             SignOutBtn.IsVisible = false;
+            StatsBtn.IsVisible = false;
 
             if (BindingContext is MainPageViewModel vm)
             {
                 vm.Username = "Guest";
+                vm.Account = new Account();
+                UpdateUserImage();
             }
         }
     }

@@ -129,6 +129,22 @@
                 HorizontalOptions="Center" 
                 BackgroundColor="Transparent"
                 TextColor="Black"
+                Grid.Row="21"
+                Grid.RowSpan="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="12"/>
+
+            <!-- Store Button -->
+            <Button
+                FontAttributes="Bold"
+                FontSize="22"
+                FontFamily="monospace"
+                x:Name="StoreBtn"
+                Text="Store"
+                Clicked="StoreClicked"
+                HorizontalOptions="Center" 
+                BackgroundColor="Transparent"
+                TextColor="Black"
                 Grid.Row="23"
                 Grid.RowSpan="1"
                 Grid.Column="0"
