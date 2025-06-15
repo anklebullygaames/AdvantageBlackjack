@@ -96,18 +96,14 @@
         <!-- AI Label -->
         <Label x:Name="AboutLabel" Grid.ColumnSpan="4" Grid.RowSpan="1" Grid.Column="8" Grid.Row="2" TextColor="Black" Text="AI Coach" FontFamily="monospace" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-        <Grid Grid.Row="4" Grid.RowSpan="34" Grid.Column="2" Grid.ColumnSpan="16">
-            <StackLayout>
-                <ScrollView x:Name="ChatView" HeightRequest="450">
-                    <StackLayout x:Name="ChatStack" Padding="10" Spacing="10"/>
-                </ScrollView>
+        <ScrollView x:Name="ChatView" Grid.Row="4" Grid.RowSpan="26" Grid.Column="0" Grid.ColumnSpan="40">
+            <StackLayout x:Name="ChatStack" Grid.Row="4" Grid.Column="0"/>
+        </ScrollView>
 
-                <Grid ColumnSpacing="5">
-                    <Entry x:Name="UserInput" Placeholder="Ask AI..." Grid.Column="0" Grid.ColumnSpan="4"/>
-                    <Button Text="Send" Clicked="SendClicked" Grid.Column="4"/>
-                </Grid>
-            </StackLayout>
-        </Grid>
+
+        <Entry x:Name="UserInput" Placeholder="Tap here to type" Grid.Column="0" Grid.Row="32" Grid.ColumnSpan="30" Grid.RowSpan="2" BackgroundColor="Transparent" TextColor="Black" FontAttributes="Bold" FontFamily="monospace" PlaceholderColor="Black" FontSize="18" HorizontalOptions="Center"/>
+        <Button Text="Send" Clicked="SendClicked" Grid.Column="4" Grid.Row="35" Grid.ColumnSpan="12" Grid.RowSpan="2" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="2" TextColor="Black" FontAttributes="Bold" FontFamily="monospace"/>
 
     </Grid>
+
 </ContentPage>
