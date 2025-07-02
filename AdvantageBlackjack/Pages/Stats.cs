@@ -14,6 +14,7 @@ namespace AdvantageBlackjack
         public Stats(Account account)
         {
             InitializeComponent();
+            MainBack.SetValue(Grid.ZIndexProperty, 1);
             _account = account;
 
             CorrectPlaysLabel.Text = $"Correct Plays: {_account.CorrectPlays}";

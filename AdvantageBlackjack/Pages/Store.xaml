@@ -93,6 +93,9 @@
 
         </Image>
 
+        <!-- Store Header -->
+        <Image x:Name="StoreHeader" Source="storeheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="3" Grid.ColumnSpan="22"/>
+
         <!-- Blank Icon Image -->
         <Image x:Name="BlankIcon" 
             Source="blankusericon.png" 

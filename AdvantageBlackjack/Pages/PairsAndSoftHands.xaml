@@ -281,7 +281,7 @@
 
             </Image>
 
-            <!-- Basic Strategy Header -->
+            <!-- Pairs Header -->
             <Image x:Name="PairsHeader" Source="pairsheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="3" Grid.ColumnSpan="22"/>
 
             <!-- Current Answer Label -->

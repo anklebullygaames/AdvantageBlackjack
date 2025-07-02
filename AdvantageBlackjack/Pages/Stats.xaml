@@ -93,8 +93,8 @@
 
         </Image>
 
-        <!-- Stats Label -->
-        <Label x:Name="StatsLabel" Grid.ColumnSpan="20" Grid.RowSpan="1" Grid.Column="0" Grid.Row="3" TextColor="Black" Text="Records &amp; Statistics" FontFamily="monospace" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <!-- Stats Header -->
+        <Image x:Name="StatsHeader" Source="statsheader.png" HeightRequest="400" WidthRequest="600" HorizontalOptions="Center" IsVisible="True" Grid.Row="3" Grid.ColumnSpan="22"/>
 
         <Label x:Name="BasicStrategyLabel" Grid.ColumnSpan="20" Grid.RowSpan="1" Grid.Column="0" Grid.Row="7" TextColor="Black" Text="Basic Strategy" FontFamily="monospace" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
