@@ -55,7 +55,6 @@ namespace AdvantageBlackjack
 
         private async Task<string> GetAiResponseAsync(string userMessage)
         {
-            // Old method wasnt working you can change anything you need to on xaml or c# class, thank you!
             await Task.Delay(100);
             return "AI reply";
         }
@@ -81,7 +80,6 @@ namespace AdvantageBlackjack
                 TextColor = sender == "You" ? Colors.White : Colors.LightGreen
             });
 
-            //scroll to bottom after adding message
             ChatView.ScrollToAsync(ChatStack, ScrollToPosition.End, true);
         }
     }

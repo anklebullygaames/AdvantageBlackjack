@@ -10,8 +10,8 @@ public partial class StrategyTables : ContentPage
     /// The constructor for the StrategyTables page
     /// </summary>
 	public StrategyTables()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         MenuGrid.IsVisible = false;
         MainBack.SetValue(Grid.ZIndexProperty, 1);
@@ -23,6 +23,57 @@ public partial class StrategyTables : ContentPage
         DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
         SurrenderSwitch.IsToggled = GlobalSettings.Surrender;
         DoubleAfterSplitSwitch.IsToggled = GlobalSettings.DoubleAfterSplit;
+
+        if (GlobalSettings.DoubleDeck)
+        {
+            if (GlobalSettings.H17)
+            {
+                if (GlobalSettings.Surrender)
+                {
+                    TwoDeckH17Hardsurrender.IsVisible = true;
+                }
+                else
+                {
+                    TwoDeckH17Hardnosurrender.IsVisible = true;
+                }
+            }
+            else
+            {
+                if (GlobalSettings.Surrender)
+                {
+                    TwoDeckS17Hardsurrender.IsVisible = true;
+                }
+                else
+                {
+                    TwoDeckS17Hardnosurrender.IsVisible = true;
+                }
+            }
+        }
+        else
+        {
+            if (GlobalSettings.H17)
+            {
+                if (GlobalSettings.Surrender)
+                {
+                    FourDeckH17Hardsurrender.IsVisible = true;
+                }
+                else
+                {
+                    FourDeckH17Hardnosurrender.IsVisible = true;
+                }
+            }
+            else
+            {
+                if (GlobalSettings.Surrender)
+                {
+                    FourDeckS17Hardsurrender.IsVisible = true;
+                }
+                else
+                {
+                    FourDeckS17Hardnosurrender.IsVisible = true;
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -37,15 +88,11 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void SoftHandsClicked(object sender, EventArgs e)
     {
-        Border newBorder = GlobalSettings.H17 ? H17SoftTotalsBorder : S17SoftTotalsBorder;
+        Border newBorder = GetCurrentSoftTotalsBorder();
         if (_isInSettingsMenu)
-        {
             FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
         else
-        {
             SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
     }
 
     /// <summary>
@@ -55,18 +102,11 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void PairsClicked(object sender, EventArgs e)
     {
-        Border newBorder = GlobalSettings.DoubleAfterSplit
-            ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
-            : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
-
+        Border newBorder = GetCurrentPairsBorder();
         if (_isInSettingsMenu)
-        {
             FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
         else
-        {
             SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
     }
 
     /// <summary>
@@ -76,15 +116,11 @@ public partial class StrategyTables : ContentPage
     /// <param name="e">e</param>
     private void HardTotalsClicked(object sender, EventArgs e)
     {
-        Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+        Border newBorder = GetCurrentHardTotalsBorder();
         if (_isInSettingsMenu)
-        {
             FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
         else
-        {
             SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
-        }
     }
 
 
@@ -139,22 +175,114 @@ public partial class StrategyTables : ContentPage
         await newBorder.FadeTo(1, animationSpeed);
     }
 
+    private Border GetCurrentHardTotalsBorder()
+    {
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.Surrender)
+            return TwoDeckH17Hardsurrender;
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.Surrender)
+            return TwoDeckH17Hardnosurrender;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && GlobalSettings.Surrender)
+            return TwoDeckS17Hardsurrender;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && !GlobalSettings.Surrender)
+            return TwoDeckS17Hardnosurrender;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.Surrender)
+            return FourDeckH17Hardsurrender;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.Surrender)
+            return FourDeckH17Hardnosurrender;
+        if (!GlobalSettings.DoubleDeck && !GlobalSettings.H17 && GlobalSettings.Surrender)
+            return FourDeckS17Hardsurrender;
+        return FourDeckS17Hardnosurrender;
+    }
+
+    private Border GetCurrentSoftTotalsBorder()
+    {
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17)
+            return TwoDeckH17Soft;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17)
+            return TwoDeckS17Soft;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17)
+            return FourDeckH17Soft;
+        return FourDeckS17Soft;
+    }
+
+    private Border GetCurrentPairsBorder()
+    {
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return TwoDeckH17PairsDassurrender;
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return TwoDeckH17PairsDasnosurrender;
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return TwoDeckH17PairsNoDassurrender;
+        if (GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return TwoDeckH17PairsNoDasnosurrender;
+
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return TwoDeckS17PairsDassurrender;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return TwoDeckS17PairsDasnosurrender;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return TwoDeckS17PairsNoDassurrender;
+        if (GlobalSettings.DoubleDeck && !GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return TwoDeckS17PairsNoDasnosurrender;
+
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return FourDeckH17PairsDassurrender;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return FourDeckH17PairsDasnosurrender;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && GlobalSettings.Surrender)
+            return FourDeckH17PairsNoDassurrender;
+        if (!GlobalSettings.DoubleDeck && GlobalSettings.H17 && !GlobalSettings.DoubleAfterSplit && !GlobalSettings.Surrender)
+            return FourDeckH17PairsNoDasnosurrender;
+
+        if (!GlobalSettings.DoubleDeck && !GlobalSettings.H17 && GlobalSettings.DoubleAfterSplit)
+            return FourDeckS17PairsDas;
+        return FourDeckS17PairsNoDas;
+    }
+
     /// <summary>
     /// Returns the currently visible border
     /// </summary>
     /// <returns>Border</returns>
     private Border GetCurrentVisibleBorder()
     {
-        if (H17HardTotalsBorder.IsVisible) return H17HardTotalsBorder;
-        if (S17HardTotalsBorder.IsVisible) return S17HardTotalsBorder;
-        if (H17SoftTotalsBorder.IsVisible) return H17SoftTotalsBorder;
-        if (S17SoftTotalsBorder.IsVisible) return S17SoftTotalsBorder;
-        if (H17PairsTableDasBorder.IsVisible) return H17PairsTableDasBorder;
-        if (S17PairsTableDasBorder.IsVisible) return S17PairsTableDasBorder;
-        if (H17PairsTableNoDasBorder.IsVisible) return H17PairsTableNoDasBorder;
-        if (S17PairsTableNoDasBorder.IsVisible) return S17PairsTableNoDasBorder;
+        // Hard totals
+        if (TwoDeckH17Hardnosurrender.IsVisible) return TwoDeckH17Hardnosurrender;
+        if (TwoDeckH17Hardsurrender.IsVisible) return TwoDeckH17Hardsurrender;
+        if (TwoDeckS17Hardnosurrender.IsVisible) return TwoDeckS17Hardnosurrender;
+        if (TwoDeckS17Hardsurrender.IsVisible) return TwoDeckS17Hardsurrender;
+        if (FourDeckH17Hardnosurrender.IsVisible) return FourDeckH17Hardnosurrender;
+        if (FourDeckH17Hardsurrender.IsVisible) return FourDeckH17Hardsurrender;
+        if (FourDeckS17Hardnosurrender.IsVisible) return FourDeckS17Hardnosurrender;
+        if (FourDeckS17Hardsurrender.IsVisible) return FourDeckS17Hardsurrender;
 
-        return H17HardTotalsBorder;
+        // Soft totals
+        if (TwoDeckH17Soft.IsVisible) return TwoDeckH17Soft;
+        if (TwoDeckS17Soft.IsVisible) return TwoDeckS17Soft;
+        if (FourDeckH17Soft.IsVisible) return FourDeckH17Soft;
+        if (FourDeckS17Soft.IsVisible) return FourDeckS17Soft;
+
+        // Pairs — 2 deck
+        if (TwoDeckH17PairsDasnosurrender.IsVisible) return TwoDeckH17PairsDasnosurrender;
+        if (TwoDeckH17PairsDassurrender.IsVisible) return TwoDeckH17PairsDassurrender;
+        if (TwoDeckH17PairsNoDasnosurrender.IsVisible) return TwoDeckH17PairsNoDasnosurrender;
+        if (TwoDeckH17PairsNoDassurrender.IsVisible) return TwoDeckH17PairsNoDassurrender;
+
+        if (TwoDeckS17PairsDasnosurrender.IsVisible) return TwoDeckS17PairsDasnosurrender;
+        if (TwoDeckS17PairsDassurrender.IsVisible) return TwoDeckS17PairsDassurrender;
+        if (TwoDeckS17PairsNoDasnosurrender.IsVisible) return TwoDeckS17PairsNoDasnosurrender;
+        if (TwoDeckS17PairsNoDassurrender.IsVisible) return TwoDeckS17PairsNoDassurrender;
+
+        // Pairs — 4 deck
+        if (FourDeckH17PairsDasnosurrender.IsVisible) return FourDeckH17PairsDasnosurrender;
+        if (FourDeckH17PairsDassurrender.IsVisible) return FourDeckH17PairsDassurrender;
+        if (FourDeckH17PairsNoDasnosurrender.IsVisible) return FourDeckH17PairsNoDasnosurrender;
+        if (FourDeckH17PairsNoDassurrender.IsVisible) return FourDeckH17PairsNoDassurrender;
+
+        if (FourDeckS17PairsDas.IsVisible) return FourDeckS17PairsDas;
+        if (FourDeckS17PairsNoDas.IsVisible) return FourDeckS17PairsNoDas;
+
+        // Default fallback (to avoid null return)
+        return FourDeckH17Hardnosurrender;
     }
 
     /// <summary>
@@ -191,70 +319,30 @@ public partial class StrategyTables : ContentPage
         await MainContentGrid.TranslateTo(0, 0, 800u, Easing.CubicIn);
     }
 
-    /// <summary>
-    /// Dealer rule changed event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
     private void DealerRuleToggled(object sender, CheckedChangedEventArgs e)
     {
         if (e.Value)
         {
-            GlobalSettings.H17 = (sender == H17Radio); // Check which radio button was selected
+            GlobalSettings.H17 = (sender == H17Radio);
 
-            Border newBorder = GlobalSettings.H17 ? H17HardTotalsBorder : S17HardTotalsBorder;
+            Border newBorder = GetCurrentVisibleBorder();
+
+            if (newBorder.Equals(GetCurrentHardTotalsBorder()))
+                newBorder = GetCurrentHardTotalsBorder();
+            else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
+                newBorder = GetCurrentSoftTotalsBorder();
+            else
+                newBorder = GetCurrentPairsBorder();
 
             if (_isInSettingsMenu)
-            {
                 FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
-            }
             else
-            {
                 SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
-            }
         }
     }
 
     /// <summary>
-    /// DAS switched event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
-    private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
-    {
-        GlobalSettings.DoubleAfterSplit = e.Value;
-
-        // Check if the currently visible table is a Pairs table, and switch it
-        if (H17PairsTableDasBorder.IsVisible || H17PairsTableNoDasBorder.IsVisible ||
-            S17PairsTableDasBorder.IsVisible || S17PairsTableNoDasBorder.IsVisible)
-        {
-            Border newBorder = GlobalSettings.DoubleAfterSplit
-                ? (GlobalSettings.H17 ? H17PairsTableDasBorder : S17PairsTableDasBorder)
-                : (GlobalSettings.H17 ? H17PairsTableNoDasBorder : S17PairsTableNoDasBorder);
-
-            if (_isInSettingsMenu)
-            {
-                FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
-            }
-            else
-            {
-                SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
-            }
-        }
-    }
-
-    /// <summary>
-    /// back clicked event handler
-    /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="e">e</param>
-    async void BackClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
-    }
-
-    /// <summary>
-    /// Dealer rule changed event handler
+    /// Deck rule changed event handler
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
@@ -263,6 +351,20 @@ public partial class StrategyTables : ContentPage
         if (e.Value)
         {
             GlobalSettings.DoubleDeck = (sender == DoubleDeckRadio);
+
+            Border newBorder = GetCurrentVisibleBorder();
+
+            if (newBorder.Equals(GetCurrentHardTotalsBorder()))
+                newBorder = GetCurrentHardTotalsBorder();
+            else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
+                newBorder = GetCurrentSoftTotalsBorder();
+            else
+                newBorder = GetCurrentPairsBorder();
+
+            if (_isInSettingsMenu)
+                FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+            else
+                SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
         }
     }
 
@@ -274,5 +376,45 @@ public partial class StrategyTables : ContentPage
     private void SurrenderToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.Surrender = e.Value;
+
+        Border newBorder = GetCurrentVisibleBorder();
+
+        if (newBorder.Equals(GetCurrentHardTotalsBorder()))
+            newBorder = GetCurrentHardTotalsBorder();
+        else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
+            newBorder = GetCurrentSoftTotalsBorder();
+        else
+            newBorder = GetCurrentPairsBorder();
+
+        if (_isInSettingsMenu)
+            FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+        else
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+    }
+
+    /// <summary>
+    /// DAS switched event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
+    {
+        GlobalSettings.DoubleAfterSplit = e.Value;
+
+        Border newBorder = GetCurrentPairsBorder();
+        if (_isInSettingsMenu)
+            FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
+        else
+            SlideToNewImage(GetCurrentVisibleBorder(), newBorder);
+    }
+
+    /// <summary>
+    /// back clicked event handler
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">e</param>
+    async void BackClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }
