@@ -118,6 +118,15 @@
             <!-- Diamonds Label -->
             <Label x:Name="DiamondsLabel" Grid.ColumnSpan="12" Grid.RowSpan="1" Grid.Column="6" Grid.Row="6" TextColor="#707060" Text="{Binding Diamonds}" FontFamily="monospace" FontSize="20" FontAttributes="Bold"/>
 
+            <!-- The Logo Image -->
+            <Image
+                x:Name="AnkleBullyLogo"
+                Source="anklebully.png"
+                HeightRequest="150"
+                WidthRequest="150"
+                Grid.Row="16"
+                Grid.Column="6"/>
+
             <!-- Stats Button -->
             <Button
                 FontAttributes="Bold"
