@@ -25,6 +25,51 @@ namespace AdvantageBlackjack.Pages
         private int profilePic;
         private int bestTime;
         private string username = "Guest";
+        private bool h17 = true;
+        private bool doubleAfterSplit = true;
+        private bool surrender = false;
+        private bool doubleDeck = false;
+
+        public bool H17
+        {
+            get => h17;
+            set
+            {
+                h17 = value;
+                OnPropertyChanged(nameof(H17));
+            }
+        }
+
+        public bool DoubleAfterSplit
+        {
+            get => doubleAfterSplit;
+            set
+            {
+                doubleAfterSplit = value;
+                OnPropertyChanged(nameof(DoubleAfterSplit));
+            }
+        }
+
+        public bool Surrender
+        {
+            get => surrender;
+            set
+            {
+                surrender = value;
+                OnPropertyChanged(nameof(Surrender));
+            }
+        }
+
+        public bool DoubleDeck
+        {
+            get => doubleDeck;
+            set
+            {
+                doubleDeck = value;
+                OnPropertyChanged(nameof(DoubleDeck));
+            }
+        }
+
 
         public int CorrectPlays
         {

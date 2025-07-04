@@ -20,8 +20,8 @@ namespace AdvantageBlackjack
         {
             _account = account;
             _authClient = authClient;
-            MainBack.SetValue(Grid.ZIndexProperty, 1);
             InitializeComponent();
+            MainBack.SetValue(Grid.ZIndexProperty, 1);
         }
 
         private async Task SaveAccountAsync()

@@ -1,17 +1,26 @@
 namespace AdvantageBlackjack;
+using AdvantageBlackjack.Pages;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 /// <summary>
 /// StrategyTables
 /// </summary>
 public partial class StrategyTables : ContentPage
 {
+    private readonly Account _account;
 
+    private readonly FirebaseAuthClient _authClient;
+    
     /// <summary>
     /// The constructor for the StrategyTables page
     /// </summary>
-	public StrategyTables()
+    public StrategyTables(Account account, FirebaseAuthClient authClient)
     {
         InitializeComponent();
+        _account = account;
+        _authClient = authClient;
 
         MenuGrid.IsVisible = false;
         MainBack.SetValue(Grid.ZIndexProperty, 1);
@@ -324,15 +333,9 @@ public partial class StrategyTables : ContentPage
         if (e.Value)
         {
             GlobalSettings.H17 = (sender == H17Radio);
+            _account.H17 = GlobalSettings.H17;
 
-            Border newBorder = GetCurrentVisibleBorder();
-
-            if (newBorder.Equals(GetCurrentHardTotalsBorder()))
-                newBorder = GetCurrentHardTotalsBorder();
-            else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
-                newBorder = GetCurrentSoftTotalsBorder();
-            else
-                newBorder = GetCurrentPairsBorder();
+            Border newBorder = GetCurrentHardTotalsBorder();
 
             if (_isInSettingsMenu)
                 FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
@@ -351,15 +354,9 @@ public partial class StrategyTables : ContentPage
         if (e.Value)
         {
             GlobalSettings.DoubleDeck = (sender == DoubleDeckRadio);
+            _account.DoubleDeck = GlobalSettings.DoubleDeck;
 
-            Border newBorder = GetCurrentVisibleBorder();
-
-            if (newBorder.Equals(GetCurrentHardTotalsBorder()))
-                newBorder = GetCurrentHardTotalsBorder();
-            else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
-                newBorder = GetCurrentSoftTotalsBorder();
-            else
-                newBorder = GetCurrentPairsBorder();
+            Border newBorder = GetCurrentHardTotalsBorder();
 
             if (_isInSettingsMenu)
                 FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
@@ -376,15 +373,9 @@ public partial class StrategyTables : ContentPage
     private void SurrenderToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.Surrender = e.Value;
+        _account.Surrender = GlobalSettings.Surrender;
 
-        Border newBorder = GetCurrentVisibleBorder();
-
-        if (newBorder.Equals(GetCurrentHardTotalsBorder()))
-            newBorder = GetCurrentHardTotalsBorder();
-        else if (newBorder.Equals(GetCurrentSoftTotalsBorder()))
-            newBorder = GetCurrentSoftTotalsBorder();
-        else
-            newBorder = GetCurrentPairsBorder();
+        Border newBorder = GetCurrentHardTotalsBorder();
 
         if (_isInSettingsMenu)
             FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
@@ -400,8 +391,10 @@ public partial class StrategyTables : ContentPage
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.DoubleAfterSplit = e.Value;
+        _account.DoubleAfterSplit = GlobalSettings.DoubleAfterSplit;
 
-        Border newBorder = GetCurrentPairsBorder();
+        Border newBorder = GetCurrentHardTotalsBorder();
+
         if (_isInSettingsMenu)
             FadeToNewImage(GetCurrentVisibleBorder(), newBorder);
         else
@@ -413,8 +406,34 @@ public partial class StrategyTables : ContentPage
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
-    async void BackClicked(object sender, EventArgs e)
+    private async void BackClicked(object sender, EventArgs e)
     {
+        if (_authClient.User != null)
+        {
+            try
+            {
+                string token = await _authClient.User.GetIdTokenAsync();
+
+                var firebaseClient = new FirebaseClient(
+                    "https://ap-blackjack-default-rtdb.firebaseio.com/",
+                    new FirebaseOptions
+                    {
+                        AuthTokenAsyncFactory = () => Task.FromResult(token)
+                    });
+
+                await firebaseClient
+                    .Child("Accounts")
+                    .Child(_authClient.User.Uid)
+                    .PutAsync(_account);
+
+                Console.WriteLine("Account saved before returning to MainPage.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving account: {ex.Message}");
+            }
+        }
+
         await Shell.Current.GoToAsync("..");
     }
 }

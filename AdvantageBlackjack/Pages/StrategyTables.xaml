@@ -300,72 +300,72 @@
             <Grid Grid.Row="14" Grid.ColumnSpan="41">
                 
                 <!-- 2DECKH17HARDSTRATEGYNOSURRENDER -->
-                <Border x:Name="TwoDeckH17Hardnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17Hardnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodeckh17hardstrategynosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17HARDSTRATEGYSURRENDER -->
-                <Border x:Name="TwoDeckH17Hardsurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17Hardsurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="245" WidthRequest="370">
                     <Image Source="twodeckh17hardstrategysurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17PAIRSTRATEGYDASNOSURRENDER -->
-                <Border x:Name="TwoDeckH17PairsDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17PairsDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodeckh17pairstrategydasnosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17PAIRSTRATEGYDASSURRENDER -->
-                <Border x:Name="TwoDeckH17PairsDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17PairsDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodeckh17pairstrategydassurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17PAIRSTRATEGYNODASNOSURRENDER -->
-                <Border x:Name="TwoDeckH17PairsNoDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17PairsNoDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodeckh17pairstrategynodasnosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17PAIRSTRATEGYNODASSURRENDER -->
-                <Border x:Name="TwoDeckH17PairsNoDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17PairsNoDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodeckh17pairstrategynodassurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKH17SOFTSTRATEGY -->
-                <Border x:Name="TwoDeckH17Soft" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckH17Soft" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="210" WidthRequest="370">
                     <Image Source="twodeckh17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17HARDSTRATEGYNOSURRENDER -->
-                <Border x:Name="TwoDeckS17Hardnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17Hardnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodecks17hardstrategynosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17HARDSTRATEGYSURRENDER -->
-                <Border x:Name="TwoDeckS17Hardsurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17Hardsurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodecks17hardstrategysurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17PAIRSTRATEGYDASNOSURRENDER -->
-                <Border x:Name="TwoDeckS17PairsDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17PairsDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodecks17pairstrategydasnosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17PAIRSTRATEGYDASSURRENDER -->
-                <Border x:Name="TwoDeckS17PairsDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17PairsDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="245" WidthRequest="370">
                     <Image Source="twodecks17pairstrategydassurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17PAIRSTRATEGYNODASNOSURRENDER -->
-                <Border x:Name="TwoDeckS17PairsNoDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17PairsNoDasnosurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodecks17pairstrategynodasnosurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17PAIRSTRATEGYNODASSURRENDER -->
-                <Border x:Name="TwoDeckS17PairsNoDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17PairsNoDassurrender" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="250" WidthRequest="370">
                     <Image Source="twodecks17pairstrategynodassurrender.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 
                 <!-- 2DECKS17SOFTSTRATEGY -->
-                <Border x:Name="TwoDeckS17Soft" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="260" WidthRequest="370">
+                <Border x:Name="TwoDeckS17Soft" Stroke="Black" StrokeThickness="5" Padding="2" IsVisible="False" HeightRequest="210" WidthRequest="370">
                     <Image Source="twodecks17softstrategy.png" HeightRequest="300" WidthRequest="360" HorizontalOptions="Center"/>
                 </Border>
 

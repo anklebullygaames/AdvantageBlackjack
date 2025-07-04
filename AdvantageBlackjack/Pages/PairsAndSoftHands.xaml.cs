@@ -492,6 +492,7 @@ public partial class PairsAndSoftHands : ContentPage
         if (e.Value)
         {
             GlobalSettings.H17 = (sender == H17Radio);
+            _account.H17 = GlobalSettings.H17;
         }
     }
 
@@ -503,6 +504,7 @@ public partial class PairsAndSoftHands : ContentPage
     private void DoubleAfterSplitToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.DoubleAfterSplit = e.Value;
+        _account.DoubleAfterSplit = GlobalSettings.DoubleAfterSplit;
     }
 
     /// <summary>
@@ -578,6 +580,7 @@ public partial class PairsAndSoftHands : ContentPage
         if (e.Value)
         {
             GlobalSettings.DoubleDeck = (sender == DoubleDeckRadio);
+            _account.DoubleDeck = GlobalSettings.DoubleDeck;
         }
     }
 
@@ -589,6 +592,7 @@ public partial class PairsAndSoftHands : ContentPage
     private void SurrenderToggled(object sender, ToggledEventArgs e)
     {
         GlobalSettings.Surrender = e.Value;
+        _account.Surrender = GlobalSettings.Surrender;
         _ = AnimateSurrenderButton(e.Value);
     }
 }

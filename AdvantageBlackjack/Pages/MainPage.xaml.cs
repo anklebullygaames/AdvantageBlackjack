@@ -131,7 +131,13 @@ namespace AdvantageBlackjack.Pages
                         {
                             vm.Account = account;
                         }
-                        Console.WriteLine("Account loaded successfully!");
+
+                        GlobalSettings.H17 = account.H17;
+                        GlobalSettings.DoubleDeck = account.DoubleDeck;
+                        GlobalSettings.Surrender = account.Surrender;
+                        GlobalSettings.DoubleAfterSplit = account.DoubleAfterSplit;
+
+                        Console.WriteLine("Account loaded and settings synced.");
                     }
                     else
                     {
@@ -357,7 +363,11 @@ namespace AdvantageBlackjack.Pages
         private async void StrategyTableClicked(object sender, EventArgs e)
         {
             await SlideOutButtons();
-            await Shell.Current.GoToAsync("StrategyTables");
+            if (BindingContext is MainPageViewModel vm)
+            {
+                var accountToUse = _authClient.User != null ? vm.Account : new Account();
+                await Shell.Current.Navigation.PushAsync(new StrategyTables(accountToUse, _authClient));
+            }
         }
 
         /// <summary>
@@ -511,7 +521,7 @@ namespace AdvantageBlackjack.Pages
             }
             else
             {
-                await DisplayAlert("Sign In", "Sign in for AI assistance.", "Done");
+                await DisplayAlert("Sign In", "Sign in for AI help.", "Done");
             }
         }
 
