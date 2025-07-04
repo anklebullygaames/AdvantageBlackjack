@@ -21,8 +21,8 @@ namespace AdvantageBlackjack
             IncorrectPlaysLabel.Text = $"Incorrect Plays: {_account.IncorrectPlays}";
             CorrectPromptsLabel.Text = $"Correct Running Counts: {_account.CorrectPrompts}";
             IncorrectPromptsLabel.Text = $"Incorrect Running Counts: {_account.IncorrectPrompts}";
-            CorrectSwipesLabel.Text = $"Correct Card Swipes: {_account.CorrectSwipes}";
-            IncorrectSwipesLabel.Text = $"Incorrect Card Swipes: {_account.IncorrectSwipes}";
+            CorrectSwipesLabel.Text = $"Correct Card Counts: {_account.CorrectSwipes}";
+            IncorrectSwipesLabel.Text = $"Incorrect Card Counts: {_account.IncorrectSwipes}";
             TimeSpan bestTimeSpan = TimeSpan.FromSeconds(_account.BestTime);
             BestTimeLabel.Text = $"Best Deck Time: {bestTimeSpan.Minutes}:{bestTimeSpan.Seconds:D2}";
 
@@ -30,7 +30,7 @@ namespace AdvantageBlackjack
             if (totalPlays > 0)
             {
                 double percent = (double)_account.CorrectPlays / totalPlays * 100;
-                PlayPercentLabel.Text = $"{(int)percent}%";
+                PlayPercentLabel.Text = $"All Time Percentage: {(int)percent}%";
             }
             else
             {
