@@ -30,6 +30,30 @@ namespace AdvantageBlackjack.Pages
         private bool surrender = false;
         private bool doubleDeck = false;
 
+        private bool member = false;
+
+        public bool Member
+        {
+            get => member;
+            set
+            {
+                member = value;
+                OnPropertyChanged(nameof(Member));
+            }
+        }
+
+        private int? memberSince;
+
+        public int? MemberSince
+        {
+            get => memberSince;
+            set
+            {
+                memberSince = value;
+                OnPropertyChanged(nameof(MemberSince));
+            }
+        }
+
         public bool H17
         {
             get => h17;
