@@ -37,7 +37,8 @@ namespace AdvantageBlackjack
             catch (Exception ex)
             {
                 Debug.WriteLine("Sign-in failed: " + ex.Message);
-                await Shell.Current.DisplayAlert("Sign-In Failed", ex.Message, "OK");
+                string message = FirebaseErrorHelper.GetFriendlyMessage(ex.Message);
+                await Shell.Current.DisplayAlert("Sign-In Failed", message, "OK");
             }
             finally
             {

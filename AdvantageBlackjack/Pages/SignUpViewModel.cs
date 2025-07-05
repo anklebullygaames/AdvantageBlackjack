@@ -27,13 +27,20 @@ namespace AdvantageBlackjack
         {
             try
             {
+                if (Password.Length < 8)
+                {
+                    await Shell.Current.DisplayAlert("Weak Password", "Password must be at least 8 characters.", "OK");
+                    return;
+                }
+                
                 await _authClient.CreateUserWithEmailAndPasswordAsync(Email, Password, Username);
                 await Shell.Current.GoToAsync("///MainPage");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Sign-up failed: " + ex.Message);
-                await Shell.Current.DisplayAlert("Sign-Up Failed", ex.Message, "OK");
+                string message = FirebaseErrorHelper.GetFriendlyMessage(ex.Message);
+                await Shell.Current.DisplayAlert("Sign-Up Failed", message, "OK");
             }
             finally
             {
