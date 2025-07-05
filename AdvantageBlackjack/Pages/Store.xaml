@@ -130,6 +130,19 @@
 
         </Image>
 
+        <!-- Locked Club Icon Image -->
+        <Image x:Name="LockedClubIcon" 
+            Source="lockedclubusericon.png" 
+            HeightRequest="65" 
+            WidthRequest="65" 
+            IsVisible="False" 
+            Grid.Row="14"
+            Grid.RowSpan="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="1">
+
+        </Image>
+
         <!-- Heart Icon Image -->
         <Image x:Name="HeartIcon" 
             Source="heartusericon.png" 
@@ -144,6 +157,19 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="HeartUserIconClicked"/>
             </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Locked Heart Icon Image -->
+        <Image x:Name="LockedHeartIcon" 
+            Source="lockedheartusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="False" 
+            Grid.Row="14"
+            Grid.RowSpan="1"
+            Grid.Column="7"
+            Grid.ColumnSpan="1">
 
         </Image>
 
@@ -164,6 +190,19 @@
 
         </Image>
 
+        <!-- Locked Diamond Icon Image -->
+        <Image x:Name="LockedDiamondIcon" 
+            Source="lockeddiamondusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="False" 
+            Grid.Row="9"
+            Grid.RowSpan="1"
+            Grid.Column="7"
+            Grid.ColumnSpan="1">
+
+        </Image>
+
         <!-- Spade Icon Image -->
         <Image x:Name="SpadeIcon" 
             Source="spadeusericon.png" 
@@ -178,6 +217,19 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SpadeUserIconClicked"/>
             </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Locked Spade Icon Image -->
+        <Image x:Name="LockedSpadeIcon" 
+            Source="lockedspadeusericon.png" 
+            HeightRequest="60" 
+            WidthRequest="60" 
+            IsVisible="False" 
+            Grid.Row="14"
+            Grid.RowSpan="1"
+            Grid.Column="12"
+            Grid.ColumnSpan="1">
 
         </Image>
 
@@ -198,6 +250,19 @@
 
         </Image>
 
+        <!-- Locked Alien Icon Image -->
+        <Image x:Name="LockedAlienIcon" 
+            Source="lockedalienusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="False" 
+            Grid.Row="9"
+            Grid.RowSpan="1"
+            Grid.Column="12"
+            Grid.ColumnSpan="1">
+
+        </Image>
+
         <!-- Golden Dice Icon Image -->
         <Image x:Name="GoldenDiceIcon" 
             Source="goldendiceusericon.png" 
@@ -212,6 +277,19 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="GoldenDiceUserIconClicked"/>
             </Image.GestureRecognizers>
+
+        </Image>
+
+        <!-- Locked Golden Dice Icon Image -->
+        <Image x:Name="LockedGoldenDiceIcon" 
+            Source="lockedgoldendiceusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="False" 
+            Grid.Row="14"
+            Grid.RowSpan="1"
+            Grid.Column="16"
+            Grid.ColumnSpan="1">
 
         </Image>
 
@@ -230,9 +308,23 @@
                 <TapGestureRecognizer Tapped="DiceUserIconClicked"/>
             </Image.GestureRecognizers>
 
-            
+        </Image>
+
+        <!-- Locked Dice Icon Image -->
+        <Image x:Name="LockedDiceIcon" 
+            Source="lockeddiceusericon.png" 
+            HeightRequest="70" 
+            WidthRequest="70" 
+            IsVisible="False" 
+            Grid.Row="9"
+            Grid.RowSpan="1"
+            Grid.Column="16"
+            Grid.ColumnSpan="1">         
 
         </Image>
+
+        <!-- Diamonds Label -->
+        <Label x:Name="DiamondsLabel" Grid.ColumnSpan="20" Grid.RowSpan="2" Grid.Column="0" Grid.Row="19" TextColor="Black" FontFamily="monospace" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
         <!-- AdvantageBlackjack+ Button -->
         <Button
